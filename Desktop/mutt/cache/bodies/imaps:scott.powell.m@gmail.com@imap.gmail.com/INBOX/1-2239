@@ -1,0 +1,640 @@
+Delivered-To: scott.powell.m@gmail.com
+Received: by 2002:a4f:f8d:0:0:0:0:0 with SMTP id 135csp3336477ivp;
+        Tue, 31 Mar 2020 07:45:19 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vt2gIog38MZVY4P/iVbpf2xLGYhlkizgCV9+iTotBHH+Ua5ojq3p82ffd9XUCaYNcs2N/xU
+X-Received: by 2002:aa7:93cd:: with SMTP id y13mr18129291pff.213.1585665919174;
+        Tue, 31 Mar 2020 07:45:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585665919; cv=none;
+        d=google.com; s=arc-20160816;
+        b=TI2cD+TAH4/hXk1MOMAEWOb1tZPMWcwD1+WVsino0RgvZt1/N2gUCs861vIQZ0O2GG
+         jvgILKD3V6DWbTRsmr0BYz0vTroTbSjT9NjAcrbh91eqvGiDm4FM6qtwbVMKb+q5ORj+
+         R6UrlJOUtPQQaEzCY3kQmT6SzuwV1PVFWPIPgOb8R9T0RZvAj17ACJXXX52E69leKHSY
+         9c+iwshoMCmf427TzkgZjzMmyuspMjnZwfgJ9R3yCb06DW7wV1M7ZOXH3MEaf/n3wtQJ
+         FWbth3Dva7PEGCYau5xj5bvbzXgmi6FIzF5W06+98vm+xw3RGRnmYZKVMC06k0gqVhqQ
+         RVdw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-id:list-unsubscribe:from:subject:mime-version:date:message-id
+         :to:dkim-signature;
+        bh=mg3JzYulvaLCcCNwLx7uC8iIpxzBU6a3VVmN0iUYTLQ=;
+        b=JwRj2BSF0x+1+HYRv0MZcY4iZyjOBGdFuPtyis0KkbbSPoYUkRU+vKdfM2pymym/3a
+         901hmQqDSnQ7EX5lNn0Jp+LXip6fJgOxcwRqYwo5dJpXVZUhJJDH2movNDaE3YF/Dkqz
+         jC71vgI+VYRclu89bP7IpWAGPukQbU8I0MLFGIzwdrmmWjzBQ/Wrv6tJr2YLe5+pkaEG
+         NqLwVTuQOV6I/V0JE69DbXjynYK6PC0YhaUWUQo2Q/MawObXuEiCrTkcsveEDZXO3jHl
+         5oYgWk7y3wx0iL//vfVmGvUxbzLMoXdtNXZPdWLrsmvniRFQepPM8kdsgxnSLqeFwtHV
+         PIKQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@m.mail.coursera.org header.s=scph0616 header.b=ohkFCAV+;
+       spf=pass (google.com: domain of bounce@m.mail.coursera.org designates 192.174.83.14 as permitted sender) smtp.mailfrom=bounce@m.mail.coursera.org
+Return-Path: <bounce@m.mail.coursera.org>
+Received: from mta-83-14.sparkpostmail.com (mta-83-14.sparkpostmail.com. [192.174.83.14])
+        by mx.google.com with ESMTPS id u12si2138178pjr.57.2020.03.31.07.45.18
+        for <scott.powell.m@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 31 Mar 2020 07:45:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce@m.mail.coursera.org designates 192.174.83.14 as permitted sender) client-ip=192.174.83.14;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@m.mail.coursera.org header.s=scph0616 header.b=ohkFCAV+;
+       spf=pass (google.com: domain of bounce@m.mail.coursera.org designates 192.174.83.14 as permitted sender) smtp.mailfrom=bounce@m.mail.coursera.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=m.mail.coursera.org;
+	s=scph0616; t=1585665918; i=@m.mail.coursera.org;
+	bh=mg3JzYulvaLCcCNwLx7uC8iIpxzBU6a3VVmN0iUYTLQ=;
+	h=To:Message-ID:Date:Content-Type:Subject:From;
+	b=ohkFCAV+YpIC2qAt/niLMUyy6bleAUDPRud2W4SUg00FS6o3ZBK7N7V1mTMJYIGkE
+	 xVUkLLZHGzTbhj2Maug+Q0PJcXamH3BR6CdhHtyybcJjrgx5YcxP6rdyHKgb4jVjqn
+	 ho/L1Stt9xOKwexiKYGtmmTzyulqqXzlYQhemerY=
+X-MSFBL: UiurUAZsiR33HP7SnC7cY7Eu/Xr0UiI80R0SV0UfwzY=|eyJzdWJhY2NvdW50X2l
+	kIjoiMCIsInIiOiJzY290dC5wb3dlbGwubUBnbWFpbC5jb20iLCJjdXN0b21lcl9
+	pZCI6IjEiLCJ0ZW5hbnRfaWQiOiJjb3Vyc2VyYSIsIm1lc3NhZ2VfaWQiOiIwMDI
+	5N2U1NzgzNWUyYzQ4NTg4MiJ9
+To: "Scott Powell" <scott.powell.m@gmail.com>
+Message-ID: <85.28.18476.E77538E5@ao.mta2vrest.cc.prd.sparkpost>
+Date: Tue, 31 Mar 2020 14:45:18 +0000
+Content-Type: multipart/alternative; boundary="_----jfBIVPinWzxFpbsknKpccg===_B4/28-18476-E77538E5"
+MIME-Version: 1.0
+Subject: Register for the upcoming Gies Global Challenges in Business webinars
+From: "Coursera" <no-reply@m.mail.coursera.org>
+List-Unsubscribe: <mailto:unsubscribe@mail.coursera.org?subject=unsubscribe:hEIJZZreavg4eQHlYpUW6ueB472mH0SLr6nAZ5bsfnM~|eyAicmNwdF90byI6ICJzY290dC5wb3dlbGwubUBnbWFpbC5jb20iLCAidGVuYW50X2lkIjogImNvdXJzZXJhIiwgImN1c3RvbWVyX2lkIjogIjEiLCAic3ViYWNjb3VudF9pZCI6ICIwIiwgIm1lc3NhZ2VfaWQiOiAiMDAyOTdlNTc4MzVlMmM0ODU4ODIiIH0~>
+List-Id: <coursera.1.0.sparkpostmail.com>
+
+--_----jfBIVPinWzxFpbsknKpccg===_B4/28-18476-E77538E5
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="UTF-8"
+
+<https://eventing.coursera.org/redirectSigned/eyJrZXkiOiJlbWFpbC5saW5rLm9wZ=
+W4iLCJ2YWx1ZSI6eyJ1cmwiOiJodHRwczovL3d3dy5jb3Vyc2VyYS5vcmc_dXRtX21lZGl1bT1l=
+bWFpbCZ1dG1fc291cmNlPW1hcmtldGluZyZ1dG1fY2FtcGFpZ249dTlEUklHdjNFZXFkX3hGS0R=
+FTkprdyIsInRyYWNraW5nIjp7InVzZXJJZCI6NDc2MTkwMDgsInVzZXJFbWFpbCI6InNjb3R0Ln=
+Bvd2VsbC5tQGdtYWlsLmNvbSIsIm5vdGlmaWNhdGlvblR5cGUiOiJCMjk5Y0d2NEVlcWRfeEZLR=
+EVOSmt3IiwiY2FtcGFpZ25JZCI6ImRlZ3JlZXN-MjAyMC0wMy0zMCIsImNhbXBhaWduR3JvdXAi=
+OiJ1OURSSUd2M0VlcWRfeEZLREVOSmt3IiwibGlua3MiOltdfX0sInVzZXJJZCI6NDc2MTkwMDh=
+9.G63ojPnQl0z1I8C-jr-fFPELK6YytzlhhHn5OmsTDIw>=0D=0A<https://eventing.cours=
+era.org/redirectSigned/eyJrZXkiOiJlbWFpbC5saW5rLm9wZW4iLCJ2YWx1ZSI6eyJ1cmwi=
+OiJodHRwczovL3d3dy5jb3Vyc2VyYS5vcmcvZGVncmVlcy9pbWJhP3V0bV9tZWRpdW09ZW1haWw=
+mdXRtX3NvdXJjZT1tYXJrZXRpbmcmdXRtX2NhbXBhaWduPXU5RFJJR3YzRWVxZF94RktERU5Ka3=
+ciLCJ0cmFja2luZyI6eyJ1c2VySWQiOjQ3NjE5MDA4LCJ1c2VyRW1haWwiOiJzY290dC5wb3dlb=
+GwubUBnbWFpbC5jb20iLCJub3RpZmljYXRpb25UeXBlIjoiQjI5OWNHdjRFZXFkX3hGS0RFTkpr=
+dyIsImNhbXBhaWduSWQiOiJkZWdyZWVzfjIwMjAtMDMtMzAiLCJjYW1wYWlnbkdyb3VwIjoidTl=
+EUklHdjNFZXFkX3hGS0RFTkprdyIsImxpbmtzIjpbXX19LCJ1c2VySWQiOjQ3NjE5MDA4fQ.cBD=
+FnXhJPVuj5Q9z97Vim6Wb2HmQTiWV_3y_UDB6pbE>=0D=0A<https://eventing.coursera.o=
+rg/redirectSigned/eyJrZXkiOiJlbWFpbC5saW5rLm9wZW4iLCJ2YWx1ZSI6eyJ1cmwiOiJod=
+HRwczovL3d3dy5jb3Vyc2VyYS5vcmcvZGVncmVlcy9pbWJhP3V0bV9tZWRpdW09ZW1haWwmdXRt=
+X3NvdXJjZT1tYXJrZXRpbmcmdXRtX2NhbXBhaWduPXU5RFJJR3YzRWVxZF94RktERU5Ka3ciLCJ=
+0cmFja2luZyI6eyJ1c2VySWQiOjQ3NjE5MDA4LCJ1c2VyRW1haWwiOiJzY290dC5wb3dlbGwubU=
+BnbWFpbC5jb20iLCJub3RpZmljYXRpb25UeXBlIjoiQjI5OWNHdjRFZXFkX3hGS0RFTkprdyIsI=
+mNhbXBhaWduSWQiOiJkZWdyZWVzfjIwMjAtMDMtMzAiLCJjYW1wYWlnbkdyb3VwIjoidTlEUklH=
+djNFZXFkX3hGS0RFTkprdyIsImxpbmtzIjpbXX19LCJ1c2VySWQiOjQ3NjE5MDA4fQ.cBDFnXhJ=
+PVuj5Q9z97Vim6Wb2HmQTiWV_3y_UDB6pbE>=0D=0AMissed the first Global Challenge=
+s in Business webinar=3F We've got more.=0D=0AThe Gies College of Business =
+online MBA program (iMBA)=0D=0A<https://eventing.coursera.org/redirectSigne=
+d/eyJrZXkiOiJlbWFpbC5saW5rLm9wZW4iLCJ2YWx1ZSI6eyJ1cmwiOiJodHRwczovL3d3dy5jb=
+3Vyc2VyYS5vcmcvZGVncmVlcy9pbWJhP3V0bV9tZWRpdW09ZW1haWwmdXRtX3NvdXJjZT1tYXJr=
+ZXRpbmcmdXRtX2NhbXBhaWduPXU5RFJJR3YzRWVxZF94RktERU5Ka3ciLCJ0cmFja2luZyI6eyJ=
+1c2VySWQiOjQ3NjE5MDA4LCJ1c2VyRW1haWwiOiJzY290dC5wb3dlbGwubUBnbWFpbC5jb20iLC=
+Jub3RpZmljYXRpb25UeXBlIjoiQjI5OWNHdjRFZXFkX3hGS0RFTkprdyIsImNhbXBhaWduSWQiO=
+iJkZWdyZWVzfjIwMjAtMDMtMzAiLCJjYW1wYWlnbkdyb3VwIjoidTlEUklHdjNFZXFkX3hGS0RF=
+TkprdyIsImxpbmtzIjpbXX19LCJ1c2VySWQiOjQ3NjE5MDA4fQ.cBDFnXhJPVuj5Q9z97Vim6Wb=
+2HmQTiWV_3y_UDB6pbE> =0D=0Aoffers career-specific and flexible learning for=
+ those looking to transform =0D=0Atheir future. Just as important as the iM=
+BA program=E2=80=99s curriculum and =0D=0Aon-the-go availability is the exp=
+erienced faculty that guide your learning.=0D=0AIn April, Gies College of B=
+usiness is hosting two webinars addressing key =0D=0Abusiness implications =
+of COVID-19 (novel coronavirus), in which faculty =0D=0Aoffer their experti=
+se and perspectives on the opportunities and solutions =0D=0Athat will driv=
+e change in the midst of this global challenge. If you missed =0D=0Athe fir=
+st webinar with Professor Larry DeBrock, "The Economic Impact of =0D=0ACoro=
+navirus," you can view a recording here.=0D=0AExplore the webinar series=0D=
+=0A<https://eventing.coursera.org/redirectSigned/eyJrZXkiOiJlbWFpbC5saW5rLm=
+9wZW4iLCJ2YWx1ZSI6eyJ1cmwiOiJodHRwczovL2VtYWlscy5pbGxpbm9pcy5lZHUvbmV3c2xld=
+HRlci85ODczNDk5Lmh0bWw_dXRtX21lZGl1bT1lbWFpbCZ1dG1fc291cmNlPW1hcmtldGluZyZ1=
+dG1fY2FtcGFpZ249dTlEUklHdjNFZXFkX3hGS0RFTkprdyIsInRyYWNraW5nIjp7InVzZXJJZCI=
+6NDc2MTkwMDgsInVzZXJFbWFpbCI6InNjb3R0LnBvd2VsbC5tQGdtYWlsLmNvbSIsIm5vdGlmaW=
+NhdGlvblR5cGUiOiJCMjk5Y0d2NEVlcWRfeEZLREVOSmt3IiwiY2FtcGFpZ25JZCI6ImRlZ3JlZ=
+XN-MjAyMC0wMy0zMCIsImNhbXBhaWduR3JvdXAiOiJ1OURSSUd2M0VlcWRfeEZLREVOSmt3Iiwi=
+bGlua3MiOltdfX0sInVzZXJJZCI6NDc2MTkwMDh9.jFjAycuw6kYDVHIF-6mWrr99j7g5hW4f4V=
+OLttHGt7k>=0D=0AThe webinars are free. Attendees will have the opportunity =
+to engage with =0D=0AGies Business faculty in a live panel discussion follo=
+wing each webinar. We =0D=0Alook forward to seeing you at these events belo=
+w, and remember to reserve =0D=0Ayour spot early!=0D=0A____________________=
+_______=0D=0AConsumer Behavior in the Global Marketplace in the Time of Cor=
+onavirus=0D=0AApril 7, 2020 | 1-2 pm US Central Time=0D=0AJoin Professor Ca=
+rlos Torelli=E2=80=94Professor of Business Administration, =0D=0AExecutive =
+Director of Executive Education & James F. Towey Faculty =0D=0AFellow=E2=80=
+=94for a discussion on how a global crisis impacts the psychological =0D=0A=
+responses of consumers in global markets and how organizations can address =
+=0D=0Aconsumer concerns and needs. Come prepared with questions for Profess=
+or =0D=0ATorelli! Register now >>=0D=0A<https://eventing.coursera.org/redir=
+ectSigned/eyJrZXkiOiJlbWFpbC5saW5rLm9wZW4iLCJ2YWx1ZSI6eyJ1cmwiOiJodHRwczovL=
+2lsbGlub2lzLnpvb20udXMvd2ViaW5hci9yZWdpc3Rlci9XTl9KdVpUZ0lHOFRyNmVtWm94cUdr=
+ZWpRP3V0bV9tZWRpdW09ZW1haWwmdXRtX3NvdXJjZT1tYXJrZXRpbmcmdXRtX2NhbXBhaWduPXU=
+5RFJJR3YzRWVxZF94RktERU5Ka3ciLCJ0cmFja2luZyI6eyJ1c2VySWQiOjQ3NjE5MDA4LCJ1c2=
+VyRW1haWwiOiJzY290dC5wb3dlbGwubUBnbWFpbC5jb20iLCJub3RpZmljYXRpb25UeXBlIjoiQ=
+jI5OWNHdjRFZXFkX3hGS0RFTkprdyIsImNhbXBhaWduSWQiOiJkZWdyZWVzfjIwMjAtMDMtMzAi=
+LCJjYW1wYWlnbkdyb3VwIjoidTlEUklHdjNFZXFkX3hGS0RFTkprdyIsImxpbmtzIjpbXX19LCJ=
+1c2VySWQiOjQ3NjE5MDA4fQ.atZVr4eWGXQKL1oQHbP3RKlNr9tv6ZqdbdqIlQH0qSs>=0D=0AE=
+thics in Global Commerce during Coronavirus=0D=0AApril 22, 2020 | 2-3 pm US=
+ Central Time=0D=0AJoin Professor Patricia Werhane=E2=80=94Adjunct Teaching=
+ Professor of Business =0D=0AAdministration & Center for Professional Respo=
+nsibility Faculty Fellow=E2=80=94as =0D=0Ashe shares information on the glo=
+bal ethical dilemmas faced during the =0D=0ACoronavirus outbreak. Come prep=
+ared with questions for Professor Werhane! =0D=0ARegister now >>=0D=0A<http=
+s://eventing.coursera.org/redirectSigned/eyJrZXkiOiJlbWFpbC5saW5rLm9wZW4iLC=
+J2YWx1ZSI6eyJ1cmwiOiJodHRwczovL2lsbGlub2lzLnpvb20udXMvd2ViaW5hci9yZWdpc3Rlc=
+i9XTl9QV0lHY3F0S1QxZVZwSzRSc2FNQVJBP3V0bV9tZWRpdW09ZW1haWwmdXRtX3NvdXJjZT1t=
+YXJrZXRpbmcmdXRtX2NhbXBhaWduPXU5RFJJR3YzRWVxZF94RktERU5Ka3ciLCJ0cmFja2luZyI=
+6eyJ1c2VySWQiOjQ3NjE5MDA4LCJ1c2VyRW1haWwiOiJzY290dC5wb3dlbGwubUBnbWFpbC5jb2=
+0iLCJub3RpZmljYXRpb25UeXBlIjoiQjI5OWNHdjRFZXFkX3hGS0RFTkprdyIsImNhbXBhaWduS=
+WQiOiJkZWdyZWVzfjIwMjAtMDMtMzAiLCJjYW1wYWlnbkdyb3VwIjoidTlEUklHdjNFZXFkX3hG=
+S0RFTkprdyIsImxpbmtzIjpbXX19LCJ1c2VySWQiOjQ3NjE5MDA4fQ.-1F2ieky_eew9P7SsMvw=
+EzeaWoTrjxZ0hpCTBP7GFdA>=0D=0A___________________________=0D=0AHave more qu=
+estions about the iMBA program=3F Request more information=0D=0A<https://ev=
+enting.coursera.org/redirectSigned/eyJrZXkiOiJlbWFpbC5saW5rLm9wZW4iLCJ2YWx1=
+ZSI6eyJ1cmwiOiJodHRwczovL3d3dy5jb3Vyc2VyYS5vcmcvZGVncmVlcy9pbWJhP3V0bV9tZWR=
+pdW09ZW1haWwmdXRtX3NvdXJjZT1tYXJrZXRpbmcmdXRtX2NhbXBhaWduPXU5RFJJR3YzRWVxZF=
+94RktERU5Ka3cjcmVxdWVzdGluZm8iLCJ0cmFja2luZyI6eyJ1c2VySWQiOjQ3NjE5MDA4LCJ1c=
+2VyRW1haWwiOiJzY290dC5wb3dlbGwubUBnbWFpbC5jb20iLCJub3RpZmljYXRpb25UeXBlIjoi=
+QjI5OWNHdjRFZXFkX3hGS0RFTkprdyIsImNhbXBhaWduSWQiOiJkZWdyZWVzfjIwMjAtMDMtMzA=
+iLCJjYW1wYWlnbkdyb3VwIjoidTlEUklHdjNFZXFkX3hGS0RFTkprdyIsImxpbmtzIjpbXX19LC=
+J1c2VySWQiOjQ3NjE5MDA4fQ.zPbOXgBGdnKhD9dDd0pMUOzRd9Mc9S7VYfzykLfhY14> =0D=
+=0Aor contact us at onlinemba@illinois.edu <mailto:onlinemba@illinois.edu> =
+, =0D=0Aand we'd be happy to assist you.=0D=0ALooking forward to connecting=
+ with you,=0D=0AThe University of Illinois iMBA Team=0D=0AExplore the iMBA =
+program=0D=0A<https://eventing.coursera.org/redirectSigned/eyJrZXkiOiJlbWFp=
+bC5saW5rLm9wZW4iLCJ2YWx1ZSI6eyJ1cmwiOiJodHRwczovL3d3dy5jb3Vyc2VyYS5vcmcvZGV=
+ncmVlcy9pbWJhP3V0bV9tZWRpdW09ZW1haWwmdXRtX3NvdXJjZT1tYXJrZXRpbmcmdXRtX2NhbX=
+BhaWduPXU5RFJJR3YzRWVxZF94RktERU5Ka3ciLCJ0cmFja2luZyI6eyJ1c2VySWQiOjQ3NjE5M=
+DA4LCJ1c2VyRW1haWwiOiJzY290dC5wb3dlbGwubUBnbWFpbC5jb20iLCJub3RpZmljYXRpb25U=
+eXBlIjoiQjI5OWNHdjRFZXFkX3hGS0RFTkprdyIsImNhbXBhaWduSWQiOiJkZWdyZWVzfjIwMjA=
+tMDMtMzAiLCJjYW1wYWlnbkdyb3VwIjoidTlEUklHdjNFZXFkX3hGS0RFTkprdyIsImxpbmtzIj=
+pbXX19LCJ1c2VySWQiOjQ3NjE5MDA4fQ.cBDFnXhJPVuj5Q9z97Vim6Wb2HmQTiWV_3y_UDB6pb=
+E>=0D=0A[FB]=0D=0A<https://eventing.coursera.org/redirectSigned/eyJrZXkiOiJ=
+lbWFpbC5saW5rLm9wZW4iLCJ2YWx1ZSI6eyJ1cmwiOiJodHRwczovL3d3dy5mYWNlYm9vay5jb2=
+0vQ291cnNlcmE_dXRtX21lZGl1bT1lbWFpbCZ1dG1fc291cmNlPW1hcmtldGluZyZ1dG1fY2Ftc=
+GFpZ249dTlEUklHdjNFZXFkX3hGS0RFTkprdyIsInRyYWNraW5nIjp7InVzZXJJZCI6NDc2MTkw=
+MDgsInVzZXJFbWFpbCI6InNjb3R0LnBvd2VsbC5tQGdtYWlsLmNvbSIsIm5vdGlmaWNhdGlvblR=
+5cGUiOiJCMjk5Y0d2NEVlcWRfeEZLREVOSmt3IiwiY2FtcGFpZ25JZCI6ImRlZ3JlZXN-MjAyMC=
+0wMy0zMCIsImNhbXBhaWduR3JvdXAiOiJ1OURSSUd2M0VlcWRfeEZLREVOSmt3IiwibGlua3MiO=
+ltdfX0sInVzZXJJZCI6NDc2MTkwMDh9.SBpxPnW8A10ndmS3rr_8hjAeji7CJNZ6KIZrsknhJcE=
+> =09=0D=0A[Twitter]=0D=0A<https://eventing.coursera.org/redirectSigned/eyJ=
+rZXkiOiJlbWFpbC5saW5rLm9wZW4iLCJ2YWx1ZSI6eyJ1cmwiOiJodHRwczovL3R3aXR0ZXIuY2=
+9tL2NvdXJzZXJhP3V0bV9tZWRpdW09ZW1haWwmdXRtX3NvdXJjZT1tYXJrZXRpbmcmdXRtX2Nhb=
+XBhaWduPXU5RFJJR3YzRWVxZF94RktERU5Ka3ciLCJ0cmFja2luZyI6eyJ1c2VySWQiOjQ3NjE5=
+MDA4LCJ1c2VyRW1haWwiOiJzY290dC5wb3dlbGwubUBnbWFpbC5jb20iLCJub3RpZmljYXRpb25=
+UeXBlIjoiQjI5OWNHdjRFZXFkX3hGS0RFTkprdyIsImNhbXBhaWduSWQiOiJkZWdyZWVzfjIwMj=
+AtMDMtMzAiLCJjYW1wYWlnbkdyb3VwIjoidTlEUklHdjNFZXFkX3hGS0RFTkprdyIsImxpbmtzI=
+jpbXX19LCJ1c2VySWQiOjQ3NjE5MDA4fQ.XL9EUnJV5AA_uvPXkXCiNKEy59N-sTy0rqqh4HpS1=
+ng> =09=0D=0A[LI]=0D=0A<https://eventing.coursera.org/redirectSigned/eyJrZX=
+kiOiJlbWFpbC5saW5rLm9wZW4iLCJ2YWx1ZSI6eyJ1cmwiOiJodHRwczovL3d3dy5saW5rZWRpb=
+i5jb20vY29tcGFueS9jb3Vyc2VyYT91dG1fbWVkaXVtPWVtYWlsJnV0bV9zb3VyY2U9bWFya2V0=
+aW5nJnV0bV9jYW1wYWlnbj11OURSSUd2M0VlcWRfeEZLREVOSmt3IiwidHJhY2tpbmciOnsidXN=
+lcklkIjo0NzYxOTAwOCwidXNlckVtYWlsIjoic2NvdHQucG93ZWxsLm1AZ21haWwuY29tIiwibm=
+90aWZpY2F0aW9uVHlwZSI6IkIyOTljR3Y0RWVxZF94RktERU5Ka3ciLCJjYW1wYWlnbklkIjoiZ=
+GVncmVlc34yMDIwLTAzLTMwIiwiY2FtcGFpZ25Hcm91cCI6InU5RFJJR3YzRWVxZF94RktERU5K=
+a3ciLCJsaW5rcyI6W119fSwidXNlcklkIjo0NzYxOTAwOH0.cGjpYNM4cXuNZjl-KMpcMfZf6bX=
+9dZpnGlavYO42hdU>=0D=0A[iOS]=0D=0A<https://eventing.coursera.org/redirectSi=
+gned/eyJrZXkiOiJlbWFpbC5saW5rLm9wZW4iLCJ2YWx1ZSI6eyJ1cmwiOiJodHRwczovL2l0dW=
+5lcy5hcHBsZS5jb20vYXBwL2FwcGxlLXN0b3JlL2lkNzM2NTM1OTYxP3B0PTIzMzQxNTAmY3Q9T=
+W9iaWxlJTIwUHJvbW8lMjBFbWFpbCZtdD04JnV0bV9tZWRpdW09ZW1haWwmdXRtX3NvdXJjZT1t=
+YXJrZXRpbmcmdXRtX2NhbXBhaWduPXU5RFJJR3YzRWVxZF94RktERU5Ka3ciLCJ0cmFja2luZyI=
+6eyJ1c2VySWQiOjQ3NjE5MDA4LCJ1c2VyRW1haWwiOiJzY290dC5wb3dlbGwubUBnbWFpbC5jb2=
+0iLCJub3RpZmljYXRpb25UeXBlIjoiQjI5OWNHdjRFZXFkX3hGS0RFTkprdyIsImNhbXBhaWduS=
+WQiOiJkZWdyZWVzfjIwMjAtMDMtMzAiLCJjYW1wYWlnbkdyb3VwIjoidTlEUklHdjNFZXFkX3hG=
+S0RFTkprdyIsImxpbmtzIjpbXX19LCJ1c2VySWQiOjQ3NjE5MDA4fQ.6UmfilGVmPHqWoMqeH3q=
+boipel3qlUWlhtLULn2QX8Q> =09=0D=0A[Android]=0D=0A<https://eventing.coursera=
+=2Eorg/redirectSigned/eyJrZXkiOiJlbWFpbC5saW5rLm9wZW4iLCJ2YWx1ZSI6eyJ1cmwiO=
+iJodHRwczovL3BsYXkuZ29vZ2xlLmNvbS9zdG9yZS9hcHBzL2RldGFpbHM_aWQ9b3JnLmNvdXJz=
+ZXJhLmFuZHJvaWQmdXRtX21lZGl1bT1lbWFpbCZ1dG1fc291cmNlPW1hcmtldGluZyZ1dG1fY2F=
+tcGFpZ249dTlEUklHdjNFZXFkX3hGS0RFTkprdyIsInRyYWNraW5nIjp7InVzZXJJZCI6NDc2MT=
+kwMDgsInVzZXJFbWFpbCI6InNjb3R0LnBvd2VsbC5tQGdtYWlsLmNvbSIsIm5vdGlmaWNhdGlvb=
+lR5cGUiOiJCMjk5Y0d2NEVlcWRfeEZLREVOSmt3IiwiY2FtcGFpZ25JZCI6ImRlZ3JlZXN-MjAy=
+MC0wMy0zMCIsImNhbXBhaWduR3JvdXAiOiJ1OURSSUd2M0VlcWRfeEZLREVOSmt3IiwibGlua3M=
+iOltdfX0sInVzZXJJZCI6NDc2MTkwMDh9.GU_kKaqviZcPzoM2VwvjZqta5eK6SD3YOhBy_xL5s=
+9c>=0D=0ALearner Help Center=0D=0A<https://eventing.coursera.org/redirectSi=
+gned/eyJrZXkiOiJlbWFpbC5saW5rLm9wZW4iLCJ2YWx1ZSI6eyJ1cmwiOiJodHRwczovL2xlYX=
+JuZXIuY291cnNlcmEuaGVscD91dG1fbWVkaXVtPWVtYWlsJnV0bV9zb3VyY2U9bWFya2V0aW5nJ=
+nV0bV9jYW1wYWlnbj11OURSSUd2M0VlcWRfeEZLREVOSmt3IiwidHJhY2tpbmciOnsidXNlcklk=
+Ijo0NzYxOTAwOCwidXNlckVtYWlsIjoic2NvdHQucG93ZWxsLm1AZ21haWwuY29tIiwibm90aWZ=
+pY2F0aW9uVHlwZSI6IkIyOTljR3Y0RWVxZF94RktERU5Ka3ciLCJjYW1wYWlnbklkIjoiZGVncm=
+Vlc34yMDIwLTAzLTMwIiwiY2FtcGFpZ25Hcm91cCI6InU5RFJJR3YzRWVxZF94RktERU5Ka3ciL=
+CJsaW5rcyI6W119fSwidXNlcklkIjo0NzYxOTAwOH0._vsprcwMNvZ_TDKCFFRQEfa5rgkc-38E=
+Xw4jgCP3_1M> =0D=0A  |  Privacy Notice=0D=0A<https://eventing.coursera.org/=
+redirectSigned/eyJrZXkiOiJlbWFpbC5saW5rLm9wZW4iLCJ2YWx1ZSI6eyJ1cmwiOiJodHRw=
+czovL3d3dy5jb3Vyc2VyYS5vcmcvYWJvdXQvcHJpdmFjeT91dG1fbWVkaXVtPWVtYWlsJnV0bV9=
+zb3VyY2U9bWFya2V0aW5nJnV0bV9jYW1wYWlnbj11OURSSUd2M0VlcWRfeEZLREVOSmt3IiwidH=
+JhY2tpbmciOnsidXNlcklkIjo0NzYxOTAwOCwidXNlckVtYWlsIjoic2NvdHQucG93ZWxsLm1AZ=
+21haWwuY29tIiwibm90aWZpY2F0aW9uVHlwZSI6IkIyOTljR3Y0RWVxZF94RktERU5Ka3ciLCJj=
+YW1wYWlnbklkIjoiZGVncmVlc34yMDIwLTAzLTMwIiwiY2FtcGFpZ25Hcm91cCI6InU5RFJJR3Y=
+zRWVxZF94RktERU5Ka3ciLCJsaW5rcyI6W119fSwidXNlcklkIjo0NzYxOTAwOH0.rrHjmY-uwb=
+8r6rOVS3BV4EzlHevEIM3fDoXak3uXP2g> =0D=0A  |  Email Settings=0D=0A<https://=
+eventing.coursera.org/redirectSigned/eyJrZXkiOiJlbWFpbC5saW5rLm9wZW4iLCJ2YW=
+x1ZSI6eyJ1cmwiOiJodHRwczovL3d3dy5jb3Vyc2VyYS5vcmcvYWNjb3VudC1zZXR0aW5ncz91d=
+G1fbWVkaXVtPWVtYWlsJnV0bV9zb3VyY2U9bWFya2V0aW5nJnV0bV9jYW1wYWlnbj11OURSSUd2=
+M0VlcWRfeEZLREVOSmt3IiwidHJhY2tpbmciOnsidXNlcklkIjo0NzYxOTAwOCwidXNlckVtYWl=
+sIjoic2NvdHQucG93ZWxsLm1AZ21haWwuY29tIiwibm90aWZpY2F0aW9uVHlwZSI6IkIyOTljR3=
+Y0RWVxZF94RktERU5Ka3ciLCJjYW1wYWlnbklkIjoiZGVncmVlc34yMDIwLTAzLTMwIiwiY2Ftc=
+GFpZ25Hcm91cCI6InU5RFJJR3YzRWVxZF94RktERU5Ka3ciLCJsaW5rcyI6W119fSwidXNlcklk=
+Ijo0NzYxOTAwOH0.yzSVnKrOsWk8JBd9i06ZFuxMaUHm8VxC6ywTgR3VvhY> =0D=0A  |  Uns=
+ubscribe=0D=0A<https://eventing.coursera.org/redirectSigned/eyJrZXkiOiJlbWF=
+pbC5saW5rLm9wZW4iLCJ2YWx1ZSI6eyJ1cmwiOiJodHRwczovL3d3dy5jb3Vyc2VyYS5vcmcvYW=
+Njb3VudC91bnN1YnNjcmliZS9GRXRLWW9kX2RKTExPemJ4ZEJTVmJUdzVMdFlYN0dDQUlTcEVrT=
+0NCczZfWFNtdUlYQWpPeHVYM2dGWlktV0VEckV0WkFIZ2ltVF9yTElMLUtmSEdDZy5sWURtTnNp=
+VENNcGxxbkxtMFdSc29nLmtHblYxYnR3YlhPNkhHSnp0ZnZtYlV1bG9QR0tsTkx3RWRtOFUyQTJ=
+OaWtjNV81V0RTeVpZM3JVUTVVSVlWTElicDEzVWVWOUNTZjlzUkZOTC0xbnZ6cnRMYVgzYkNDUF=
+9JVW5feWZqY0ZJVUdjVlhieTVFbnVmMkVRRWRYc2FIP3V0bV9tZWRpdW09ZW1haWwmdXRtX3Nvd=
+XJjZT1tYXJrZXRpbmcmdXRtX2NhbXBhaWduPXU5RFJJR3YzRWVxZF94RktERU5Ka3ciLCJ0cmFj=
+a2luZyI6eyJ1c2VySWQiOjQ3NjE5MDA4LCJ1c2VyRW1haWwiOiJzY290dC5wb3dlbGwubUBnbWF=
+pbC5jb20iLCJub3RpZmljYXRpb25UeXBlIjoiQjI5OWNHdjRFZXFkX3hGS0RFTkprdyIsImNhbX=
+BhaWduSWQiOiJkZWdyZWVzfjIwMjAtMDMtMzAiLCJjYW1wYWlnbkdyb3VwIjoidTlEUklHdjNFZ=
+XFkX3hGS0RFTkprdyIsImxpbmtzIjpbXX19LCJ1c2VySWQiOjQ3NjE5MDA4fQ.0v8xVMEMT3Mfx=
+0bMorIiyoSvukLZPdtMelxPaxe_Fbs>=0D=0A=0D=0A=C2=A9 2020 Coursera | 3=EF=BB=
+=BF81 E. E=EF=BB=BFvelyn A=EF=BB=BFve, M=EF=BB=BFountain V=EF=BB=BFiew, C=
+=EF=BB=BFA 9=EF=BB=BF4041 U=EF=BB=BFSA
+--_----jfBIVPinWzxFpbsknKpccg===_B4/28-18476-E77538E5
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="UTF-8"
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns=3D"http://www.w3.=
+org/1999/xhtml"><head><meta name=3D"x-apple-disable-message-reformatting"/>=
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"/><=
+meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1.0=
+ "/><meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge"/><title>Disc=
+over COVID-19's business implications through these two webinars ...</title=
+><style type=3D"text/css">@import url('https://fonts.googleapis.com/css=3Ff=
+amily=3DOpen+Sans:400,400i,600,600i,700,700i');=0Abody {=0Amargin: 0 !impor=
+tant;=0Apadding: 0 !important;=0Awidth: 100% !important;=0A-webkit-text-siz=
+e-adjust: 100% !important;=0A-ms-text-size-adjust: 100% !important;=0A-webk=
+it-font-smoothing: antialiased !important;=0A}=0A.ExternalClass * {line-hei=
+ght: 0%}=0Atable {border-collapse: collapse !important;  padding: 0px !impo=
+rtant; }=0Atable td {border-collapse:collapse;}=0Aimg {=0Aborder: 0 !import=
+ant;=0Adisplay: block !important;=0Aoutline: none !important;=0A}=0A.text a=
+ {text-decoration:none !important;}=0A.white a {text-decoration:none !impor=
+tant;}=0A@media only screen and (max-width:480px){=0Atable[class=3Dwrapper]=
+{=0Awidth:100% !important; margin-left: 0px !important;}=0Atable[class=3Dwr=
+apper_small]{=0Awidth:96% !important; }=0Atable[class=3Dhide]{=0Adisplay:no=
+ne !important;}=0Atd[class=3Dtext]{=0Atext-align:left !important;}=0A.wrapp=
+er { width: 100% !important; margin:0px !important}=0Atd[class=3Dpadding_on=
+n]{=0Apadding-left:15px !important;=0Apadding-right:15px !important;}=0Aspa=
+n[class=3DemailHideSPAN] {=0Adisplay: none !important;=0A}=0A*[class=3Deras=
+e] {display: none;}=0A}=0A@media only screen and (min-width:481px) and (max=
+-width:599px) {=0Atable[class=3Dwrapper]{=0Awidth:100% !important; margin:0=
+px !important}=0Atable[class=3Dwrapper_small]{=0Awidth:96% !important;}=0At=
+able[class=3Dhide]{=0Adisplay:none !important;}=0Atd[class=3Dtext]{=0Atext-=
+align:left !important;}=0Atd[class=3Dpadding_onn]{=0Apadding-left:24px !imp=
+ortant;=0Apadding-right:24px !important;}=0Aspan[class=3DemailHideSPAN] {=
+=0Adisplay: none !important;=0A}=0A*[class=3Derase] {display: none;}=0A}</s=
+tyle><style type=3D"text/css"></style></head><body marginwidth=3D"0" style=
+=3D"padding:0" marginheight=3D"0"><img src=3D"https://eventing.coursera.org=
+/img/xBScIX_MLnSDavhjObYKibvUILKdsPBh21ArErWYifga_YSHjh7nRFkzxU3RvChagHDb-B=
+uWhAA6S4EgYkfiSQ.bUGp3QGmzcFD7TpruKfa3w.zfeH73aisXB_nqCni-VgPA9cylHj8zLyRMB=
+IItbkiRzjS8vorqz_fGU8MqZMekh-LrXdIjp_uqCL5e5cSWBkj7OLKXJEDmJTj7J33OxdtnWbyh=
+XJElwMZSldFy6dMN0QI4EBvW_RqwIKsjqxqgscH7bjPlq4veQW4dyEFlAsajsEdVQFnhNoe2vJt=
+BIfJ8NdjXiGU67V8AgBCk60MJ9kDm1vjdLQ_FwPlgh7jJe3AoNPGdrj8tuM8b1BTVem4ZcNHYJh=
+Np832vEnS9A7mDQVTuZEMcL-ViZMRgXYpY-wagQ9gibxNdy4Ymhl9Sy4Xt8Cb-YhlgFSxjm2wHc=
+BcGN3uzJ7tpiKp_YoXOJK5XUBmYk" border=3D"0" width=3D"1" height=3D"1"></body>=
+<body marginwidth=3D"0" style=3D"padding:0" marginheight=3D"0"><!--GMAIL AP=
+P MISALIGNMENT FIX: BEGIN--><table><tr><span class=3D"emailHideSPAN"><td><t=
+able border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"350px" align=
+=3D"center"><tr><td style=3D"line-height: 1px; font-size: 1px;" height=3D"1=
+"> </td></tr></table></td></span></tr></table><!--GMAIL APP MISALIGNMENT FI=
+X: END--><!--Whole Table at 100%--><table border=3D"0" cellpadding=3D"0" wi=
+dth=3D"100%" cellspacing=3D"0" style=3D"border-right: 5px solid #f5f7fa;bor=
+der-left: 5px solid #f5f7fa;" align=3D"center"><tr><td valign=3D"top" style=
+=3D"background-color:#f5f7fa;" align=3D"center"><!--Start Coursera Logo--><=
+table class=3D"wrapper" border=3D"0" cellpadding=3D"0" width=3D"900" cellsp=
+acing=3D"0" style=3D"max-width:900px;" align=3D"center"><tr><td bgcolor=3D"=
+#4A89DC" style=3D"background-color: #4A89DC; padding: 15px 100px" align=3D"=
+center"><a href=3D"https://eventing.coursera.org/redirectSigned/eyJrZXkiOiJ=
+lbWFpbC5saW5rLm9wZW4iLCJ2YWx1ZSI6eyJ1cmwiOiJodHRwczovL3d3dy5jb3Vyc2VyYS5vcm=
+c_dXRtX21lZGl1bT1lbWFpbCZ1dG1fc291cmNlPW1hcmtldGluZyZ1dG1fY2FtcGFpZ249dTlEU=
+klHdjNFZXFkX3hGS0RFTkprdyIsInRyYWNraW5nIjp7InVzZXJJZCI6NDc2MTkwMDgsInVzZXJF=
+bWFpbCI6InNjb3R0LnBvd2VsbC5tQGdtYWlsLmNvbSIsIm5vdGlmaWNhdGlvblR5cGUiOiJCMjk=
+5Y0d2NEVlcWRfeEZLREVOSmt3IiwiY2FtcGFpZ25JZCI6ImRlZ3JlZXN-MjAyMC0wMy0zMCIsIm=
+NhbXBhaWduR3JvdXAiOiJ1OURSSUd2M0VlcWRfeEZLREVOSmt3IiwibGlua3MiOltdfX0sInVzZ=
+XJJZCI6NDc2MTkwMDh9.G63ojPnQl0z1I8C-jr-fFPELK6YytzlhhHn5OmsTDIw" style=3D"t=
+ext-decoration:none;"><img src=3D"https://d3njjcbhbojbot.cloudfront.net/api=
+/utilities/v1/imageproxy/https://coursera-misc.s3.amazonaws.com/mailspin/pr=
+od/11_05_2018_20_12_19_coursera_logo_white_email.png" width=3D"180" height=
+=3D"auto"/></a></td></tr></table><!--Start Illinois Logo--><table class=3D"=
+wrapper" border=3D"0" cellpadding=3D"0" width=3D"900" cellspacing=3D"0" sty=
+le=3D"max-width:900px;" align=3D"center"><tr><td bgcolor=3D"#13294B" style=
+=3D"background-color: #13294B;" align=3D"center"><table class=3D"wrapper" b=
+order=3D"0" cellpadding=3D"0" width=3D"600" cellspacing=3D"0" align=3D"cent=
+er"><tr><td style=3D"padding: 30px 0px" align=3D"center"><a href=3D"https:/=
+/eventing.coursera.org/redirectSigned/eyJrZXkiOiJlbWFpbC5saW5rLm9wZW4iLCJ2Y=
+Wx1ZSI6eyJ1cmwiOiJodHRwczovL3d3dy5jb3Vyc2VyYS5vcmcvZGVncmVlcy9pbWJhP3V0bV9t=
+ZWRpdW09ZW1haWwmdXRtX3NvdXJjZT1tYXJrZXRpbmcmdXRtX2NhbXBhaWduPXU5RFJJR3YzRWV=
+xZF94RktERU5Ka3ciLCJ0cmFja2luZyI6eyJ1c2VySWQiOjQ3NjE5MDA4LCJ1c2VyRW1haWwiOi=
+JzY290dC5wb3dlbGwubUBnbWFpbC5jb20iLCJub3RpZmljYXRpb25UeXBlIjoiQjI5OWNHdjRFZ=
+XFkX3hGS0RFTkprdyIsImNhbXBhaWduSWQiOiJkZWdyZWVzfjIwMjAtMDMtMzAiLCJjYW1wYWln=
+bkdyb3VwIjoidTlEUklHdjNFZXFkX3hGS0RFTkprdyIsImxpbmtzIjpbXX19LCJ1c2VySWQiOjQ=
+3NjE5MDA4fQ.cBDFnXhJPVuj5Q9z97Vim6Wb2HmQTiWV_3y_UDB6pbE" style=3D"text-deco=
+ration:none;"><img src=3D"https://d3njjcbhbojbot.cloudfront.net/api/utiliti=
+es/v1/imageproxy/https://coursera-misc.s3.amazonaws.com/mailspin/prod/05_20=
+_2019_20_35_39_Illinois_Biz_Gies_center_orange.png" width=3D"auto" height=
+=3D"67"/></a></td></tr></table><!--Start Body--><table class=3D"wrapper" bo=
+rder=3D"0" cellpadding=3D"0" width=3D"600" cellspacing=3D"0" align=3D"cente=
+r"><!--Start Header--><tr><td style=3D"font-family:'Open Sans', Arial, sans=
+-serif; background-color: #E84A27;" align=3D"center"><table class=3D"wrappe=
+r" border=3D"0" cellpadding=3D"0" width=3D"550" cellspacing=3D"0" align=3D"=
+center"><!--Space--><tr><td style=3D"font-size:1px; line-height:1px;" heigh=
+t=3D"15px"> </td></tr><!--Space--><tr><td style=3D"padding: 5px 0px" align=
+=3D"center"><a href=3D"https://eventing.coursera.org/redirectSigned/eyJrZXk=
+iOiJlbWFpbC5saW5rLm9wZW4iLCJ2YWx1ZSI6eyJ1cmwiOiJodHRwczovL3d3dy5jb3Vyc2VyYS=
+5vcmcvZGVncmVlcy9pbWJhP3V0bV9tZWRpdW09ZW1haWwmdXRtX3NvdXJjZT1tYXJrZXRpbmcmd=
+XRtX2NhbXBhaWduPXU5RFJJR3YzRWVxZF94RktERU5Ka3ciLCJ0cmFja2luZyI6eyJ1c2VySWQi=
+OjQ3NjE5MDA4LCJ1c2VyRW1haWwiOiJzY290dC5wb3dlbGwubUBnbWFpbC5jb20iLCJub3RpZml=
+jYXRpb25UeXBlIjoiQjI5OWNHdjRFZXFkX3hGS0RFTkprdyIsImNhbXBhaWduSWQiOiJkZWdyZW=
+VzfjIwMjAtMDMtMzAiLCJjYW1wYWlnbkdyb3VwIjoidTlEUklHdjNFZXFkX3hGS0RFTkprdyIsI=
+mxpbmtzIjpbXX19LCJ1c2VySWQiOjQ3NjE5MDA4fQ.cBDFnXhJPVuj5Q9z97Vim6Wb2HmQTiWV_=
+3y_UDB6pbE" style=3D"text-decoration:none;"> </a></td></tr><!--Space--><tr>=
+<td style=3D"font-size:1px; line-height:1px;" height=3D"15px"> </td></tr><!=
+--Space--><tr><td class=3D"padding_onn" valign=3D"top" style=3D"font-family=
+:'Open Sans', Arial, sans-serif; padding: 0px 15px 15px 15px; font-size:28p=
+x; color:#ffffff; line-height:34px; text-align:center; font-weight:600; fon=
+t-style:normal" align=3D"center"> Missed the first Global Challenges in Bus=
+iness webinar=3F We've got more.</td></tr><!--Space--><tr><td style=3D"font=
+-size:1px; line-height:1px;" height=3D"15px"> </td></tr><!--Space--></table=
+></td></tr><!--End Header--><tr><td style=3D"font-family:'Open Sans', Arial=
+, sans-serif; background-color: white; padding: 0px 15px" align=3D"center">=
+<table class=3D"wrapper" border=3D"0" cellpadding=3D"0" width=3D"540" cells=
+pacing=3D"0" align=3D"center"><!--Space--><tr><td style=3D"font-size:1px; l=
+ine-height:1px;" height=3D"30px"> </td></tr><!--Space--><!--Start Paragraph=
+ One--><tr><td class=3D"padding_onn" valign=3D"top" style=3D"font-family:'O=
+pen Sans', Arial, sans-serif; padding: 0px 15px 15px 15px; font-size:14px; =
+color:#444444; line-height:22px; text-align:left; font-weight:normal; font-=
+style:normal" align=3D"left"> The Gies College of Business <a href=3D"https=
+://eventing.coursera.org/redirectSigned/eyJrZXkiOiJlbWFpbC5saW5rLm9wZW4iLCJ=
+2YWx1ZSI6eyJ1cmwiOiJodHRwczovL3d3dy5jb3Vyc2VyYS5vcmcvZGVncmVlcy9pbWJhP3V0bV=
+9tZWRpdW09ZW1haWwmdXRtX3NvdXJjZT1tYXJrZXRpbmcmdXRtX2NhbXBhaWduPXU5RFJJR3YzR=
+WVxZF94RktERU5Ka3ciLCJ0cmFja2luZyI6eyJ1c2VySWQiOjQ3NjE5MDA4LCJ1c2VyRW1haWwi=
+OiJzY290dC5wb3dlbGwubUBnbWFpbC5jb20iLCJub3RpZmljYXRpb25UeXBlIjoiQjI5OWNHdjR=
+FZXFkX3hGS0RFTkprdyIsImNhbXBhaWduSWQiOiJkZWdyZWVzfjIwMjAtMDMtMzAiLCJjYW1wYW=
+lnbkdyb3VwIjoidTlEUklHdjNFZXFkX3hGS0RFTkprdyIsImxpbmtzIjpbXX19LCJ1c2VySWQiO=
+jQ3NjE5MDA4fQ.cBDFnXhJPVuj5Q9z97Vim6Wb2HmQTiWV_3y_UDB6pbE" style=3D"text-de=
+coration:none; color: #4A89DC">online MBA program (iMBA)</a> offers career-=
+specific and flexible learning for those looking to transform their future.=
+ Just as important as the iMBA program&rsquo;s curriculum and on-the-go ava=
+ilability is the experienced faculty that guide your learning. </td></tr><t=
+r><td class=3D"padding_onn" valign=3D"top" style=3D"font-family:'Open Sans'=
+, Arial, sans-serif; padding: 0px 15px 15px 15px; font-size:14px; color:#44=
+4444; line-height:22px; text-align:left; font-weight:normal; font-style:nor=
+mal" align=3D"left"> In April, Gies College of Business is hosting two webi=
+nars addressing key business implications of COVID-19 (novel coronavirus), =
+in which faculty offer their expertise and perspectives on the opportunitie=
+s and solutions that will drive change in the midst of this global challeng=
+e. If you missed the first webinar with Professor Larry DeBrock, &quot;The =
+Economic Impact of Coronavirus,&quot; you can <a style=3D"text-decoration:n=
+one; color: #4A89DC" href=3D"LINK TBD"> view a recording here</a>.</td></tr=
+><!--End Paragraph One--><!--Space--><tr><td style=3D"font-size:1px; line-h=
+eight:1px;" height=3D"30px"> </td></tr><!--Space--><!--Start Button--><tr><=
+td valign=3D"middle" align=3D"center"><table><tr><td valign=3D"middle" styl=
+e=3D"font-family:'Open Sans', Arial, sans-serif; padding: 15px 40px; font-s=
+ize: 14px; color:#ffffff; line-height: 22px; background-color: #13294B; fon=
+t-weight: bold; border-radius: 2px; border: 1px solid #13294B" align=3D"cen=
+ter"> <a href=3D"https://eventing.coursera.org/redirectSigned/eyJrZXkiOiJlb=
+WFpbC5saW5rLm9wZW4iLCJ2YWx1ZSI6eyJ1cmwiOiJodHRwczovL2VtYWlscy5pbGxpbm9pcy5l=
+ZHUvbmV3c2xldHRlci85ODczNDk5Lmh0bWw_dXRtX21lZGl1bT1lbWFpbCZ1dG1fc291cmNlPW1=
+hcmtldGluZyZ1dG1fY2FtcGFpZ249dTlEUklHdjNFZXFkX3hGS0RFTkprdyIsInRyYWNraW5nIj=
+p7InVzZXJJZCI6NDc2MTkwMDgsInVzZXJFbWFpbCI6InNjb3R0LnBvd2VsbC5tQGdtYWlsLmNvb=
+SIsIm5vdGlmaWNhdGlvblR5cGUiOiJCMjk5Y0d2NEVlcWRfeEZLREVOSmt3IiwiY2FtcGFpZ25J=
+ZCI6ImRlZ3JlZXN-MjAyMC0wMy0zMCIsImNhbXBhaWduR3JvdXAiOiJ1OURSSUd2M0VlcWRfeEZ=
+LREVOSmt3IiwibGlua3MiOltdfX0sInVzZXJJZCI6NDc2MTkwMDh9.jFjAycuw6kYDVHIF-6mWr=
+r99j7g5hW4f4VOLttHGt7k" style=3D"text-decoration:none; color:#ffffff">Explo=
+re the webinar series</a></td></tr></table></td></tr><!--End Button--><!--E=
+nd Application Info--><!--Space--><tr><td style=3D"font-size:1px; line-heig=
+ht:1px;" height=3D"45px"> </td></tr><!--Space--><tr><td class=3D"padding_on=
+n" valign=3D"top" style=3D"font-family:'Open Sans', Arial, sans-serif; padd=
+ing: 0px 15px 15px 15px; font-size:14px; color:#444444; line-height:22px; t=
+ext-align:left; font-weight:normal; font-style:normal" align=3D"left"> The =
+webinars are free. Attendees will have the opportunity to engage with Gies =
+Business faculty in a live panel discussion following each webinar. We look=
+ forward to seeing you at these events below, and remember to reserve your =
+spot early!</td></tr><tr><td style=3D"font-size:1px; line-height:1px;" heig=
+ht=3D"15px"> </td></tr><!--Start Event One--><tr><td align=3D"center"><tabl=
+e class=3D"wrapper_mso" border=3D"0" cellpadding=3D"0" width=3D"540" cellsp=
+acing=3D"0" align=3D"center"> <tr><td style=3D"font-family:'Open Sans', Ari=
+al, sans-serif; background-color: white;" align=3D"center">  <span style=3D=
+"display: block; color:#E84A27;">___________________________</span></td></t=
+r></table></td></tr><tr><td style=3D"font-size:1px; line-height:1px;" heigh=
+t=3D"45px"> </td></tr><!--Start Event Two--><tr><td class=3D"padding_onn" v=
+align=3D"top" style=3D"font-family:'Open Sans', Arial, sans-serif; padding:=
+ 0px 15px 15px 15px; font-size:14px; color:#444444; line-height:22px; text-=
+align:left; font-weight:bold; font-style:normal" align=3D"left"> Consumer B=
+ehavior in the Global Marketplace in the Time of Coronavirus</td></tr><tr><=
+td class=3D"padding_onn" valign=3D"top" style=3D"font-family:'Open Sans', A=
+rial, sans-serif; padding: 0px 15px 15px 15px; font-size:14px; color:#44444=
+4; line-height:22px; text-align:left; font-weight:normal; font-style:normal=
+" align=3D"left"> April 7, 2020 | 1-2 pm US Central Time</td></tr><tr><td c=
+lass=3D"padding_onn" valign=3D"top" style=3D"font-family:'Open Sans', Arial=
+, sans-serif; padding: 0px 15px 15px 15px; font-size:14px; color:#444444; l=
+ine-height:22px; text-align:left; font-weight:normal; font-style:normal" al=
+ign=3D"left"> Join Professor Carlos Torelli&mdash;Professor of Business Adm=
+inistration, Executive Director of Executive Education &amp; James F. Towey=
+ Faculty Fellow&mdash;for a discussion on how a global crisis impacts the p=
+sychological responses of consumers in global markets and how organizations=
+ can address consumer concerns and needs. Come prepared with questions for =
+Professor Torelli! <a href=3D"https://eventing.coursera.org/redirectSigned/=
+eyJrZXkiOiJlbWFpbC5saW5rLm9wZW4iLCJ2YWx1ZSI6eyJ1cmwiOiJodHRwczovL2lsbGlub2l=
+zLnpvb20udXMvd2ViaW5hci9yZWdpc3Rlci9XTl9KdVpUZ0lHOFRyNmVtWm94cUdrZWpRP3V0bV=
+9tZWRpdW09ZW1haWwmdXRtX3NvdXJjZT1tYXJrZXRpbmcmdXRtX2NhbXBhaWduPXU5RFJJR3YzR=
+WVxZF94RktERU5Ka3ciLCJ0cmFja2luZyI6eyJ1c2VySWQiOjQ3NjE5MDA4LCJ1c2VyRW1haWwi=
+OiJzY290dC5wb3dlbGwubUBnbWFpbC5jb20iLCJub3RpZmljYXRpb25UeXBlIjoiQjI5OWNHdjR=
+FZXFkX3hGS0RFTkprdyIsImNhbXBhaWduSWQiOiJkZWdyZWVzfjIwMjAtMDMtMzAiLCJjYW1wYW=
+lnbkdyb3VwIjoidTlEUklHdjNFZXFkX3hGS0RFTkprdyIsImxpbmtzIjpbXX19LCJ1c2VySWQiO=
+jQ3NjE5MDA4fQ.atZVr4eWGXQKL1oQHbP3RKlNr9tv6ZqdbdqIlQH0qSs" style=3D"text-de=
+coration:none; color: #4A89DC">Register now &gt;&gt; </a></td></tr><!--End =
+Event Two--><!--Start Event Three--><tr><td class=3D"padding_onn" valign=3D=
+"top" style=3D"font-family:'Open Sans', Arial, sans-serif; padding: 0px 15p=
+x 15px 15px; font-size:14px; color:#444444; line-height:22px; text-align:le=
+ft; font-weight:bold; font-style:normal" align=3D"left"> Ethics in Global C=
+ommerce during Coronavirus</td></tr><tr><td class=3D"padding_onn" valign=3D=
+"top" style=3D"font-family:'Open Sans', Arial, sans-serif; padding: 0px 15p=
+x 15px 15px; font-size:14px; color:#444444; line-height:22px; text-align:le=
+ft; font-weight:normal; font-style:normal" align=3D"left"> April 22, 2020 |=
+ 2-3 pm US Central Time</td></tr><tr><td class=3D"padding_onn" valign=3D"to=
+p" style=3D"font-family:'Open Sans', Arial, sans-serif; padding: 0px 15px 1=
+5px 15px; font-size:14px; color:#444444; line-height:22px; text-align:left;=
+ font-weight:normal; font-style:normal" align=3D"left"> Join Professor Patr=
+icia Werhane&mdash;Adjunct Teaching Professor of Business Administration &a=
+mp; Center for Professional Responsibility Faculty Fellow&mdash;as she shar=
+es information on the global ethical dilemmas faced during the Coronavirus =
+outbreak. Come prepared with questions for Professor Werhane! <a href=3D"ht=
+tps://eventing.coursera.org/redirectSigned/eyJrZXkiOiJlbWFpbC5saW5rLm9wZW4i=
+LCJ2YWx1ZSI6eyJ1cmwiOiJodHRwczovL2lsbGlub2lzLnpvb20udXMvd2ViaW5hci9yZWdpc3R=
+lci9XTl9QV0lHY3F0S1QxZVZwSzRSc2FNQVJBP3V0bV9tZWRpdW09ZW1haWwmdXRtX3NvdXJjZT=
+1tYXJrZXRpbmcmdXRtX2NhbXBhaWduPXU5RFJJR3YzRWVxZF94RktERU5Ka3ciLCJ0cmFja2luZ=
+yI6eyJ1c2VySWQiOjQ3NjE5MDA4LCJ1c2VyRW1haWwiOiJzY290dC5wb3dlbGwubUBnbWFpbC5j=
+b20iLCJub3RpZmljYXRpb25UeXBlIjoiQjI5OWNHdjRFZXFkX3hGS0RFTkprdyIsImNhbXBhaWd=
+uSWQiOiJkZWdyZWVzfjIwMjAtMDMtMzAiLCJjYW1wYWlnbkdyb3VwIjoidTlEUklHdjNFZXFkX3=
+hGS0RFTkprdyIsImxpbmtzIjpbXX19LCJ1c2VySWQiOjQ3NjE5MDA4fQ.-1F2ieky_eew9P7SsM=
+vwEzeaWoTrjxZ0hpCTBP7GFdA" style=3D"text-decoration:none; color: #4A89DC">R=
+egister now &gt;&gt; </a></td></tr><!--End Event Three--><tr><td style=3D"f=
+ont-size:1px; line-height:1px;" height=3D"15px"> </td></tr><tr><td align=3D=
+"center"><table class=3D"wrapper_mso" border=3D"0" cellpadding=3D"0" width=
+=3D"540" cellspacing=3D"0" align=3D"center"> <tr><td style=3D"font-family:'=
+Open Sans', Arial, sans-serif; background-color: white;" align=3D"center"> =
+ <span style=3D"display: block; color:#E84A27;">___________________________=
+</span></td></tr></table></td></tr><tr><td style=3D"font-size:1px; line-hei=
+ght:1px;" height=3D"45px"> </td></tr><!--Space--><tr><td class=3D"padding_o=
+nn" valign=3D"top" style=3D"font-family:'Open Sans', Arial, sans-serif; pad=
+ding: 0px 15px 15px 15px; font-size:14px; color:#444444; line-height:22px; =
+text-align:left; font-weight:normal; font-style:normal" align=3D"left"> Hav=
+e more questions about the iMBA program=3F <a href=3D"https://eventing.cour=
+sera.org/redirectSigned/eyJrZXkiOiJlbWFpbC5saW5rLm9wZW4iLCJ2YWx1ZSI6eyJ1cmw=
+iOiJodHRwczovL3d3dy5jb3Vyc2VyYS5vcmcvZGVncmVlcy9pbWJhP3V0bV9tZWRpdW09ZW1haW=
+wmdXRtX3NvdXJjZT1tYXJrZXRpbmcmdXRtX2NhbXBhaWduPXU5RFJJR3YzRWVxZF94RktERU5Ka=
+3cjcmVxdWVzdGluZm8iLCJ0cmFja2luZyI6eyJ1c2VySWQiOjQ3NjE5MDA4LCJ1c2VyRW1haWwi=
+OiJzY290dC5wb3dlbGwubUBnbWFpbC5jb20iLCJub3RpZmljYXRpb25UeXBlIjoiQjI5OWNHdjR=
+FZXFkX3hGS0RFTkprdyIsImNhbXBhaWduSWQiOiJkZWdyZWVzfjIwMjAtMDMtMzAiLCJjYW1wYW=
+lnbkdyb3VwIjoidTlEUklHdjNFZXFkX3hGS0RFTkprdyIsImxpbmtzIjpbXX19LCJ1c2VySWQiO=
+jQ3NjE5MDA4fQ.zPbOXgBGdnKhD9dDd0pMUOzRd9Mc9S7VYfzykLfhY14" style=3D"text-de=
+coration:none; color: #4A89DC">Request more information</a> or contact us a=
+t <a style=3D"text-decoration:none; color: #4A89DC" href=3D"mailto:onlinemb=
+a@illinois.edu">onlinemba@illinois.edu</a>, and we'd be happy to assist you=
+=2E</td></tr><tr><td style=3D"font-size:1px; line-height:1px;" height=3D"15=
+px"> </td></tr><!--Start Sign Off--><tr><td class=3D"padding_onn" valign=3D=
+"top" style=3D"font-family:'Open Sans', Arial, sans-serif; padding: 0px 15p=
+x 15px 15px; font-size:14px; color:#444444; line-height:20px; text-align:le=
+ft; font-weight:normal; font-style:normal" align=3D"left"> Looking forward =
+to connecting with you,</td></tr><tr><td class=3D"padding_onn" valign=3D"to=
+p" style=3D"font-family:'Open Sans', Arial, sans-serif; padding: 0px 15px 1=
+5px 15px; font-size:14px; color:#444444; line-height:20px; text-align:left;=
+ font-weight:normal; font-style:normal" align=3D"left"> The University of I=
+llinois iMBA Team</td></tr><!--End Sign Off--><!--Space--><tr><td style=3D"=
+font-size:1px; line-height:1px;" height=3D"30px"> </td></tr><!--Space--><!-=
+-Start Button--><tr><td valign=3D"middle" align=3D"center"><table><tr><td v=
+align=3D"middle" style=3D"font-family:'Open Sans', Arial, sans-serif; paddi=
+ng: 15px 40px; font-size: 14px; color:#ffffff; line-height: 22px; backgroun=
+d-color: #13294B; font-weight: bold; border-radius: 2px; border: 1px solid =
+#13294B" align=3D"center"> <a href=3D"https://eventing.coursera.org/redirec=
+tSigned/eyJrZXkiOiJlbWFpbC5saW5rLm9wZW4iLCJ2YWx1ZSI6eyJ1cmwiOiJodHRwczovL3d=
+3dy5jb3Vyc2VyYS5vcmcvZGVncmVlcy9pbWJhP3V0bV9tZWRpdW09ZW1haWwmdXRtX3NvdXJjZT=
+1tYXJrZXRpbmcmdXRtX2NhbXBhaWduPXU5RFJJR3YzRWVxZF94RktERU5Ka3ciLCJ0cmFja2luZ=
+yI6eyJ1c2VySWQiOjQ3NjE5MDA4LCJ1c2VyRW1haWwiOiJzY290dC5wb3dlbGwubUBnbWFpbC5j=
+b20iLCJub3RpZmljYXRpb25UeXBlIjoiQjI5OWNHdjRFZXFkX3hGS0RFTkprdyIsImNhbXBhaWd=
+uSWQiOiJkZWdyZWVzfjIwMjAtMDMtMzAiLCJjYW1wYWlnbkdyb3VwIjoidTlEUklHdjNFZXFkX3=
+hGS0RFTkprdyIsImxpbmtzIjpbXX19LCJ1c2VySWQiOjQ3NjE5MDA4fQ.cBDFnXhJPVuj5Q9z97=
+Vim6Wb2HmQTiWV_3y_UDB6pbE" style=3D"text-decoration:none; color:#ffffff">Ex=
+plore the iMBA program</a></td></tr></table></td></tr><!--End Button--><!--=
+Space--><tr><td style=3D"font-size:1px; line-height:1px;" height=3D"60px"> =
+</td></tr><!--Space--></table></td></tr><!--Start Footer--><tr><td style=3D=
+"font-family:'Open Sans', Arial, sans-serif;" align=3D"center"><table class=
+=3D"wrapper" border=3D"0" cellpadding=3D"0" width=3D"100%" cellspacing=3D"0=
+" style=3D"max-width: 600px;" align=3D"center"><tr><td style=3D"padding-top=
+: 45px"><table class=3D"wrapper" border=3D"0" cellpadding=3D"0" width=3D"60=
+0" cellspacing=3D"0" align=3D"center"><tr><td><table align=3D"center"><tr><=
+td width=3D"50" align=3D"center"><a href=3D"https://eventing.coursera.org/r=
+edirectSigned/eyJrZXkiOiJlbWFpbC5saW5rLm9wZW4iLCJ2YWx1ZSI6eyJ1cmwiOiJodHRwc=
+zovL3d3dy5mYWNlYm9vay5jb20vQ291cnNlcmE_dXRtX21lZGl1bT1lbWFpbCZ1dG1fc291cmNl=
+PW1hcmtldGluZyZ1dG1fY2FtcGFpZ249dTlEUklHdjNFZXFkX3hGS0RFTkprdyIsInRyYWNraW5=
+nIjp7InVzZXJJZCI6NDc2MTkwMDgsInVzZXJFbWFpbCI6InNjb3R0LnBvd2VsbC5tQGdtYWlsLm=
+NvbSIsIm5vdGlmaWNhdGlvblR5cGUiOiJCMjk5Y0d2NEVlcWRfeEZLREVOSmt3IiwiY2FtcGFpZ=
+25JZCI6ImRlZ3JlZXN-MjAyMC0wMy0zMCIsImNhbXBhaWduR3JvdXAiOiJ1OURSSUd2M0VlcWRf=
+eEZLREVOSmt3IiwibGlua3MiOltdfX0sInVzZXJJZCI6NDc2MTkwMDh9.SBpxPnW8A10ndmS3rr=
+_8hjAeji7CJNZ6KIZrsknhJcE" ><img border=3D"0" src=3D"https://d3njjcbhbojbot=
+=2Ecloudfront.net/api/utilities/v1/imageproxy/https://d396qusza40orc.cloudf=
+ront.net/learninghubs/images/facebook_footer_gray.png=3Fw=3D22" width=3D"22=
+" alt=3D"FB" style=3D"display: block;"/></a></td><td width=3D"50" align=3D"=
+center"><a href=3D"https://eventing.coursera.org/redirectSigned/eyJrZXkiOiJ=
+lbWFpbC5saW5rLm9wZW4iLCJ2YWx1ZSI6eyJ1cmwiOiJodHRwczovL3R3aXR0ZXIuY29tL2NvdX=
+JzZXJhP3V0bV9tZWRpdW09ZW1haWwmdXRtX3NvdXJjZT1tYXJrZXRpbmcmdXRtX2NhbXBhaWduP=
+XU5RFJJR3YzRWVxZF94RktERU5Ka3ciLCJ0cmFja2luZyI6eyJ1c2VySWQiOjQ3NjE5MDA4LCJ1=
+c2VyRW1haWwiOiJzY290dC5wb3dlbGwubUBnbWFpbC5jb20iLCJub3RpZmljYXRpb25UeXBlIjo=
+iQjI5OWNHdjRFZXFkX3hGS0RFTkprdyIsImNhbXBhaWduSWQiOiJkZWdyZWVzfjIwMjAtMDMtMz=
+AiLCJjYW1wYWlnbkdyb3VwIjoidTlEUklHdjNFZXFkX3hGS0RFTkprdyIsImxpbmtzIjpbXX19L=
+CJ1c2VySWQiOjQ3NjE5MDA4fQ.XL9EUnJV5AA_uvPXkXCiNKEy59N-sTy0rqqh4HpS1ng" ><im=
+g border=3D"0" src=3D"https://d3njjcbhbojbot.cloudfront.net/api/utilities/v=
+1/imageproxy/https://d396qusza40orc.cloudfront.net/learninghubs/images/twit=
+ter_footer_gray.png=3Fw=3D22" width=3D"22" alt=3D"Twitter" style=3D"display=
+: block;"/></a></td><td width=3D"50" align=3D"center"><a href=3D"https://ev=
+enting.coursera.org/redirectSigned/eyJrZXkiOiJlbWFpbC5saW5rLm9wZW4iLCJ2YWx1=
+ZSI6eyJ1cmwiOiJodHRwczovL3d3dy5saW5rZWRpbi5jb20vY29tcGFueS9jb3Vyc2VyYT91dG1=
+fbWVkaXVtPWVtYWlsJnV0bV9zb3VyY2U9bWFya2V0aW5nJnV0bV9jYW1wYWlnbj11OURSSUd2M0=
+VlcWRfeEZLREVOSmt3IiwidHJhY2tpbmciOnsidXNlcklkIjo0NzYxOTAwOCwidXNlckVtYWlsI=
+joic2NvdHQucG93ZWxsLm1AZ21haWwuY29tIiwibm90aWZpY2F0aW9uVHlwZSI6IkIyOTljR3Y0=
+RWVxZF94RktERU5Ka3ciLCJjYW1wYWlnbklkIjoiZGVncmVlc34yMDIwLTAzLTMwIiwiY2FtcGF=
+pZ25Hcm91cCI6InU5RFJJR3YzRWVxZF94RktERU5Ka3ciLCJsaW5rcyI6W119fSwidXNlcklkIj=
+o0NzYxOTAwOH0.cGjpYNM4cXuNZjl-KMpcMfZf6bX9dZpnGlavYO42hdU" ><img border=3D"=
+0" src=3D"https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy=
+/https://d396qusza40orc.cloudfront.net/learninghubs/images/linkedin-icon-em=
+ail-footer.png=3Fw=3D22" width=3D"22" alt=3D"LI" style=3D"display: block;"/=
+></a></td></tr></table></td></tr><tr><td style=3D"padding-top: 30px"><table=
+ align=3D"center"><tr><td border=3D"0" width=3D"130" align=3D"center"><a hr=
+ef=3D"https://eventing.coursera.org/redirectSigned/eyJrZXkiOiJlbWFpbC5saW5r=
+Lm9wZW4iLCJ2YWx1ZSI6eyJ1cmwiOiJodHRwczovL2l0dW5lcy5hcHBsZS5jb20vYXBwL2FwcGx=
+lLXN0b3JlL2lkNzM2NTM1OTYxP3B0PTIzMzQxNTAmY3Q9TW9iaWxlJTIwUHJvbW8lMjBFbWFpbC=
+ZtdD04JnV0bV9tZWRpdW09ZW1haWwmdXRtX3NvdXJjZT1tYXJrZXRpbmcmdXRtX2NhbXBhaWduP=
+XU5RFJJR3YzRWVxZF94RktERU5Ka3ciLCJ0cmFja2luZyI6eyJ1c2VySWQiOjQ3NjE5MDA4LCJ1=
+c2VyRW1haWwiOiJzY290dC5wb3dlbGwubUBnbWFpbC5jb20iLCJub3RpZmljYXRpb25UeXBlIjo=
+iQjI5OWNHdjRFZXFkX3hGS0RFTkprdyIsImNhbXBhaWduSWQiOiJkZWdyZWVzfjIwMjAtMDMtMz=
+AiLCJjYW1wYWlnbkdyb3VwIjoidTlEUklHdjNFZXFkX3hGS0RFTkprdyIsImxpbmtzIjpbXX19L=
+CJ1c2VySWQiOjQ3NjE5MDA4fQ.6UmfilGVmPHqWoMqeH3qboipel3qlUWlhtLULn2QX8Q" styl=
+e=3D"text-decoration: none;"><img src=3D"https://d3njjcbhbojbot.cloudfront.=
+net/api/utilities/v1/imageproxy/https://d396qusza40orc.cloudfront.net/learn=
+inghubs/images/ios_app_coursera_flat.png" width=3D"110" alt=3D"iOS"/></a></=
+td><td border=3D"0" width=3D"130" align=3D"center"><a href=3D"https://event=
+ing.coursera.org/redirectSigned/eyJrZXkiOiJlbWFpbC5saW5rLm9wZW4iLCJ2YWx1ZSI=
+6eyJ1cmwiOiJodHRwczovL3BsYXkuZ29vZ2xlLmNvbS9zdG9yZS9hcHBzL2RldGFpbHM_aWQ9b3=
+JnLmNvdXJzZXJhLmFuZHJvaWQmdXRtX21lZGl1bT1lbWFpbCZ1dG1fc291cmNlPW1hcmtldGluZ=
+yZ1dG1fY2FtcGFpZ249dTlEUklHdjNFZXFkX3hGS0RFTkprdyIsInRyYWNraW5nIjp7InVzZXJJ=
+ZCI6NDc2MTkwMDgsInVzZXJFbWFpbCI6InNjb3R0LnBvd2VsbC5tQGdtYWlsLmNvbSIsIm5vdGl=
+maWNhdGlvblR5cGUiOiJCMjk5Y0d2NEVlcWRfeEZLREVOSmt3IiwiY2FtcGFpZ25JZCI6ImRlZ3=
+JlZXN-MjAyMC0wMy0zMCIsImNhbXBhaWduR3JvdXAiOiJ1OURSSUd2M0VlcWRfeEZLREVOSmt3I=
+iwibGlua3MiOltdfX0sInVzZXJJZCI6NDc2MTkwMDh9.GU_kKaqviZcPzoM2VwvjZqta5eK6SD3=
+YOhBy_xL5s9c" style=3D"text-decoration: none;"><img src=3D"https://d3njjcbh=
+bojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d396qusza40orc.cl=
+oudfront.net/learninghubs/images/google_coursera_flat.png" width=3D"110" al=
+t=3D"Android"/></a></td></tr></table></td></tr><tr><td valign=3D"top" style=
+=3D"font-family:'Open Sans', Arial, sans-serif; font-size:13px; line-height=
+:16px; color:#f1f1f1; text-align: center; padding: 30px 15px" align=3D"cent=
+er"><a href=3D"https://eventing.coursera.org/redirectSigned/eyJrZXkiOiJlbWF=
+pbC5saW5rLm9wZW4iLCJ2YWx1ZSI6eyJ1cmwiOiJodHRwczovL2xlYXJuZXIuY291cnNlcmEuaG=
+VscD91dG1fbWVkaXVtPWVtYWlsJnV0bV9zb3VyY2U9bWFya2V0aW5nJnV0bV9jYW1wYWlnbj11O=
+URSSUd2M0VlcWRfeEZLREVOSmt3IiwidHJhY2tpbmciOnsidXNlcklkIjo0NzYxOTAwOCwidXNl=
+ckVtYWlsIjoic2NvdHQucG93ZWxsLm1AZ21haWwuY29tIiwibm90aWZpY2F0aW9uVHlwZSI6IkI=
+yOTljR3Y0RWVxZF94RktERU5Ka3ciLCJjYW1wYWlnbklkIjoiZGVncmVlc34yMDIwLTAzLTMwIi=
+wiY2FtcGFpZ25Hcm91cCI6InU5RFJJR3YzRWVxZF94RktERU5Ka3ciLCJsaW5rcyI6W119fSwid=
+XNlcklkIjo0NzYxOTAwOH0._vsprcwMNvZ_TDKCFFRQEfa5rgkc-38EXw4jgCP3_1M" style=
+=3D"text-decoration:underline !important; color:#f1f1f1;">Learner Help Cent=
+er</a>&nbsp; | &nbsp;<a href=3D"https://eventing.coursera.org/redirectSigne=
+d/eyJrZXkiOiJlbWFpbC5saW5rLm9wZW4iLCJ2YWx1ZSI6eyJ1cmwiOiJodHRwczovL3d3dy5jb=
+3Vyc2VyYS5vcmcvYWJvdXQvcHJpdmFjeT91dG1fbWVkaXVtPWVtYWlsJnV0bV9zb3VyY2U9bWFy=
+a2V0aW5nJnV0bV9jYW1wYWlnbj11OURSSUd2M0VlcWRfeEZLREVOSmt3IiwidHJhY2tpbmciOns=
+idXNlcklkIjo0NzYxOTAwOCwidXNlckVtYWlsIjoic2NvdHQucG93ZWxsLm1AZ21haWwuY29tIi=
+wibm90aWZpY2F0aW9uVHlwZSI6IkIyOTljR3Y0RWVxZF94RktERU5Ka3ciLCJjYW1wYWlnbklkI=
+joiZGVncmVlc34yMDIwLTAzLTMwIiwiY2FtcGFpZ25Hcm91cCI6InU5RFJJR3YzRWVxZF94RktE=
+RU5Ka3ciLCJsaW5rcyI6W119fSwidXNlcklkIjo0NzYxOTAwOH0.rrHjmY-uwb8r6rOVS3BV4Ez=
+lHevEIM3fDoXak3uXP2g" style=3D"text-decoration:underline !important;  color=
+:#f1f1f1;">Privacy Notice</a>&nbsp; | &nbsp;<a href=3D"https://eventing.cou=
+rsera.org/redirectSigned/eyJrZXkiOiJlbWFpbC5saW5rLm9wZW4iLCJ2YWx1ZSI6eyJ1cm=
+wiOiJodHRwczovL3d3dy5jb3Vyc2VyYS5vcmcvYWNjb3VudC1zZXR0aW5ncz91dG1fbWVkaXVtP=
+WVtYWlsJnV0bV9zb3VyY2U9bWFya2V0aW5nJnV0bV9jYW1wYWlnbj11OURSSUd2M0VlcWRfeEZL=
+REVOSmt3IiwidHJhY2tpbmciOnsidXNlcklkIjo0NzYxOTAwOCwidXNlckVtYWlsIjoic2NvdHQ=
+ucG93ZWxsLm1AZ21haWwuY29tIiwibm90aWZpY2F0aW9uVHlwZSI6IkIyOTljR3Y0RWVxZF94Rk=
+tERU5Ka3ciLCJjYW1wYWlnbklkIjoiZGVncmVlc34yMDIwLTAzLTMwIiwiY2FtcGFpZ25Hcm91c=
+CI6InU5RFJJR3YzRWVxZF94RktERU5Ka3ciLCJsaW5rcyI6W119fSwidXNlcklkIjo0NzYxOTAw=
+OH0.yzSVnKrOsWk8JBd9i06ZFuxMaUHm8VxC6ywTgR3VvhY" style=3D"text-decoration:u=
+nderline !important; color:#f1f1f1;">Email Settings</a>&nbsp; | &nbsp;<a hr=
+ef=3D"https://eventing.coursera.org/redirectSigned/eyJrZXkiOiJlbWFpbC5saW5r=
+Lm9wZW4iLCJ2YWx1ZSI6eyJ1cmwiOiJodHRwczovL3d3dy5jb3Vyc2VyYS5vcmcvYWNjb3VudC9=
+1bnN1YnNjcmliZS9GRXRLWW9kX2RKTExPemJ4ZEJTVmJUdzVMdFlYN0dDQUlTcEVrT0NCczZfWF=
+NtdUlYQWpPeHVYM2dGWlktV0VEckV0WkFIZ2ltVF9yTElMLUtmSEdDZy5sWURtTnNpVENNcGxxb=
+kxtMFdSc29nLmtHblYxYnR3YlhPNkhHSnp0ZnZtYlV1bG9QR0tsTkx3RWRtOFUyQTJOaWtjNV81=
+V0RTeVpZM3JVUTVVSVlWTElicDEzVWVWOUNTZjlzUkZOTC0xbnZ6cnRMYVgzYkNDUF9JVW5feWZ=
+qY0ZJVUdjVlhieTVFbnVmMkVRRWRYc2FIP3V0bV9tZWRpdW09ZW1haWwmdXRtX3NvdXJjZT1tYX=
+JrZXRpbmcmdXRtX2NhbXBhaWduPXU5RFJJR3YzRWVxZF94RktERU5Ka3ciLCJ0cmFja2luZyI6e=
+yJ1c2VySWQiOjQ3NjE5MDA4LCJ1c2VyRW1haWwiOiJzY290dC5wb3dlbGwubUBnbWFpbC5jb20i=
+LCJub3RpZmljYXRpb25UeXBlIjoiQjI5OWNHdjRFZXFkX3hGS0RFTkprdyIsImNhbXBhaWduSWQ=
+iOiJkZWdyZWVzfjIwMjAtMDMtMzAiLCJjYW1wYWlnbkdyb3VwIjoidTlEUklHdjNFZXFkX3hGS0=
+RFTkprdyIsImxpbmtzIjpbXX19LCJ1c2VySWQiOjQ3NjE5MDA4fQ.0v8xVMEMT3Mfx0bMorIiyo=
+SvukLZPdtMelxPaxe_Fbs" style=3D"text-decoration:underline !important; color=
+:#f1f1f1;" target=3D"_blank">Unsubscribe</a><br/><br/>&#169; 2020 Coursera =
+| 3=EF=BB=BF81 E. E=EF=BB=BFvelyn A=EF=BB=BFve, M=EF=BB=BFountain&nbsp;V=EF=
+=BB=BFiew, C=EF=BB=BFA 9=EF=BB=BF4041 U=EF=BB=BFSA</td></tr></table></td></=
+tr></table></td></tr></table></td></tr></table></td></tr></table>=0D=0A<img=
+ border=3D"0" width=3D"1" height=3D"1" alt=3D"" src=3D"http://click.mail.co=
+ursera.org/q/s898n6bDOBROiS0Si5bBKw~~/AAAAAQA~/RgRgZdx-PlcIY291cnNlcmFCCgAp=
+fleDXixIWIJSGHNjb3R0LnBvd2VsbC5tQGdtYWlsLmNvbVgEAAAAAA~~">=0D=0A</body></ht=
+ml>
+--_----jfBIVPinWzxFpbsknKpccg===_B4/28-18476-E77538E5--
+

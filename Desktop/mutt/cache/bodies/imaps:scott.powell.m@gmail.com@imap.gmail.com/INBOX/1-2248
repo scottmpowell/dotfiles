@@ -1,0 +1,573 @@
+Delivered-To: scott.powell.m@gmail.com
+Received: by 2002:a4f:f8d:0:0:0:0:0 with SMTP id 135csp2020099ivp;
+        Thu, 2 Apr 2020 14:58:45 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKhurtuo7sdZRk98LLAaUFTh3E4TkxeIkRSbCzK6THngQ2DfeiW9MxjtIFMfqIX6ToBON03
+X-Received: by 2002:ac8:4f43:: with SMTP id i3mr5284288qtw.102.1585864725645;
+        Thu, 02 Apr 2020 14:58:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585864725; cv=none;
+        d=google.com; s=arc-20160816;
+        b=tP/tRFqlqe6X/bCZJNa0XuB4YiZoAm4FclEqud4IE03v+yYZ59tyBIw0bez7BDG5t1
+         ySUEX85o6QuwMUny78KxvLV/UnbEFxaBy2okhKsBAoe6dCPd3E+K0E5mZNoNIE1SMKr4
+         YeRSXOBJVSnmNoZTOFrnPFHD2D9b1UATljywzLsuLwN6yPHiuNZGW7G/MLuNF84YEUeJ
+         l6+jVdaT//hNfq5FjrvuPbPumpC/eWzGGTUge9uUMICkRDxJLCfsMI8IaLOqS9Ke0aIO
+         wlM0W13r1out+81BlqsF50sbrEyY7uiNkF4O+S6HlyuNLN9lZ20mY3aUAFXSQox1d5+y
+         rD1w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=require-recipient-valid-since:feedback-id:list-unsubscribe:date:to
+         :mime-version:subject:message-id:from:dkim-signature:dkim-signature;
+        bh=FelHfGjoGJBP+0yD1nJoeZNUgO2ET8585TDh+ysKOL0=;
+        b=Jnum3738j2FlpMxb0IxbKv9rG5u00B/aZFUUav7tfoRZAsH+X6o+NCSoVFh+ne1iUZ
+         k5AQoEVbhAUfjmhn7oiTA9b6ccj+JkJbTCzkof/hK98UAkn6FV5SaWNq7z8SaQJsW+KB
+         PSKB9iYwmkAGIEKRXX9Xaoj+4oikNoYhvuj1OKHcD8NJMIeAXoQhm/j7hL15RzY4+wgp
+         XTZDBrAj+iJF4GgExE3UZL4XZtR6alRFpUIvAI7yDirzeViED1bsTHXrlcK1wZQ4jmZM
+         26MT8RICjEZi/hNY16fnHBP8KPyz1HPC+e+w1p8g3ugGaDKNKndq/BkAVud4kIcKT50F
+         UTHA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linkedin.com header.s=d2048-201806-01 header.b=qdBZDf8T;
+       dkim=pass header.i=@mailc.linkedin.com header.s=proddkim1024 header.b=epsqDGyL;
+       spf=pass (google.com: domain of s-4s4eyz8q5hbc1n8fifvke724cxifjhxmcox0id7097xxwavwe583vplx@bounce.linkedin.com designates 2620:119:50c0:207::163 as permitted sender) smtp.mailfrom=s-4s4eyz8q5hbc1n8fifvke724cxifjhxmcox0id7097xxwavwe583vplx@bounce.linkedin.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=linkedin.com
+Return-Path: <s-4s4eyz8q5hbc1n8fifvke724cxifjhxmcox0id7097xxwavwe583vplx@bounce.linkedin.com>
+Received: from mailc-gc.linkedin.com (mailc-gc.linkedin.com. [2620:119:50c0:207::163])
+        by mx.google.com with ESMTPS id w7si4344934qtj.106.2020.04.02.14.58.44
+        for <scott.powell.m@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 02 Apr 2020 14:58:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of s-4s4eyz8q5hbc1n8fifvke724cxifjhxmcox0id7097xxwavwe583vplx@bounce.linkedin.com designates 2620:119:50c0:207::163 as permitted sender) client-ip=2620:119:50c0:207::163;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linkedin.com header.s=d2048-201806-01 header.b=qdBZDf8T;
+       dkim=pass header.i=@mailc.linkedin.com header.s=proddkim1024 header.b=epsqDGyL;
+       spf=pass (google.com: domain of s-4s4eyz8q5hbc1n8fifvke724cxifjhxmcox0id7097xxwavwe583vplx@bounce.linkedin.com designates 2620:119:50c0:207::163 as permitted sender) smtp.mailfrom=s-4s4eyz8q5hbc1n8fifvke724cxifjhxmcox0id7097xxwavwe583vplx@bounce.linkedin.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=linkedin.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linkedin.com;
+	s=d2048-201806-01; t=1585864724;
+	bh=FelHfGjoGJBP+0yD1nJoeZNUgO2ET8585TDh+ysKOL0=;
+	h=From:Subject:MIME-Version:Content-Type:To:Date:X-LinkedIn-Class:
+	 X-LinkedIn-Template:X-LinkedIn-fbl;
+	b=qdBZDf8TKa+Ve1IBxcTCUxVw5gbAubfEYxf3Fec4V2wKmKbzRoz+Z0tevbN3GOI4r
+	 TZCVjR63DpFrR37MseqBVl7TnfTb6jeDslUiCtY0h5MJaELQN8bkhIqaULFFHEYTW9
+	 VUhSRgaRtQ6ikntfa1b0U2GoHzYXXtkrQDeFOSfFrLB1tp56W2Wf0h6QKZBXSE3VHO
+	 dC9B7x49eBkVEBWi2Z6mlDKGEk6mVX2jCRdOxYEd9xNCpci+4T8E3fF/2l0esz/8ew
+	 9OqUuScnrm2kiCsh26X4rBxU1pFzXOQZUtOW7J7PbUAlq9XflvGlxVbifbwEVljIBX
+	 GLcMNg59plWqw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailc.linkedin.com;
+	s=proddkim1024; t=1585864724;
+	bh=FelHfGjoGJBP+0yD1nJoeZNUgO2ET8585TDh+ysKOL0=;
+	h=From:Subject:MIME-Version:Content-Type:To:Date:X-LinkedIn-Class:
+	 X-LinkedIn-Template:X-LinkedIn-fbl;
+	b=epsqDGyLN5iPTKvw7LNTbZUWELSroCcGPB/NdW795VhPMuXkspD/F20MM8da3Scwv
+	 h4llpRwiWBayVtq4lGDdlHjK4/5TxmoODbrIktCPCsI9Qz9XWnN4fUmDqmKBJkJNLm
+	 Iien0uZWS5NZJpP8QbrJQjgVPCM8Ho25AHGamEgE=
+From: LinkedIn <notifications-noreply@linkedin.com>
+Message-ID: <321326144.1315651.1585864724450.JavaMail.app@lva1-app47812.prod.linkedin.com>
+Subject: Ross Powell reshared a post for the...
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1315649_1152239586.1585864724446"
+To: Scott Powell <scott.powell.m@gmail.com>
+Date: Thu, 2 Apr 2020 21:58:44 +0000 (UTC)
+X-LinkedIn-Class: NETWORKDIGEST
+X-LinkedIn-Template: email_notification_digest_01
+X-LinkedIn-fbl: m2-aszzesq9mqkixh6o4p8qbqm8dsrdzfmmabib4e9rm01odbl2kk85y9vu7lltp26vz8q2e42nlxo5n1y4yu5d8fcgqockatb9xtj4hd
+X-LinkedIn-Id: cteebk-k8jawog7-hv
+List-Unsubscribe: <https://www.linkedin.com/e/v2?e=cteebk-k8jawog7-hv&t=lun&midToken=AQH3VjeqpMuSoQ&ek=email_notification_digest_01&li=15&m=unsub&ts=unsub&loid=AQHBr9xajy54jAAAAXE850-fBRsWGL8SYp7_Gc6OlrpcE8xkiLkVtNq9vg2nP-2AqcpCioKwKsVKK6r5Ln-pdd7EuenvTlhNLIKWfDEJvISBQQ&eid=cteebk-k8jawog7-hv>
+Feedback-ID: email_notification_digest_01:linkedin
+Require-Recipient-Valid-Since: scott.powell.m@gmail.com; Fri, 1 Nov 2019 02:04:05 +0000
+
+------=_Part_1315649_1152239586.1585864724446
+Content-Type: text/plain;charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-ID: text-body
+
+Scott, this is what you've missed on LinkedIn
+
+-----------------------------------------
+ https://www.linkedin.com/comm/in/rossmpowell?midToken=3DAQH3VjeqpMuSoQ&amp=
+;trk=3Deml-email_notification_digest_01-notifications-4-prof_photo&amp;trkE=
+mail=3Deml-email_notification_digest_01-notifications-4-prof_photo-null-cte=
+ebk%7Ek8jawog7%7Ehv-null-neptune%2Fprofile%7Evanity%2Eview&amp;lipi=3Durn%3=
+Ali%3Apage%3Aemail_email_notification_digest_01%3B%2BY%2Bet8FhRuaF4RJhgfAn5=
+A%3D%3D
+
+
+Ross Powell reshared a post for the first time in a while: #COVID19 News: W=
+e=E2=80=99re announcing a collaboration with Adaptive Biotechnologies Corp.=
+ to combine expertise and work together to discover and develop fully-human=
+ neutralizing antibodies that target SARS-CoV-2. These antibodies have the =
+potential to be used therapeutically to treat someone currently fighting th=
+e disease or to be given to people who have heightened risk of exposure to =
+it, such as healthcare workers. Given the global urgency, we=E2=80=99re lau=
+nching this work immediately. Details here: https://bit.ly/2UC9jK4
+
+Comment: https://www.linkedin.com/comm/feed/update/urn%3Ali%3Aactivity%3A66=
+51538055117307905?midToken=3DAQH3VjeqpMuSoQ&trk=3Deml-email_notification_di=
+gest_01-notifications-8-null&trkEmail=3Deml-email_notification_digest_01-no=
+tifications-8-null-null-cteebk%7Ek8jawog7%7Ehv-null-voyagerOffline&lipi=3Du=
+rn%3Ali%3Apage%3Aemail_email_notification_digest_01%3B%2BY%2Bet8FhRuaF4RJhg=
+fAn5A%3D%3D
+
+-----------------------------------------
+ https://www.linkedin.com/comm/in/rachelnichols401?midToken=3DAQH3VjeqpMuSo=
+Q&amp;trk=3Deml-email_notification_digest_01-notifications-5-prof_photo&amp=
+;trkEmail=3Deml-email_notification_digest_01-notifications-5-prof_photo-nul=
+l-cteebk%7Ek8jawog7%7Ehv-null-neptune%2Fprofile%7Evanity%2Eview&amp;lipi=3D=
+urn%3Ali%3Apage%3Aemail_email_notification_digest_01%3B%2BY%2Bet8FhRuaF4RJh=
+gfAn5A%3D%3D
+
+
+Rachel Nichols has 6 new connections
+
+Expand your network: https://www.linkedin.com/comm/mynetwork/?midToken=3DAQ=
+H3VjeqpMuSoQ&trk=3Deml-email_notification_digest_01-notifications-9-null&tr=
+kEmail=3Deml-email_notification_digest_01-notifications-9-null-null-cteebk%=
+7Ek8jawog7%7Ehv-null-voyagerOffline&lipi=3Durn%3Ali%3Apage%3Aemail_email_no=
+tification_digest_01%3B%2BY%2Bet8FhRuaF4RJhgfAn5A%3D%3D
+
+-----------------------------------------
+
+
+.....................................
+
+Unsubscribe: https://www.linkedin.com/e/v2?e=3Dcteebk-k8jawog7-hv&t=3Dlun&m=
+idToken=3DAQH3VjeqpMuSoQ&ek=3Demail_notification_digest_01&li=3D15&m=3Dunsu=
+b&ts=3Dunsub&loid=3DAQHBr9xajy54jAAAAXE850-fBRsWGL8SYp7_Gc6OlrpcE8xkiLkVtNq=
+9vg2nP-2AqcpCioKwKsVKK6r5Ln-pdd7EuenvTlhNLIKWfDEJvISBQQ&eid=3Dcteebk-k8jawo=
+g7-hv
+
+Help: https://www.linkedin.com/e/v2?e=3Dcteebk-k8jawog7-hv&lipi=3Durn%3Ali%=
+3Apage%3Aemail_email_notification_digest_01%3B%2BY%2Bet8FhRuaF4RJhgfAn5A%3D=
+%3D&a=3DcustomerServiceUrl&midToken=3DAQH3VjeqpMuSoQ&ek=3Demail_notificatio=
+n_digest_01&li=3D14&m=3Dfooter&ts=3Dhelp&articleId=3D67
+
+
+You are receiving LinkedIn notification emails.
+
+This email was intended for Scott Powell (Computer Science Tutor at Middleb=
+ury College).
+Learn why we included this: https://www.linkedin.com/e/v2?e=3Dcteebk-k8jawo=
+g7-hv&lipi=3Durn%3Ali%3Apage%3Aemail_email_notification_digest_01%3B%2BY%2B=
+et8FhRuaF4RJhgfAn5A%3D%3D&a=3DcustomerServiceUrl&midToken=3DAQH3VjeqpMuSoQ&=
+ek=3Demail_notification_digest_01&articleId=3D4788
+
+=C2=A9 2020 LinkedIn Corporation, 1000 West Maude Avenue, Sunnyvale, CA 940=
+85. LinkedIn and the LinkedIn logo are registered trademarks of LinkedIn.
+------=_Part_1315649_1152239586.1585864724446
+Content-Type: text/html;charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-ID: html-body
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns=3D"http://www.w3=
+.org/1999/xhtml" lang=3D"en" xml:lang=3D"en"> <head> <meta http-equiv=3D"Co=
+ntent-Type" content=3D"text/html;charset=3Dutf-8"> <meta name=3D"HandheldFr=
+iendly" content=3D"true"> <meta name=3D"viewport" content=3D"width=3Ddevice=
+-width; initial-scale=3D0.666667; user-scalable=3D0"> <meta name=3D"viewpor=
+t" content=3D"width=3Ddevice-width"> <title></title> <!--[if mso]><style ty=
+pe=3D"text/css">body {font-family: 'Helvetica Neue', Helvetica, Arial, sans=
+-serif;}.phoenix-email-container {width: 512px !important;}</style><![endif=
+]--> <!--[if IE]><style type=3D"text/css">.phoenix-email-container {width: =
+512px !important;}</style><![endif]--> <style type=3D"text/css">@media only=
+ screen and (max-width:32em) { .phoenix-email-container { width:100% !impor=
+tant; } } @media only screen and (max-width:20em) {} @media only screen and=
+ (max-device-width:30em) {} @media screen and (device-width:30em) and (devi=
+ce-height:22.5em), screen and (device-width:22.5em) and (device-height:30em=
+), screen and (device-width:20em) and (device-height:15em) {} @media screen=
+ and (-webkit-min-device-pixel-ratio:0) {} @media screen and (max-device-wi=
+dth:25.88em) and (max-device-height:48.5em) {} @media only screen and (min-=
+width:30.06em) { .phoenix-app-activation-footer-content&gt;tbody&gt;tr&gt;t=
+d { text-align:left; } .phoenix-app-activation-footer-screenshot&gt;tbody&g=
+t;tr&gt;td { padding:16px 0 0 0; } } </style> </head> <body style=3D"paddin=
+g:0;margin:0 auto;-webkit-text-size-adjust:100%;width:100% !important;-ms-t=
+ext-size-adjust:100%;font-family:'Helvetica Neue',Helvetica,Arial,sans-seri=
+f;"> <div style=3D"overflow:hidden;color:transparent;visibility:hidden;mso-=
+hide:all;width:0;font-size:0;opacity:0;height:0;"> Here's what's happened s=
+ince you were last on LinkedIn </div> <table role=3D"presentation" align=3D=
+"center" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" bg=
+color=3D"#EDF0F3" style=3D"background-color:#EDF0F3;table-layout:fixed;-web=
+kit-text-size-adjust:100%;mso-table-rspace:0pt;mso-table-lspace:0pt;-ms-tex=
+t-size-adjust:100%;"> <tbody> <tr> <td align=3D"center" style=3D"-webkit-te=
+xt-size-adjust:100%;mso-table-rspace:0pt;mso-table-lspace:0pt;-ms-text-size=
+-adjust:100%;"> <center style=3D"width:100%;"> <table role=3D"presentation"=
+ border=3D"0" class=3D"phoenix-email-container" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"512" bgcolor=3D"#FFFFFF" style=3D"background-color:#FFFFF=
+F;margin:0 auto;max-width:512px;-webkit-text-size-adjust:100%;mso-table-rsp=
+ace:0pt;width:inherit;mso-table-lspace:0pt;-ms-text-size-adjust:100%;"> <tb=
+ody> <tr> <td bgcolor=3D"#F6F8FA" style=3D"background-color:#F6F8FA;padding=
+:5px 16px 13px;-webkit-text-size-adjust:100%;mso-table-rspace:0pt;mso-table=
+-lspace:0pt;-ms-text-size-adjust:100%;border-bottom:1px solid #ECECEC;"> <t=
+able role=3D"presentation" border=3D"0" cellspacing=3D"0" cellpadding=3D"0"=
+ width=3D"100%" style=3D"-webkit-text-size-adjust:100%;mso-table-rspace:0pt=
+;width:100% !important;mso-table-lspace:0pt;-ms-text-size-adjust:100%;min-w=
+idth:100% !important;"> <tbody> <tr> <td align=3D"left" valign=3D"middle" s=
+tyle=3D"-webkit-text-size-adjust:100%;mso-table-rspace:0pt;mso-table-lspace=
+:0pt;-ms-text-size-adjust:100%;"><a href=3D"https://www.linkedin.com/comm/f=
+eed/?midToken=3DAQH3VjeqpMuSoQ&amp;trk=3Deml-email_notification_digest_01-h=
+eader-10-home&amp;trkEmail=3Deml-email_notification_digest_01-header-10-hom=
+e-null-cteebk%7Ek8jawog7%7Ehv-null-neptune%2Ffeed&amp;lipi=3Durn%3Ali%3Apag=
+e%3Aemail_email_notification_digest_01%3B%2BY%2Bet8FhRuaF4RJhgfAn5A%3D%3D" =
+style=3D"cursor:pointer;color:#0073B1;-webkit-text-size-adjust:100%;display=
+:inline-block;text-decoration:none;-ms-text-size-adjust:100%;"> <img alt=3D=
+"LinkedIn" border=3D"0" src=3D"https://www.linkedin.com/comm/dms/logo?midTo=
+ken=3DAQH3VjeqpMuSoQ&amp;trk=3Deml-email_notification_digest_01-null-17-nul=
+l&amp;trkEmail=3Deml-email_notification_digest_01-null-17-null-null-cteebk%=
+7Ek8jawog7%7Ehv-null-comms%7Ebadging%7Edynamic&amp;lipi=3Durn%3Ali%3Apage%3=
+Aemail_email_notification_digest_01%3B%2BY%2Bet8FhRuaF4RJhgfAn5A%3D%3D&amp;=
+_sig=3D2RMLUFa3RCjFc1" height=3D"42" style=3D"outline:none;-ms-interpolatio=
+n-mode:bicubic;color:#FFFFFF;text-decoration:none;"></a></td> <td valign=3D=
+"middle" width=3D"100%" align=3D"right" style=3D"-webkit-text-size-adjust:1=
+00%;mso-table-rspace:0pt;mso-table-lspace:0pt;-ms-text-size-adjust:100%;"><=
+a href=3D"https://www.linkedin.com/comm/in/scott-powell-8a8654197?midToken=
+=3DAQH3VjeqpMuSoQ&amp;trk=3Deml-email_notification_digest_01-header-18-prof=
+ile&amp;trkEmail=3Deml-email_notification_digest_01-header-18-profile-null-=
+cteebk%7Ek8jawog7%7Ehv-null-neptune%2Fprofile%7Evanity%2Eview&amp;lipi=3Dur=
+n%3Ali%3Apage%3Aemail_email_notification_digest_01%3B%2BY%2Bet8FhRuaF4RJhgf=
+An5A%3D%3D" style=3D"cursor:pointer;margin:0;color:#0073B1;-webkit-text-siz=
+e-adjust:100%;display:inline-block;text-decoration:none;-ms-text-size-adjus=
+t:100%;"> <table role=3D"presentation" border=3D"0" cellspacing=3D"0" cellp=
+adding=3D"0" width=3D"100%" style=3D"-webkit-text-size-adjust:100%;mso-tabl=
+e-rspace:0pt;mso-table-lspace:0pt;-ms-text-size-adjust:100%;"> <tbody> <tr>=
+ <td align=3D"left" valign=3D"middle" style=3D"padding:0 0 0 10px;padding-t=
+op:7px;-webkit-text-size-adjust:100%;mso-table-rspace:0pt;mso-table-lspace:=
+0pt;-ms-text-size-adjust:100%;"><p style=3D"margin:0;font-weight:400;"> <sp=
+an style=3D"word-wrap:break-word;color:#4C4C4C;word-break:break-word;font-w=
+eight:400;-ms-word-break:break-all;font-size:14px;line-height:1.429;overflo=
+w-wrap:break-word;">Scott Powell</span></p></td> </tr> </tbody> </table></a=
+></td> <td width=3D"1" style=3D"-webkit-text-size-adjust:100%;mso-table-rsp=
+ace:0pt;mso-table-lspace:0pt;-ms-text-size-adjust:100%;">&nbsp;</td> </tr> =
+</tbody> </table></td> </tr> <tr> <td style=3D"-webkit-text-size-adjust:100=
+%;mso-table-rspace:0pt;mso-table-lspace:0pt;-ms-text-size-adjust:100%;"> <t=
+able role=3D"presentation" border=3D"0" cellspacing=3D"0" cellpadding=3D"0"=
+ width=3D"100%" style=3D"-webkit-text-size-adjust:100%;mso-table-rspace:0pt=
+;mso-table-lspace:0pt;-ms-text-size-adjust:100%;"> <tbody> <tr> <td style=
+=3D"-webkit-text-size-adjust:100%;mso-table-rspace:0pt;mso-table-lspace:0pt=
+;-ms-text-size-adjust:100%;"><h2 style=3D"background-color:#0073B1;padding:=
+24px 20px;margin:0;color:#FFFFFF;font-weight:700;font-size:20px;line-height=
+:1.2;text-align:center;"></h2> <table role=3D"presentation" border=3D"0" ce=
+llspacing=3D"0" cellpadding=3D"0" width=3D"100%" style=3D"-webkit-text-size=
+-adjust:100%;mso-table-rspace:0pt;mso-table-lspace:0pt;-ms-text-size-adjust=
+:100%;"> <tbody> <tr> <td style=3D"padding:16px 24px;-webkit-text-size-adju=
+st:100%;mso-table-rspace:0pt;mso-table-lspace:0pt;-ms-text-size-adjust:100%=
+;"> <table role=3D"presentation" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"100%" style=3D"-webkit-text-size-adjust:100%;mso-table-rspa=
+ce:0pt;mso-table-lspace:0pt;-ms-text-size-adjust:100%;"> <tbody> <tr> <td s=
+tyle=3D"-webkit-text-size-adjust:100%;mso-table-rspace:0pt;mso-table-lspace=
+:0pt;-ms-text-size-adjust:100%;"> <table role=3D"presentation" align=3D"cen=
+ter" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"auto" style=
+=3D"-webkit-text-size-adjust:100%;mso-table-rspace:0pt;mso-table-lspace:0pt=
+;-ms-text-size-adjust:100%;"> <tbody> <tr> <td style=3D"-webkit-text-size-a=
+djust:100%;mso-table-rspace:0pt;mso-table-lspace:0pt;-ms-text-size-adjust:1=
+00%;"> <a href=3D"https://www.linkedin.com/comm/in/rossmpowell?midToken=3DA=
+QH3VjeqpMuSoQ&amp;trk=3Deml-email_notification_digest_01-notifications-4-pr=
+of_photo&amp;trkEmail=3Deml-email_notification_digest_01-notifications-4-pr=
+of_photo-null-cteebk%7Ek8jawog7%7Ehv-null-neptune%2Fprofile%7Evanity%2Eview=
+&amp;lipi=3Durn%3Ali%3Apage%3Aemail_email_notification_digest_01%3B%2BY%2Be=
+t8FhRuaF4RJhgfAn5A%3D%3D" style=3D"border-radius:50%;cursor:pointer;color:#=
+0073B1;-webkit-text-size-adjust:100%;display:inline-block;text-decoration:n=
+one;-ms-text-size-adjust:100%;"><img alt=3D"View Ross Powell=E2=80=99s prof=
+ile" border=3D"0" height=3D"70" width=3D"70" src=3D"https://media-exp1.licd=
+n.com/dms/image/C5603AQFHHFnAOBOaAg/profile-displayphoto-shrink_100_100/0?e=
+=3D1591228800&amp;v=3Dbeta&amp;t=3DIeS62Xu9BKyo93ZA1fYt-0IqTPGbUWzisPdqPNqd=
+IO8" style=3D"border-radius:50%;outline:none;-ms-interpolation-mode:bicubic=
+;color:#FFFFFF;text-decoration:none;"></a></td> </tr> </tbody> </table></td=
+> </tr> <tr> <td style=3D"-webkit-text-size-adjust:100%;mso-table-rspace:0p=
+t;mso-table-lspace:0pt;-ms-text-size-adjust:100%;"> <table role=3D"presenta=
+tion" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" align=
+=3D"center" style=3D"max-width:396px;-webkit-text-size-adjust:100%;mso-tabl=
+e-rspace:0pt;mso-table-lspace:0pt;-ms-text-size-adjust:100%;padding-bottom:=
+4px;text-align:center;"> <tbody> <tr> <td style=3D"-webkit-text-size-adjust=
+:100%;mso-table-rspace:0pt;mso-table-lspace:0pt;-ms-text-size-adjust:100%;"=
+><h2 style=3D"margin:0;color:#262626;font-weight:400;font-size:16px;line-he=
+ight:1.5;"><a href=3D"https://www.linkedin.com/comm/in/rossmpowell?midToken=
+=3DAQH3VjeqpMuSoQ&amp;trk=3Deml-email_notification_digest_01-settings-6-pro=
+f_photo&amp;trkEmail=3Deml-email_notification_digest_01-settings-6-prof_pho=
+to-null-cteebk%7Ek8jawog7%7Ehv-null-neptune%2Fprofile%7Evanity%2Eview&amp;l=
+ipi=3Durn%3Ali%3Apage%3Aemail_email_notification_digest_01%3B%2BY%2Bet8FhRu=
+aF4RJhgfAn5A%3D%3D" style=3D"cursor:pointer;color:#0073B1;-webkit-text-size=
+-adjust:100%;display:inline-block;text-decoration:none;-ms-text-size-adjust=
+:100%;">Ross Powell</a> <strong>reshared a post</strong> for the first time=
+ in a while: #COVID19 News: We=E2=80=99re announcing a collaboration with A=
+daptive Biotechnologies Corp. to combine expertise and work together to dis=
+cover and develop fully-human neutralizing antibodies that target SARS-CoV-=
+2. These antibodies have the potential to be used therapeutically to treat =
+someone currently fighting the disease or to be given to people who have he=
+ightened risk of exposure to it, such as healthcare workers. Given the glob=
+al urgency, we=E2=80=99re launching this work immediately. Details here: ht=
+tps://bit.ly/2UC9jK4</h2></td> </tr> </tbody> </table></td> </tr> <tr> <td =
+style=3D"-webkit-text-size-adjust:100%;mso-table-rspace:0pt;mso-table-lspac=
+e:0pt;-ms-text-size-adjust:100%;"></td> </tr> <tr> <td align=3D"center" sty=
+le=3D"padding-top:8px;-webkit-text-size-adjust:100%;mso-table-rspace:0pt;ms=
+o-table-lspace:0pt;-ms-text-size-adjust:100%;text-align:center;"> <table ro=
+le=3D"presentation" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=
+=3D"100%" style=3D"-webkit-text-size-adjust:100%;mso-table-rspace:0pt;mso-t=
+able-lspace:0pt;-ms-text-size-adjust:100%;"> <tbody> <tr> <td dir=3D"ltr" a=
+lign=3D"center" style=3D"-webkit-text-size-adjust:100%;mso-table-rspace:0pt=
+;mso-table-lspace:0pt;-ms-text-size-adjust:100%;text-align:center !importan=
+t;"></td> </tr> <tr> <td dir=3D"ltr" style=3D"-webkit-text-size-adjust:100%=
+;mso-table-rspace:0pt;mso-table-lspace:0pt;-ms-text-size-adjust:100%;"> <!-=
+-[if mso]><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"=
+auto"><tr><td><![endif]--><span style=3D"padding-right:6px;direction:ltr;">=
+ <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-webkit-t=
+ext-size-adjust:100%;mso-table-rspace:0pt;display:inline-block;mso-table-ls=
+pace:0pt;-ms-text-size-adjust:100%;"> <tbody> <tr> <td align=3D"center" val=
+ign=3D"middle" style=3D"-webkit-text-size-adjust:100%;mso-table-rspace:0pt;=
+mso-table-lspace:0pt;-ms-text-size-adjust:100%;"><a href=3D"https://www.lin=
+kedin.com/comm/feed/update/urn%3Ali%3Aactivity%3A6651538055117307905?midTok=
+en=3DAQH3VjeqpMuSoQ&amp;trk=3Deml-email_notification_digest_01-notification=
+s-8-null&amp;trkEmail=3Deml-email_notification_digest_01-notifications-8-nu=
+ll-null-cteebk%7Ek8jawog7%7Ehv-null-voyagerOffline&amp;lipi=3Durn%3Ali%3Apa=
+ge%3Aemail_email_notification_digest_01%3B%2BY%2Bet8FhRuaF4RJhgfAn5A%3D%3D"=
+ target=3D"_blank" style=3D"cursor:pointer;word-wrap:normal;color:#0073B1;w=
+ord-break:normal;white-space:nowrap;-webkit-text-size-adjust:100%;display:b=
+lock;text-decoration:none;-ms-text-size-adjust:100%;overflow-wrap:normal;">=
+ <table role=3D"presentation" border=3D"0" cellspacing=3D"0" cellpadding=3D=
+"0" width=3D"auto" style=3D"-webkit-text-size-adjust:100%;mso-table-rspace:=
+0pt;mso-table-lspace:0pt;-ms-text-size-adjust:100%;"> <tbody> <tr> <td styl=
+e=3D"border-radius:2px;padding:6px 16px;color:#0073B1;-webkit-text-size-adj=
+ust:100%;mso-table-rspace:0pt;font-weight:500;mso-table-lspace:0pt;font-siz=
+e:16px;-ms-text-size-adjust:100%;border-color:#0073B1;border-width:1px;bord=
+er-style:solid;"><a href=3D"https://www.linkedin.com/comm/feed/update/urn%3=
+Ali%3Aactivity%3A6651538055117307905?midToken=3DAQH3VjeqpMuSoQ&amp;trk=3Dem=
+l-email_notification_digest_01-notifications-8-null&amp;trkEmail=3Deml-emai=
+l_notification_digest_01-notifications-8-null-null-cteebk%7Ek8jawog7%7Ehv-n=
+ull-voyagerOffline&amp;lipi=3Durn%3Ali%3Apage%3Aemail_email_notification_di=
+gest_01%3B%2BY%2Bet8FhRuaF4RJhgfAn5A%3D%3D" target=3D"_blank" style=3D"curs=
+or:pointer;color:#0073B1;-webkit-text-size-adjust:100%;display:inline-block=
+;text-decoration:none;-ms-text-size-adjust:100%;">Comment</a></td> </tr> </=
+tbody> </table></a></td> </tr> </tbody> </table></span><span style=3D"paddi=
+ng-right:6px;direction:ltr;"></span> <!--[if mso]></td><td></td></tr></tabl=
+e><![endif]--></td> </tr> </tbody> </table></td> </tr> </tbody> </table></t=
+d> </tr> </tbody> </table> <h2 style=3D"background-color:#F3F6F8;padding:16=
+px 20px;margin:0;color:#262626;font-weight:200;font-size:20px;line-height:1=
+.2;text-align:center;">More updates</h2> <table role=3D"presentation" borde=
+r=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" style=3D"padding=
+:16px 24px;-webkit-text-size-adjust:100%;mso-table-rspace:0pt;mso-table-lsp=
+ace:0pt;-ms-text-size-adjust:100%;"> <tbody> <tr> <td valign=3D"top" style=
+=3D"-webkit-text-size-adjust:100%;mso-table-rspace:0pt;mso-table-lspace:0pt=
+;vertical-align:top;-ms-text-size-adjust:100%;padding-right:12px;"> <table =
+role=3D"presentation" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" widt=
+h=3D"100%" style=3D"-webkit-text-size-adjust:100%;mso-table-rspace:0pt;mso-=
+table-lspace:0pt;-ms-text-size-adjust:100%;"> <tbody> <tr> <td style=3D"-we=
+bkit-text-size-adjust:100%;mso-table-rspace:0pt;mso-table-lspace:0pt;-ms-te=
+xt-size-adjust:100%;"> <a href=3D"https://www.linkedin.com/comm/in/rachelni=
+chols401?midToken=3DAQH3VjeqpMuSoQ&amp;trk=3Deml-email_notification_digest_=
+01-notifications-5-prof_photo&amp;trkEmail=3Deml-email_notification_digest_=
+01-notifications-5-prof_photo-null-cteebk%7Ek8jawog7%7Ehv-null-neptune%2Fpr=
+ofile%7Evanity%2Eview&amp;lipi=3Durn%3Ali%3Apage%3Aemail_email_notification=
+_digest_01%3B%2BY%2Bet8FhRuaF4RJhgfAn5A%3D%3D" style=3D"border-radius:50%;c=
+ursor:pointer;color:#0073B1;-webkit-text-size-adjust:100%;display:inline-bl=
+ock;text-decoration:none;-ms-text-size-adjust:100%;"><img alt=3D"View Rache=
+l Nichols=E2=80=99 profile" border=3D"0" height=3D"54" width=3D"54" src=3D"=
+https://media-exp1.licdn.com/dms/image/C5603AQGhgTZ8GqyJEw/profile-displayp=
+hoto-shrink_100_100/0?e=3D1591228800&amp;v=3Dbeta&amp;t=3DM6YdqYdkECdczgUOM=
+tScGgsds3qmsXVJwWBBKKTWs7s" style=3D"border-radius:50%;outline:none;-ms-int=
+erpolation-mode:bicubic;color:#FFFFFF;text-decoration:none;"></a></td> </tr=
+> </tbody> </table></td> <td width=3D"100%" align=3D"left" style=3D"-webkit=
+-text-size-adjust:100%;mso-table-rspace:0pt;mso-table-lspace:0pt;width:100%=
+;-ms-text-size-adjust:100%;text-align:left;"> <table role=3D"presentation" =
+border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" style=3D"-w=
+ebkit-text-size-adjust:100%;mso-table-rspace:0pt;mso-table-lspace:0pt;-ms-t=
+ext-size-adjust:100%;"> <tbody> <tr> <td style=3D"-webkit-text-size-adjust:=
+100%;mso-table-rspace:0pt;mso-table-lspace:0pt;-ms-text-size-adjust:100%;">=
+ <table role=3D"presentation" border=3D"0" cellspacing=3D"0" cellpadding=3D=
+"0" width=3D"100%" align=3D"left" style=3D"max-width:396px;-webkit-text-siz=
+e-adjust:100%;mso-table-rspace:0pt;mso-table-lspace:0pt;-ms-text-size-adjus=
+t:100%;padding-bottom:4px;text-align:left;"> <tbody> <tr> <td style=3D"-web=
+kit-text-size-adjust:100%;mso-table-rspace:0pt;mso-table-lspace:0pt;-ms-tex=
+t-size-adjust:100%;"><h2 style=3D"margin:0;color:#262626;font-weight:400;fo=
+nt-size:16px;line-height:1.5;"><a href=3D"https://www.linkedin.com/comm/in/=
+rachelnichols401?midToken=3DAQH3VjeqpMuSoQ&amp;trk=3Deml-email_notification=
+_digest_01-settings-7-prof_photo&amp;trkEmail=3Deml-email_notification_dige=
+st_01-settings-7-prof_photo-null-cteebk%7Ek8jawog7%7Ehv-null-neptune%2Fprof=
+ile%7Evanity%2Eview&amp;lipi=3Durn%3Ali%3Apage%3Aemail_email_notification_d=
+igest_01%3B%2BY%2Bet8FhRuaF4RJhgfAn5A%3D%3D" style=3D"cursor:pointer;color:=
+#0073B1;-webkit-text-size-adjust:100%;display:inline-block;text-decoration:=
+none;-ms-text-size-adjust:100%;"><strong>Rachel Nichols</strong></a> has 6 =
+new connections</h2></td> </tr> </tbody> </table></td> </tr> <tr> <td style=
+=3D"-webkit-text-size-adjust:100%;mso-table-rspace:0pt;mso-table-lspace:0pt=
+;-ms-text-size-adjust:100%;"></td> </tr> <tr> <td align=3D"left" style=3D"p=
+adding-top:8px;-webkit-text-size-adjust:100%;mso-table-rspace:0pt;mso-table=
+-lspace:0pt;-ms-text-size-adjust:100%;text-align:left;"><span style=3D"padd=
+ing-right:6px;direction:ltr;"> <table border=3D"0" cellpadding=3D"0" cellsp=
+acing=3D"0" style=3D"-webkit-text-size-adjust:100%;mso-table-rspace:0pt;dis=
+play:inline-block;mso-table-lspace:0pt;-ms-text-size-adjust:100%;"> <tbody>=
+ <tr> <td align=3D"center" valign=3D"middle" style=3D"-webkit-text-size-adj=
+ust:100%;mso-table-rspace:0pt;mso-table-lspace:0pt;-ms-text-size-adjust:100=
+%;"><a href=3D"https://www.linkedin.com/comm/mynetwork/?midToken=3DAQH3Vjeq=
+pMuSoQ&amp;trk=3Deml-email_notification_digest_01-notifications-9-null&amp;=
+trkEmail=3Deml-email_notification_digest_01-notifications-9-null-null-cteeb=
+k%7Ek8jawog7%7Ehv-null-voyagerOffline&amp;lipi=3Durn%3Ali%3Apage%3Aemail_em=
+ail_notification_digest_01%3B%2BY%2Bet8FhRuaF4RJhgfAn5A%3D%3D" target=3D"_b=
+lank" style=3D"cursor:pointer;word-wrap:normal;color:#0073B1;word-break:nor=
+mal;white-space:nowrap;-webkit-text-size-adjust:100%;display:block;text-dec=
+oration:none;-ms-text-size-adjust:100%;overflow-wrap:normal;"> <table role=
+=3D"presentation" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D=
+"auto" style=3D"-webkit-text-size-adjust:100%;mso-table-rspace:0pt;mso-tabl=
+e-lspace:0pt;-ms-text-size-adjust:100%;"> <tbody> <tr> <td style=3D"border-=
+radius:2px;padding:6px 16px;color:#0073B1;-webkit-text-size-adjust:100%;mso=
+-table-rspace:0pt;font-weight:500;mso-table-lspace:0pt;font-size:16px;-ms-t=
+ext-size-adjust:100%;border-color:#0073B1;border-width:1px;border-style:sol=
+id;"><a href=3D"https://www.linkedin.com/comm/mynetwork/?midToken=3DAQH3Vje=
+qpMuSoQ&amp;trk=3Deml-email_notification_digest_01-notifications-9-null&amp=
+;trkEmail=3Deml-email_notification_digest_01-notifications-9-null-null-ctee=
+bk%7Ek8jawog7%7Ehv-null-voyagerOffline&amp;lipi=3Durn%3Ali%3Apage%3Aemail_e=
+mail_notification_digest_01%3B%2BY%2Bet8FhRuaF4RJhgfAn5A%3D%3D" target=3D"_=
+blank" style=3D"cursor:pointer;color:#0073B1;-webkit-text-size-adjust:100%;=
+display:inline-block;text-decoration:none;-ms-text-size-adjust:100%;">Expan=
+d your network</a></td> </tr> </tbody> </table></a></td> </tr> </tbody> </t=
+able></span></td> </tr> </tbody> </table></td> </tr> </tbody> </table> <tab=
+le border=3D"0" cellspacing=3D"0" cellpadding=3D"0" style=3D"-webkit-text-s=
+ize-adjust:100%;mso-table-rspace:0pt;mso-table-lspace:0pt;-ms-text-size-adj=
+ust:100%;font-family:Helvetica,Arial,sans-serif;" width=3D"100%"> <tbody> <=
+tr> <td style=3D"padding-top:20px;-webkit-text-size-adjust:100%;mso-table-r=
+space:0pt;mso-table-lspace:0pt;-ms-text-size-adjust:100%;"> <table role=3D"=
+presentation" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100=
+%" bgcolor=3D"#0073B1" style=3D"background-color:#0073B1;-webkit-text-size-=
+adjust:100%;mso-table-rspace:0pt;mso-table-lspace:0pt;-ms-text-size-adjust:=
+100%;"> <tbody> <tr> <td valign=3D"bottom" align=3D"center" style=3D"-webki=
+t-text-size-adjust:100%;mso-table-rspace:0pt;mso-table-lspace:0pt;vertical-=
+align:bottom;-ms-text-size-adjust:100%;font-size:0;text-align:center;"> <!-=
+-[if (gte mso 9)|(IE)]><table width=3D"250" align=3D"left" cellpadding=3D"0=
+" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-left:16px;"><![en=
+dif]--> <table role=3D"presentation" border=3D"0" class=3D"phoenix-app-acti=
+vation-footer-content" cellspacing=3D"0" cellpadding=3D"0" width=3D"250" st=
+yle=3D"-webkit-text-size-adjust:100%;mso-table-rspace:0pt;display:inline-bl=
+ock;mso-table-lspace:0pt;width:250px;-ms-text-size-adjust:100%;"> <tbody> <=
+tr> <td width=3D"250" align=3D"center" style=3D"padding:24px 6px 20px 0;-we=
+bkit-text-size-adjust:100%;mso-table-rspace:0pt;mso-table-lspace:0pt;width:=
+250px;-ms-text-size-adjust:100%;text-align:center;"> <table role=3D"present=
+ation" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" styl=
+e=3D"-webkit-text-size-adjust:100%;mso-table-rspace:0pt;mso-table-lspace:0p=
+t;-ms-text-size-adjust:100%;"> <tbody> <tr> <td style=3D"-webkit-text-size-=
+adjust:100%;mso-table-rspace:0pt;mso-table-lspace:0pt;-ms-text-size-adjust:=
+100%;padding-bottom:8px;"> <h2 style=3D"margin:0;color:#FFFFFF;font-weight:=
+200;font-size:18px;padding-bottom:8px;line-height:1.333;">Get the LinkedIn =
+app.</h2></td> </tr> <tr> <td style=3D"-webkit-text-size-adjust:100%;mso-ta=
+ble-rspace:0pt;mso-table-lspace:0pt;-ms-text-size-adjust:100%;padding-botto=
+m:16px;"> <p style=3D"margin:0;color:#FFFFFF;font-weight:400;font-size:14px=
+;line-height:1.429;">Stay updated wherever you are</p></td> </tr> <tr> <td =
+style=3D"-webkit-text-size-adjust:100%;mso-table-rspace:0pt;mso-table-lspac=
+e:0pt;-ms-text-size-adjust:100%;"> <table border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" style=3D"-webkit-text-size-adjust:100%;mso-table-rspace:0pt=
+;display:inline-block;mso-table-lspace:0pt;-ms-text-size-adjust:100%;"> <tb=
+ody> <tr> <td align=3D"center" valign=3D"middle" style=3D"-webkit-text-size=
+-adjust:100%;mso-table-rspace:0pt;mso-table-lspace:0pt;-ms-text-size-adjust=
+:100%;"><a href=3D"https://www.linkedin.com/e/v2?e=3Dcteebk-k8jawog7-hv&amp=
+;lipi=3Durn%3Ali%3Apage%3Aemail_email_notification_digest_01%3B%2BY%2Bet8Fh=
+RuaF4RJhgfAn5A%3D%3D&amp;t=3Dplh&amp;midToken=3DAQH3VjeqpMuSoQ&amp;ek=3Dema=
+il_notification_digest_01&amp;li=3D19&amp;m=3Dapp_download&amp;ts=3Dcontent=
+promo&amp;urlhash=3DYNQ3&amp;url=3Dhttps%3A%2F%2Fwww%2Elinkedinmobileapp%2E=
+com%2F" target=3D"_blank" style=3D"cursor:pointer;word-wrap:normal;color:#0=
+073B1;word-break:normal;white-space:nowrap;-webkit-text-size-adjust:100%;di=
+splay:block;text-decoration:none;-ms-text-size-adjust:100%;overflow-wrap:no=
+rmal;"> <table role=3D"presentation" border=3D"0" cellspacing=3D"0" cellpad=
+ding=3D"0" width=3D"auto" style=3D"-webkit-text-size-adjust:100%;mso-table-=
+rspace:0pt;mso-table-lspace:0pt;-ms-text-size-adjust:100%;"> <tbody> <tr> <=
+td style=3D"border-radius:2px;padding:6px 16px;color:#FFFFFF;-webkit-text-s=
+ize-adjust:100%;mso-table-rspace:0pt;font-weight:500;mso-table-lspace:0pt;f=
+ont-size:16px;-ms-text-size-adjust:100%;border-color:#FFFFFF;border-width:1=
+px;border-style:solid;"><a href=3D"https://www.linkedin.com/e/v2?e=3Dcteebk=
+-k8jawog7-hv&amp;lipi=3Durn%3Ali%3Apage%3Aemail_email_notification_digest_0=
+1%3B%2BY%2Bet8FhRuaF4RJhgfAn5A%3D%3D&amp;t=3Dplh&amp;midToken=3DAQH3VjeqpMu=
+SoQ&amp;ek=3Demail_notification_digest_01&amp;li=3D19&amp;m=3Dapp_download&=
+amp;ts=3Dcontentpromo&amp;urlhash=3DYNQ3&amp;url=3Dhttps%3A%2F%2Fwww%2Elink=
+edinmobileapp%2Ecom%2F" target=3D"_blank" style=3D"cursor:pointer;color:#FF=
+FFFF;-webkit-text-size-adjust:100%;display:inline-block;text-decoration:non=
+e;-ms-text-size-adjust:100%;">Download for free</a></td> </tr> </tbody> </t=
+able></a></td> </tr> </tbody> </table></td> </tr> </tbody> </table></td> </=
+tr> </tbody> </table> <!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]=
+--> <!--[if (gte mso 9)|(IE)]><table width=3D"228" align=3D"left" cellpaddi=
+ng=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-top: 24px;=
+"><![endif]--> <table role=3D"presentation" border=3D"0" class=3D"phoenix-a=
+pp-activation-footer-screenshot" cellspacing=3D"0" cellpadding=3D"0" width=
+=3D"228" style=3D"-webkit-text-size-adjust:100%;mso-table-rspace:0pt;displa=
+y:inline-block;mso-table-lspace:0pt;width:228px;-ms-text-size-adjust:100%;"=
+> <tbody> <tr> <td width=3D"228" style=3D"padding:0;-webkit-text-size-adjus=
+t:100%;mso-table-rspace:0pt;mso-table-lspace:0pt;width:228px;-ms-text-size-=
+adjust:100%;height:143px;"><img src=3D"https://static.licdn.com/sc/p/com.li=
+nkedin.email-assets-frontend%3Aemail-assets-frontend-static-content%2B__lat=
+est__/f/%2Femail-assets-frontend%2Fimages%2Femail%2Fphoenix%2Fmodules%2Fapp=
+_activation_footer%2Fphoto_appactivation_screenshot_universal_456x286_v1.pn=
+g" height=3D"143" width=3D"228" alt=3D"" style=3D"outline:none;-ms-interpol=
+ation-mode:bicubic;color:#FFFFFF;text-decoration:none;"></td> </tr> </tbody=
+> </table> <!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]--></td> </=
+tr> </tbody> </table></td> </tr> </tbody> </table></td> </tr> </tbody> </ta=
+ble></td> </tr> <tr> <td style=3D"-webkit-text-size-adjust:100%;mso-table-r=
+space:0pt;mso-table-lspace:0pt;-ms-text-size-adjust:100%;"> <table role=3D"=
+presentation" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100=
+%" bgcolor=3D"#EDF0F3" align=3D"center" style=3D"background-color:#EDF0F3;p=
+adding:0 24px;color:#6A6C6D;-webkit-text-size-adjust:100%;mso-table-rspace:=
+0pt;mso-table-lspace:0pt;-ms-text-size-adjust:100%;text-align:center;"> <tb=
+ody> <tr> <td align=3D"center" style=3D"padding:16px 0 0 0;-webkit-text-siz=
+e-adjust:100%;mso-table-rspace:0pt;mso-table-lspace:0pt;-ms-text-size-adjus=
+t:100%;text-align:center;"> <table role=3D"presentation" align=3D"center" b=
+order=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" style=3D"-we=
+bkit-text-size-adjust:100%;mso-table-rspace:0pt;mso-table-lspace:0pt;-ms-te=
+xt-size-adjust:100%;"> <tbody> <tr> <td valign=3D"middle" align=3D"center" =
+style=3D"padding:0 0 16px 0;-webkit-text-size-adjust:100%;mso-table-rspace:=
+0pt;vertical-align:middle;mso-table-lspace:0pt;-ms-text-size-adjust:100%;te=
+xt-align:center;"><a href=3D"https://www.linkedin.com/e/v2?e=3Dcteebk-k8jaw=
+og7-hv&amp;t=3Dlun&amp;midToken=3DAQH3VjeqpMuSoQ&amp;ek=3Demail_notificatio=
+n_digest_01&amp;li=3D15&amp;m=3Dunsub&amp;ts=3Dunsub&amp;loid=3DAQHBr9xajy5=
+4jAAAAXE850-fBRsWGL8SYp7_Gc6OlrpcE8xkiLkVtNq9vg2nP-2AqcpCioKwKsVKK6r5Ln-pdd=
+7EuenvTlhNLIKWfDEJvISBQQ&amp;eid=3Dcteebk-k8jawog7-hv" style=3D"cursor:poin=
+ter;color:#6A6C6D;-webkit-text-size-adjust:100%;text-decoration:underline;d=
+isplay:inline-block;-ms-text-size-adjust:100%;"> <span style=3D"color:#6A6C=
+6D;font-weight:400;text-decoration:underline;font-size:12px;line-height:1.3=
+33;">Unsubscribe</span></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href=3D"https://www.=
+linkedin.com/e/v2?e=3Dcteebk-k8jawog7-hv&amp;lipi=3Durn%3Ali%3Apage%3Aemail=
+_email_notification_digest_01%3B%2BY%2Bet8FhRuaF4RJhgfAn5A%3D%3D&amp;a=3Dcu=
+stomerServiceUrl&amp;midToken=3DAQH3VjeqpMuSoQ&amp;ek=3Demail_notification_=
+digest_01&amp;li=3D14&amp;m=3Dfooter&amp;ts=3Dhelp&amp;articleId=3D67" styl=
+e=3D"cursor:pointer;color:#6A6C6D;-webkit-text-size-adjust:100%;text-decora=
+tion:underline;display:inline-block;-ms-text-size-adjust:100%;"> <span styl=
+e=3D"color:#6A6C6D;font-weight:400;text-decoration:underline;font-size:12px=
+;line-height:1.333;">Help</span></a></td> </tr> </tbody> </table></td> </tr=
+> <tr> <td style=3D"-webkit-text-size-adjust:100%;mso-table-rspace:0pt;mso-=
+table-lspace:0pt;-ms-text-size-adjust:100%;"> <table role=3D"presentation" =
+border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" style=3D"-w=
+ebkit-text-size-adjust:100%;mso-table-rspace:0pt;mso-table-lspace:0pt;-ms-t=
+ext-size-adjust:100%;"> <tbody> <tr> <td align=3D"center" style=3D"padding:=
+0 0 12px 0;-webkit-text-size-adjust:100%;mso-table-rspace:0pt;mso-table-lsp=
+ace:0pt;-ms-text-size-adjust:100%;text-align:center;"> <p style=3D"margin:0=
+;color:#6A6C6D;font-weight:400;font-size:12px;line-height:1.333;">You are r=
+eceiving LinkedIn notification emails.</p></td> </tr> <tr> <td align=3D"cen=
+ter" style=3D"padding:0 0 12px 0;-webkit-text-size-adjust:100%;mso-table-rs=
+pace:0pt;mso-table-lspace:0pt;-ms-text-size-adjust:100%;text-align:center;"=
+> <p style=3D"margin:0;word-wrap:break-word;color:#6A6C6D;word-break:break-=
+word;font-weight:400;-ms-word-break:break-all;font-size:12px;line-height:1.=
+333;overflow-wrap:break-word;">This email was intended for Scott Powell (Co=
+mputer Science Tutor at Middlebury College). <a href=3D"https://www.linkedi=
+n.com/e/v2?e=3Dcteebk-k8jawog7-hv&amp;lipi=3Durn%3Ali%3Apage%3Aemail_email_=
+notification_digest_01%3B%2BY%2Bet8FhRuaF4RJhgfAn5A%3D%3D&amp;a=3DcustomerS=
+erviceUrl&amp;midToken=3DAQH3VjeqpMuSoQ&amp;ek=3Demail_notification_digest_=
+01&amp;articleId=3D4788" style=3D"cursor:pointer;color:#6A6C6D;-webkit-text=
+-size-adjust:100%;text-decoration:underline;display:inline-block;-ms-text-s=
+ize-adjust:100%;">Learn why we included this.</a></p></td> </tr> <tr> <td a=
+lign=3D"center" style=3D"padding:0 0 8px 0;-webkit-text-size-adjust:100%;ms=
+o-table-rspace:0pt;mso-table-lspace:0pt;-ms-text-size-adjust:100%;text-alig=
+n:center;"><a href=3D"https://www.linkedin.com/comm/feed/?midToken=3DAQH3Vj=
+eqpMuSoQ&amp;trk=3Deml-email_notification_digest_01-footer-12-home&amp;trkE=
+mail=3Deml-email_notification_digest_01-footer-12-home-null-cteebk%7Ek8jawo=
+g7%7Ehv-null-neptune%2Ffeed&amp;lipi=3Durn%3Ali%3Apage%3Aemail_email_notifi=
+cation_digest_01%3B%2BY%2Bet8FhRuaF4RJhgfAn5A%3D%3D" style=3D"cursor:pointe=
+r;color:#6A6C6D;-webkit-text-size-adjust:100%;text-decoration:underline;dis=
+play:inline-block;-ms-text-size-adjust:100%;"><img alt=3D"LinkedIn" border=
+=3D"0" height=3D"14" src=3D"https://static.licdn.com/sc/p/com.linkedin.emai=
+l-assets-frontend%3Aemail-assets-frontend-static-content%2B__latest__/f/%2F=
+email-assets-frontend%2Fimages%2Femail%2Fphoenix%2Flogos%2Flogo_phoenix_foo=
+ter_darkgray_197x48_v1.png" width=3D"58" style=3D"outline:none;-ms-interpol=
+ation-mode:bicubic;color:#FFFFFF;display:block;text-decoration:none;"></a><=
+/td> </tr> <tr> <td align=3D"center" style=3D"padding:0 0 12px 0;-webkit-te=
+xt-size-adjust:100%;mso-table-rspace:0pt;mso-table-lspace:0pt;-ms-text-size=
+-adjust:100%;text-align:center;"> <p style=3D"margin:0;color:#6A6C6D;font-w=
+eight:400;font-size:12px;line-height:1.333;">=C2=A9 2020 LinkedIn Corporati=
+on, 1000 West Maude Avenue, Sunnyvale, CA 94085. LinkedIn and the LinkedIn =
+logo are registered trademarks of LinkedIn.</p></td> </tr> </tbody> </table=
+></td> </tr> </tbody> </table></td> </tr> </tbody> </table> </center></td> =
+</tr> </tbody> </table> <img alt=3D"" role=3D"presentation" src=3D"https://=
+www.linkedin.com/emimp/ip_WTNSbFpXSnJMV3M0YW1GM2IyYzNMV2gyOlpXMWhhV3hmYm05M=
+GFXWnBZMkYwYVc5dVgyUnBaMlZ6ZEY4d01RPT06.gif" style=3D"outline:none;-ms-inte=
+rpolation-mode:bicubic;color:#FFFFFF;text-decoration:none;width:1px;height:=
+1px;"> </body> </html>
+------=_Part_1315649_1152239586.1585864724446--
+

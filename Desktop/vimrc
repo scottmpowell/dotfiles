@@ -1,0 +1,67 @@
+" General View
+set number
+syntax enable
+set background=dark
+set cursorline
+
+" Remaps
+" Ff'ing W
+:command W w
+" Use ; as : in normal mode
+nnoremap ; :
+
+" I hate sound
+set noerrorbells
+set belloff=all
+
+" editing
+set noswapfile
+
+" Only case sensitive searching if I use a capital letter
+set smartcase
+
+" join the civilized world
+set autoindent
+
+" File specific settings
+au BufRead,BufNewFile *.c set 
+    \ tabstop=2 
+    \ shiftwidth=2 
+    \ softtabstop=2
+    \ expandtab
+    \ smarttab
+
+au BufRead,BufNewFile *.py set 
+    \ tabstop=2 
+    \ shiftwidth=2 
+    \ softtabstop=2
+    \ expandtab
+    \ smarttab
+     
+au BufRead,BufNewFile *.h set 
+    \ tabstop=2 
+    \ shiftwidth=2 
+    \ softtabstop=2
+    \ expandtab
+    \ smarttab
+
+
+" Plugins
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin()
+Plug 'preservim/nerdtree'
+Plug 'frazrepo/vim-rainbow'
+Plug 'altercation/vim-colors-solarized'
+call plug#end()
+
+" Enable rainbow
+let g:rainbow_active = 1
+
+" Use Solarized Dark Theme
+let g:solarized_termcolors=256
+colorscheme solarized

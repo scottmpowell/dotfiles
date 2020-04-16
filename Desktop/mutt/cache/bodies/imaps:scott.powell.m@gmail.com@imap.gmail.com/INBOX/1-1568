@@ -1,0 +1,322 @@
+Delivered-To: scott.powell.m@gmail.com
+Received: by 2002:a1c:cfc7:0:0:0:0:0 with SMTP id f190csp5259290wmg;
+        Mon, 26 Aug 2019 11:01:03 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwIGGhzsUYllwOFVdhtqLsTAstFFET1ldzxhGew6hY+fhyKZVEpvRQu0145hZhKp+5Z5MUT
+X-Received: by 2002:a5b:9cb:: with SMTP id y11mr13966373ybq.414.1566842463205;
+        Mon, 26 Aug 2019 11:01:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566842463; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ZPcqikkPknYkHH6Dutop5o7FVJcYkV9f7BeH9rQt93o0ZCv3YK3A6oRABTAVlZ2RYG
+         Rmd/1dZMI/9AKvPi6RjKtFikVZBpbcxcZm6bvLbM0p8157O9Cj8pYyRdB+T6Uzwz9XB9
+         cABFNBNq7n10AZBua5J/WLr6NjDs+LHeWNWJ4HT0mQ6lmRnESDirHMy0IyP7tsas36co
+         JAYmLrqj5PtTkNtmjYeG5MeYA77sdrEgWrad1oz72zsKmuLDAy/IhtC7IDVxIPWZuZrx
+         sgysbUMxzhSsE1zbLEizedxcxUFHTgbC1Gh+13+7j+OBDz6UAjuRa3oo3oCLRm+vWhz5
+         kwZg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:message-id:list-id:reply-to:mime-version
+         :list-unsubscribe:date:subject:to:from:dkim-signature;
+        bh=W0ZdqxIuvikikMm86T4XwgEfjoHdxGnVjmyLcl6B49o=;
+        b=qzp+hl1A33rNHRuTOE9GjUS6zNJWpGPaxlCX/3anIzApIlUmrTBgsW2q26PRQIzu2f
+         dsCQsLlLz59+LxgphmjNP5Sylm3xLhYbkYEeg3QFTYRHvj3eSPG208v8byLYkPFORhuL
+         mwRa5BiOc0/71THsfZvig98CJE9TSx1HVFxHlRxmcrMTQ+y+9Ov0rOiYj/6WfGoK8tYj
+         r4+DDNwkERIq5VD/E0LecEO0O3OMKjCH/dugkZsjITSIoTBtqQiR/aw1TsQ0wGPK+Ms/
+         rIA2j2b+AkiA8PhXLe7UKxFsgQo6uLBbfNiqfyC8vjfHf1JeXpGY9Ksb8rdhDm0Ps0Ew
+         iH2A==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@engage.windows.com header.s=200608 header.b=ZvKHjDHY;
+       spf=pass (google.com: domain of bounce-15_html-82876624-688797-7279955-612@bounce.engage.windows.com designates 13.111.21.232 as permitted sender) smtp.mailfrom=bounce-15_HTML-82876624-688797-7279955-612@bounce.engage.windows.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=engage.windows.com
+Return-Path: <bounce-15_HTML-82876624-688797-7279955-612@bounce.engage.windows.com>
+Received: from mta9.engage.windows.com (mta9.engage.windows.com. [13.111.21.232])
+        by mx.google.com with ESMTPS id l126si4124192ybc.460.2019.08.26.11.01.02
+        for <scott.powell.m@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 26 Aug 2019 11:01:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce-15_html-82876624-688797-7279955-612@bounce.engage.windows.com designates 13.111.21.232 as permitted sender) client-ip=13.111.21.232;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@engage.windows.com header.s=200608 header.b=ZvKHjDHY;
+       spf=pass (google.com: domain of bounce-15_html-82876624-688797-7279955-612@bounce.engage.windows.com designates 13.111.21.232 as permitted sender) smtp.mailfrom=bounce-15_HTML-82876624-688797-7279955-612@bounce.engage.windows.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=engage.windows.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=200608; d=engage.windows.com;
+ h=From:To:Subject:Date:List-Unsubscribe:MIME-Version:Reply-To:List-ID:
+ Message-ID:Content-Type; i=email@engage.windows.com;
+ bh=W0ZdqxIuvikikMm86T4XwgEfjoHdxGnVjmyLcl6B49o=;
+ b=ZvKHjDHYCeF9/AdOWZgCSNC/SxvDxYQbe1ARR2rDJFrqNPxhgzbomFcYR7Y5Bev2c+aGwZ5bjz/V
+   ND6YUqXqiE/2Y8jDY9KV2a9ofqK4W8b214bcJZnv8BExvGTtNlJkf2sC1/TOrSy1xwhAPOtXi1Wp
+   AInbamO2uzN+rx4nqaY=
+Received: by mta9.engage.windows.com id hcgf5u2fmd4b for <scott.powell.m@gmail.com>; Mon, 26 Aug 2019 17:56:05 +0000 (envelope-from <bounce-15_HTML-82876624-688797-7279955-612@bounce.engage.windows.com>)
+From: "Windows" <email@engage.windows.com>
+To: <scott.powell.m@gmail.com>
+Subject: August Tips and Tricks
+Date: Mon, 26 Aug 2019 11:56:04 -0600
+List-Unsubscribe: <mailto:leave-fd8515751a3c402029-fe541c727d63027b7710-feb212787d630d7a-fe831372726d0d7870-ff66127177@leave.engage.windows.com>
+MIME-Version: 1.0
+Reply-To: "NoReply" <reply-feb212787d630d7a-15_HTML-82876624-7279955-612@engage.windows.com>
+List-ID: <7279405.xt.local>
+X-CSA-Complaints: whitelistcomplaints@eco.de
+x-job: 7279955_688797
+Message-ID: <4669f42d-9bad-478d-82d4-caf20591fd18@atl1s07mta660.xt.local>
+Feedback-ID: 7279955:688797:13.111.21.232:sfmktgcld
+Content-Type: multipart/alternative;
+	boundary="5ylFwQIVRrQk=_?:"
+
+This is a multi-part message in MIME format.
+
+--5ylFwQIVRrQk=_?:
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Windows 
+ 
+
+
+
+Check out what's new, plus free wallpapers. | 
+https://view.engage.windows.com/?qs=c0f52a445c65dc6226c514429005df500d1ec00424697d48f353ed27fe16208e53719fdccf283222ba5a05b5110a9f092f93f6ca4216c5622e594d520f6b9631efc989847b862792af77bba11e39b805 
+View as webpage
+
+https://click.engage.windows.com/?qs=e5b7374440a70805883af18e4e3fef34f250d3fd5d187276e0ff4a0ee2fc70dd4645a875aec82ae74a920a47086ca0a8fba862273df20da7b27a23fc3ba7dcb0 
+
+https://click.engage.windows.com/?qs=e5b7374440a70805cacce98db521c70bb2a23e8febc74ddf12e712ad40982e4cf99f1212e6372ae34d3c68e98eefcb9da476d5f28968054a626cfaf64ced25f5 
+Microsoft Tips
+
+
+https://click.engage.windows.com/?qs=e5b7374440a7080533ed1dc0c85b8898395443b3d6929f89a201d84d62b9540243d121d6105ae27ef02b92861f3c3c31c16e329edd008794836c7612af871a8d 
+
+https://click.engage.windows.com/?qs=e5b7374440a7080533ed1dc0c85b8898395443b3d6929f89a201d84d62b9540243d121d6105ae27ef02b92861f3c3c31c16e329edd008794836c7612af871a8d 
+Retro rewind 
+Go back in time to 1985 with fun wallpapers and sounds. Have fun looking at—and listening to—all the components of this tubular theme pack.
+
+https://click.engage.windows.com/?qs=e5b7374440a7080533ed1dc0c85b8898395443b3d6929f89a201d84d62b9540243d121d6105ae27ef02b92861f3c3c31c16e329edd008794836c7612af871a8d 
+TAKE YOUR PC BACK  IN TIME   
+
+
+https://click.engage.windows.com/?qs=e5b7374440a70805ebf267baf840495bb8189edebe6d014b7eae1aafe47588c0c5f7ed1d4d92a624429b7add70c57b7666bb96bc27c47f2456b398e4ce3a347d 
+
+https://click.engage.windows.com/?qs=e5b7374440a70805ebf267baf840495bb8189edebe6d014b7eae1aafe47588c0c5f7ed1d4d92a624429b7add70c57b7666bb96bc27c47f2456b398e4ce3a347d 
+Looking for something a little  less retro?
+
+https://click.engage.windows.com/?qs=e5b7374440a70805ebf267baf840495bb8189edebe6d014b7eae1aafe47588c0c5f7ed1d4d92a624429b7add70c57b7666bb96bc27c47f2456b398e4ce3a347d 
+DOWNLOAD THE COSMOS    
+
+BING QUIZ
+
+https://click.engage.windows.com/?qs=e5b7374440a7080527b43fb6762d7f9ff5a6675a842187823c7bdbc4a3a8da73e2cefec204d81be81805f4a7bd3bb025a776073d82a2d8ebb345b8b9c97ad0be 
+
+https://click.engage.windows.com/?qs=e5b7374440a7080527b43fb6762d7f9ff5a6675a842187823c7bdbc4a3a8da73e2cefec204d81be81805f4a7bd3bb025a776073d82a2d8ebb345b8b9c97ad0be 
+To the  moon and back
+The moonwalk isn't just a dance. How much do you know about the Apollo 11 landing?
+
+https://click.engage.windows.com/?qs=e5b7374440a7080527b43fb6762d7f9ff5a6675a842187823c7bdbc4a3a8da73e2cefec204d81be81805f4a7bd3bb025a776073d82a2d8ebb345b8b9c97ad0be 
+TAKE THE QUIZ    
+
+TIPS
+
+https://click.engage.windows.com/?qs=e5b7374440a708053c49f351966570518bec7244e3e9c1f4c632c773611c240daba1ce0fddde7567f9a70142bc284d1958c6d3d617954bb0b9149aad8de5bb3b 
+
+https://click.engage.windows.com/?qs=e5b7374440a708053c49f351966570518bec7244e3e9c1f4c632c773611c240daba1ce0fddde7567f9a70142bc284d1958c6d3d617954bb0b9149aad8de5bb3b 
+Easy emoji 
+Say what you mean. Easily add an emoji straight from your keyboard with this fun Windows 10 feature.
+
+https://click.engage.windows.com/?qs=e5b7374440a708053c49f351966570518bec7244e3e9c1f4c632c773611c240daba1ce0fddde7567f9a70142bc284d1958c6d3d617954bb0b9149aad8de5bb3b 
+START TYPING EMOJI    
+
+MICROSOFT STORE
+
+https://click.engage.windows.com/?qs=e5b7374440a708051278bac1b9d0606cb2e8551aa433b9fcf577b4b04c992f63362e09249932ac57bf3f9eb5ae4849867d7775e854393948f347d570c57e8093 
+Save up to $500 on select  Windows 10 PCs.1
+ Be brilliant.
+
+https://click.engage.windows.com/?qs=e5b7374440a708051278bac1b9d0606cb2e8551aa433b9fcf577b4b04c992f63362e09249932ac57bf3f9eb5ae4849867d7775e854393948f347d570c57e8093 
+SHOP BACK TO SCHOOL   
+
+https://click.engage.windows.com/?qs=e5b7374440a708051278bac1b9d0606cb2e8551aa433b9fcf577b4b04c992f63362e09249932ac57bf3f9eb5ae4849867d7775e854393948f347d570c57e8093 
+
+Follow Windows
+
+https://click.engage.windows.com/?qs=e5b7374440a708052cdaf1dec163d9f59b8c446183a05c2e7041f88217225bec8d7b131c7f4c253cee330698581ce948a5c823a838a8d0be9bfd9d6a6afc8b29 
+
+https://click.engage.windows.com/?qs=e5b7374440a708053049153bb9a792396c3ca65f30a25d1a6391aa538d80c385f316eae5e5d7317cefe822210e693358cfe8fcc8918a4aa73b6f730c5f6d5a1e 
+
+https://click.engage.windows.com/?qs=e5b7374440a70805916d687ac3669d4a6c75954f9d12ab6c279dd1d8ca8eeae068521027b3dcd7047f8ea94759b416f9fcca5941e6db4d7c279ff5937d353261 
+
+https://click.engage.windows.com/?qs=e5b7374440a70805ee773abb731c0b7c9ca0af7e9d82be0283ecf0523a7e21afccf4dc137ccab39664c342a7377c415af57feab71ae901ba88adb205e3ec3cd9 
+
+
+https://click.engage.windows.com/?qs=e5b7374440a7080520965c2902c9642ed90fb0e74c178976b8daf71551bbb5f71811d4092ccddf1d6dc9d7ef4a1be38f598feb610ce91b95eb8b29f8c681fc6e 
+
+1 Offer valid from August 18, 2019 to August 31, 2019, while supplies last. Available only in Microsoft retail and online store in the United States (including Puerto Rico) and Canada. Offer valid only on select PCs. Not valid on prior orders or purchases; cannot be transferred or otherwise redeemed for cash or promo code(s). May not be combinable with other offers. Refunds will take into account the discount. Price discount does not include taxes, shipping or other fees. Void where prohibited or restricted by law. Microsoft reserves the right to modify or discontinue offers at any time. Limit of 5 offers per customer. Other exclusions and limits may apply.
+
+https://click.engage.windows.com/?qs=e5b7374440a708050f578cf886663f3900e1f30bbf9fd25a0f2c6a077c3845cb8d29a6c70c90d1c9f00e9e036602c2bb7f2c917ffd779ef8043c8f81570e8db1 
+Unsubscribe  | 
+https://click.engage.windows.com/?qs=e5b7374440a70805810e9bdf8801054b2b480863847121616e1bde96166c0aba941233c20aa7adc05077fb8a8e4e698a8de62e6d217bb83a5f40e4c50f97082c 
+Privacy Statement 
+Microsoft Corporation
+One Microsoft Way
+Redmond, WA 98052
+
+
+ 
+
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+
+
+
+--5ylFwQIVRrQk=_?:
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<!DOCTYPE html>
+
+<html lang="en-us" mcdisabled-xmlns="http://www.w3.org/1999/xhtml" mcdisabled-xmlns:v="urn:schemas-microsoft-com:vml" mcdisabled-xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+    <!--[if gte mso 9]><style type="text/css">sup { font-size: 100% !important; } li {text-align:-webkit-match-parent; display:list-item;text-indent: -1em;}</style><![endif]-->
+    <!--[if gte mso 9]> <xml> <o:OfficeDocumentSettings> <o:AllowPNG/> <o:PixelsPerInch>96</o:PixelsPerInch> </o:OfficeDocumentSettings> </xml> 
+<style type="text/css"> @font-face{font-family:'wf_segoe-ui_normal';src:url('https://i.s-microsoft.com/fonts/segoe-ui/west-european/normal/latest.eot');src:url('https://i.s-microsoft.com/fonts/segoe-ui/west-european/normal/latest.eot?#iefix') format('embedded-opentype'),url('https://i.s-microsoft.com/fonts/segoe-ui/west-european/normal/latest.woff') format('woff'),url('https://i.s-microsoft.com/fonts/segoe-ui/west-european/normal/latest.ttf') format('truetype'),url('https://i.s-microsoft.com/fonts/segoe-ui/west-european/normal/latest.svg#web')
+ format('svg');font-weight:normal;font-style:normal;}@font-face{font-family:'wf_segoe-ui_light';src:url('https://i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.eot');src:url('https://i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.eot?#iefix') format('embedded-opentype'),url('https://i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.woff') format('woff'),url('https://i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.ttf') format('truetype'),url('https://i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.svg#web')
+ format('svg');font-weight:normal;font-style:normal;}@font-face{font-family:'wf_segoe-ui_semibold';src:url('https://i.s-microsoft.com/fonts/segoe-ui/west-european/semibold/latest.eot');src:url('https://i.s-microsoft.com/fonts/segoe-ui/west-european/semibold/latest.eot?#iefix') format('embedded-opentype'),url('https://i.s-microsoft.com/fonts/segoe-ui/west-european/semibold/latest.woff') format('woff'),url('https://i.s-microsoft.com/fonts/segoe-ui/west-european/semibold/latest.ttf') format('truetype'),url('https://i.s-microsoft.com/fonts/segoe-ui/west-european/semibold/latest.svg#web') format('svg');font-weight:normal;font-style:normal }@font-face{font-family:'wf_segoe-ui_semilight';src:url('https://i.s-microsoft.com/fonts/segoe-ui/west-european/semilight/latest.ttf')
+ format('truetype');font-weight:normal;font-style:normal }</style><![endif]-->
+    <!--[if !mso]><!-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" style="-webkit-font-smoothing:antialiased;" />
+    <!--<![endif]-->
+
+    <meta charset="utf-8" />
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="x-apple-disable-message-reformatting">
+    <title>Windows</title>
+
+<style type="text/css">
+
+                 html { width: 100%; min-width: 100%; overflow-x: hidden; padding: 0px; margin: 0px; } li {text-align:-webkit-match-parent; display:list-item;} body { width: 100% !important; min-width: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; background-color: #ffffff; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; } img { line-height: 100%; outline: none; text-decoration: none; border: none; height: auto; -ms-interpolation-mode: bicubic; } p { margin: 0 0 !important; } table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse !important; } body, table, td, a { -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; } .ReadMsgBody, .ExternalClass { width: 100%; background-color: #ffffff; }
+ .fullWidth { width: 500px; } .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div { line-height: 100%; } .ExternalClass a:visited, .ExternalClass span.ecxMsoHyperlinkFollowed { color: inherit; } div[style*="margin:16px 0"] { margin: 0 !important; } .phonefix, .phonefix a, .phonefix span a { color: #000000 !important; text-decoration: none; } .phonefix2 a, .phonefix2 span a { color: #717171 !important; text-decoration: none; } span.aBn { border: none; } button { display: block !important; } a { text-decoration: none; } a:visited { color: #0062b3 !important; } a > div { display: block !important; } a.fixLinkBlack:visited, .ExternalClass a.fixLinkBlack:visited { text-decoration: none !important; color: #100d0d !important; }
+ a.fixLinkWhite:visited, .ExternalClass a.fixLinkWhite:visited { text-decoration: none !important; color: #ffffff !important; } a.fixLinkBlue:visited, .ExternalClass a.fixLinkBlue:visited { color: #0078d7 !important; } a.fixLinkDarkBLue, .ExternalClass a.fixLinkDarkBLue:visited { color: #2947a9 !important; }, a.fixLinkGreen, .ExternalClass a.fixLinkGreen:visited { color: #008272 !important; } a[x-apple-data-detectors] { text-decoration: none !important; color: inherit !important; } #outlook a { padding: 0; text-decoration: none !important; } span.MsoHyperlink { mso-style-priority: 99; color: inherit; } span.MsoHyperlinkFollowed { mso-style-priority: 99; color: inherit; } .yshortcuts a { border-bottom: none !important; } span.MsoHyperlink { mso-style-priority: 99 !important; color: inherit
+ !important; } span.MsoHyperlinkFollowed { mso-style-priority: 99 !important; color: inherit !important; } body.theme-main { font-family: SegoeUI, "Segoe UI", Segoe, "Helvetica Neue", "Helvetica","Arial","sans-serif"; font-size: 16px; line-height: 20px; background: #333; font-weight: 400; }
+                @media screen { @font-face { font-family: "SegoeUI"; src: local("Segoe UI"), local("Segoe"), local("Segoe WP"), url("//i.s-microsoft.com/fonts/segoe-ui/westeuropean/normal/latest.eot?#iefix") format("embedded-opentype"), url("//i.s-microsoft.com/fonts/segoe-ui/westeuropean/normal/latest.woff") format("woff"), url("//i.s-microsoft.com/fonts/segoe-ui/westeuropean/normal/latest.ttf") format("truetype"), url("//i.s-microsoft.com/fonts/segoe-ui/westeuropean/normal/latest.svg#web") format("svg"); } @font-face { font-family: "SegoeUI"; font-weight: 100; src: local("Segoe UI Light"), local("Segoe WP Light"), url("//i.s-microsoft.com/fonts/segoe-ui/westeuropean/light/latest.eot?#iefix") format("embedded-opentype"),
+ url("//i.s-microsoft.com/fonts/segoe-ui/westeuropean/light/latest.woff") format("woff"), url("//i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.ttf") format("truetype"), url("//i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.svg#web") format("svg"); } @font-face { font-family: "SegoeUI"; font-weight: 200; src: local("Segoe UI Semilight"), local("Segoe WP Light"), url("//i.s-microsoft.com/fonts/segoe-ui/westeuropean/light/latest.eot?#iefix") format("embedded-opentype"), url("//i.s-microsoft.com/fonts/segoe-ui/westeuropean/light/latest.woff") format("woff"), url("//i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.ttf") format("truetype"), url("//i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.svg#web") format("svg"); } @font-face {
+ font-family: "SegoeUI"; font-weight: 500; src: local("Segoe UI"), local("Segoe"), local("Segoe WP"), url("//i.s-microsoft.com/fonts/segoe-ui/westeuropean/normal/latest.eot?#iefix") format("embedded-opentype"), url("//i.s-microsoft.com/fonts/segoe-ui/westeuropean/normal/latest.woff") format("woff"), url("//i.s-microsoft.com/fonts/segoe-ui/westeuropean/normal/latest.ttf") format("truetype"), url("//i.s-microsoft.com/fonts/segoe-ui/westeuropean/normal/latest.svg#web") format("svg"); } @font-face { font-family: "SegoeUI"; font-weight: 700; src: local("Segoe UI bold"), local("Segoe bold"), local("Segoe WP bold"), url("//i.s-microsoft.com/fonts/segoeui/west-european/bold/latest.eot?#iefix") format("embedded-opentype"), url("//i.s-microsoft.com/fonts/segoeui/west-european/bold/latest.woff")
+ format("woff"), url("//i.s-microsoft.com/fonts/segoe-ui/westeuropean/bold/latest.ttf") format("truetype"), url("//i.s-microsoft.com/fonts/segoe-ui/westeuropean/bold/latest.svg#web") format("svg"); } }
+                @media only screen and (max-width:599px) { .responsive-cont { width: 94.1% !important; min-width: 320px !important; max-width: 599px !important; } .ul-margin-20 {margin: 0.1vw !important;} .padding-top-00 { padding-top: 0vw !important; } .padding-top-04 { padding-top: 0.6vw !important; } .padding-top-08 { padding-top: 1.3vw !important; } .padding-top-12 { padding-top: 1.9vw !important; } .padding-top-16 { padding-top: 2.4vw !important; } .padding-top-20 { padding-top: 3.1vw !important; } .padding-top-24 { padding-top: 3.8vw !important; } .padding-top-28 { padding-top: 4.4vw !important; } .padding-top-32 { padding-top: 5vw !important; } .padding-top-36 { padding-top: 5.7vw !important; } .padding-top-40 { padding-top: 6.3vw !important; } .padding-top-44 { padding-top: 6.9vw
+ !important; } .padding-top-48 { padding-top: 7.5vw !important; } .padding-top-52 { padding-top: 8.1vw !important; } .padding-top-56 { padding-top: 8.7vw !important; } .padding-top-60 { padding-top: 9.4vw !important; } .padding-top-64 { padding-top: 10.1vw !important; } .padding-right-00 { padding-right: 0px !important; } .padding-right-04 { padding-right: 0.6vw !important; } .padding-right-08 { padding-right: 1.3vw !important; } .padding-right-12 { padding-right: 1.9vw !important; } .padding-right-16 { padding-right: 2.4vw !important; } .padding-right-20 { padding-right: 3.1vw !important; } .padding-right-24 { padding-right: 3.8vw !important; } .padding-right-28 { padding-right: 4.4vw !important; } .padding-right-32 { padding-right: 5vw !important; } .padding-right-36 { padding-right:
+ 5.7vw !important; } .padding-right-40 { padding-right: 6.3vw !important; } .padding-right-44 { padding-right: 6.9vw !important; } .padding-right-48 { padding-right: 7.5vw !important; } .padding-right-52 { padding-right: 8.1vw !important; } .padding-right-56 { padding-right: 8.7vw !important; } .padding-right-60 { padding-right: 9.4vw !important; } .padding-bottom-00 { padding-bottom: 0vw !important; } .padding-bottom-04 { padding-bottom: 0.6vw !important; } .padding-bottom-08 { padding-bottom: 1.3vw !important; } .padding-bottom-12 { padding-bottom: 1.9vw !important; } .padding-bottom-16 { padding-bottom: 2.4vw !important; } .padding-bottom-20 { padding-bottom: 3.1vw !important; } .padding-bottom-24 { padding-bottom: 3.8vw !important; } .padding-bottom-28 { padding-bottom: 4.4vw
+ !important; } .padding-bottom-32 { padding-bottom: 5vw !important; } .padding-bottom-36 { padding-bottom: 5.7vw !important; } .padding-bottom-40 { padding-bottom: 6.3vw !important; } .padding-bottom-44 { padding-bottom: 6.9vw !important; } .padding-bottom-48 { padding-bottom: 7.5vw !important; } .padding-bottom-52 { padding-bottom: 8.1vw !important; } .padding-bottom-56 { padding-bottom: 8.7vw !important; } .padding-bottom-60 { padding-bottom: 9.4vw !important; } .padding-left-00 { padding-left: 0vw !important; } .padding-left-04 { padding-left: 0.6vw!important; } .padding-left-08 { padding-left: 1.3vw !important; } .padding-left-12 { padding-left: 1.9vw !important; } .padding-left-16 { padding-left: 2.4vw !important; } .padding-left-20 { padding-left: 3.1vw !important; }
+ .padding-left-24 { padding-left: 3.8vw !important; } .padding-left-28 { padding-left: 4.4vw !important; } .padding-left-32 { padding-left: 5vw !important; } .padding-left-36 { padding-left: 5.7vw !important; } .padding-left-40 { padding-left: 6.3vw !important; } .padding-left-44 { padding-left: 6.9vw !important; } .padding-left-48 { padding-left: 7.5vw !important; } .padding-left-52 { padding-left: 8.1vw !important; } .padding-left-56 { padding-left: 8.7vw !important; } .padding-left-60 { padding-left: 9.4vw !important; } .height-20 { height: 3.4vw!important; } .height-15 { height: 4.3vw !important; } .height-30 { height: 5.1vw !important; } .height-35 { height: 5.9vw !important; } .height-40 { height: 6.8vw !important; } .height-45 { height: 7.6vw !important; } .height-50 { height:
+ 8.4vw !important; } .height-55 { height: 9.3vw !important; } .height-60 { height: 10.1vw !important; } .height-65 { height: 11vw !important; } .height-70 { height: 11.8vw !important; } .height-75 { height: 12.6vw !important; } .height-80 { height: 13.5vw !important; } .height-85 { height: 14.3vw !important; } .height-90 { height: 15.1vw !important; } .height-95 { height: 16vw !important; } .height-100 { height: 16.8vw !important; } .height-125 { height: 21vw !important; } .height-150 { height: 25.1vw !important; } .height-175 { height: 29.3vw !important; } .height-200 { height: 33.5vw !important; } .font-size-12 { font-size: 2.2vw !important; } .font-size-14 { font-size: 2.4vw !important; } .font-size-16 { font-size: 2.6vw !important; } .font-size-18 { font-size: 3.0vw !important; }
+ .font-size-20 { font-size: 3.3vw !important; } .font-size-22 { font-size: 3.6vw !important; } .font-size-24 { font-size: 4.0vw !important; } .font-size-26 { font-size: 4.3vw !important; } .font-size-28 { font-size: 4.6vw !important; } .font-size-30 { font-size: 4.9vw !important; } .font-size-32 { font-size: 5.2vw !important; } .font-size-34 { font-size: 5.5vw !important; } .font-size-36 { font-size: 5.9vw !important; } .font-size-38 { font-size: 6.2vw !important; } .font-size-40 { font-size: 6.5vw !important; } .font-size-42 { font-size: 6.8vw !important; } .font-size-44 { font-size: 7.1vw !important; } .font-size-46 { font-size: 7.3vw !important; } .font-size-48 { font-size: 7.7vw !important; } .font-size-50 { font-size: 8.0vw !important; } .font-size-88 { font-size: 14.0vw !important;
+ } .line-height-12 { line-height: 2.0vw !important; } .line-height-16 { line-height: 2.6vw !important; } .line-height-20 { line-height: 3.3vw !important; } .line-height-24 { line-height: 4vw !important; } .line-height-28 { line-height: 4.4vw !important; } .line-height-32 { line-height: 5vw !important; } .line-height-36 { line-height: 5.7vw !important; } .line-height-40 { line-height: 6.3vw !important; } .line-height-44 { line-height: 6.9vw !important; } .line-height-48 { line-height: 7.5vw !important; } .line-height-52 { line-height: 8.1vw !important; } .line-height-56 { line-height: 8.7vw !important; } .line-height-92 { line-height: 14.3vw !important; } .responsive-table { width: 100% !important; min-width: 320px !important; max-width: 599px !important; } .responsive-img { width: 100%
+ !important; max-width: 599px !important; display: block !important; height: auto !important; } .responsive-logo { width: 100% !important; max-width: 204px !important; display: block !important; height: auto !important; } .responsive-logo-footer { width: 100% !important; max-width: 158px !important; display: block !important; height: auto !important; } .responsive-line { width: 46px !important; height: 164px !important; vertical-align: middle !important; } .responsive-icon { width: 100% !important; max-width: 250px !important; display: block !important; height: auto !important; } .responsive-star { width: 18.7px !important; height: 18.7px !important; } responsive-image-size-01 { max-width: 112px !important; height: 112px !important; } .image-icon-01 { width: 46px !important; height: 46px
+ !important; } .auto-height { height: 100% !important; } .cta-button-width-100 { width: 93.5px !important; } .cta-button-width-110 { width: 103px !important; } .cta-button-width-120 { width: 112.3px !important; } .cta-button-width-130 { width: 121.6px !important; } .cta-button-width-140 { width: 131px !important; } .cta-button-width-150 { width: 140.3px !important; } .cta-button-width-160 { width: 149.7px !important; } .cta-button-width-170 { width: 159px !important; } .cta-button-width-180 { width: 168.5px !important; } .cta-button-width-190 { width: 177.8px !important; } .cta-button-width-200 { width: 187.1px !important; } .cta-button-width-210 { width: 196.5px !important; } .cta-button-width-220 { width: 206px !important; } .cta-button-width-230 { width: 215.2px !important; }
+ .cta-button-width-240 { width: 224.6px !important; } .cta-button-width-250 { width: 234px !important; } .cta-button-width-260 { width: 243.3px !important; } .cta-button-width-270 { width: 252.7px !important; } .cta-button-width-280 { width: 262px !important; } .cta-button-width-290 { width: 271.4px !important; } .cta-button-width-300 { width: 280.7px !important; } .cta-button-width-310 { width: 290px !important; } .cta-button-width-320 { width: 299.5px !important; } .cta-button-width-330 { width: 308.8px !important; } .cta-button-width-340 { width: 318.2px !important; } .cta-button-width-350 { width: 327px !important; } .cta-button-width-360 { width: 336px !important; } .cta-button-width-370 { width: 345px !important; } .cta-button-width-380 { width: 353px !important; }
+ .cta-button-width-420 { width: 393px !important; } .cta-button-width-450 { width: 400px !important; } .responsive-arrow-01 { width: 7px !important; height: 12px !important; vertical-align: -0.6px !important; } .responsive-ls { letter-spacing: 9.3px !important; } .social-icon-size-01 { height: 22.5px !important; width: 22.5px !important; } .cta-text{font-size:1.9vw !important;} .height-offer{height:29vw} }
+                @media only screen and (max-width:499px) { .responsive-logo { width: 100% !important; max-width: 170px !important; display: block !important; height: auto !important; } .responsive-logo-footer { width: 100% !important; max-width: 130px !important; display: block !important; height: auto !important; } .responsive-line { width: 38px !important; height: 137px !important; vertical-align: middle !important; } .responsive-star { width: 15.6px !important; height: 15.6px !important; } .responsive-image-size-01 { max-width: 93px !important; height: 93px !important; } .image-icon-01 { width: 39px !important; height: 39px !important; } .cta-button-width-100 { width: 78px !important; } .cta-button-width-110 { width: 85.7px !important; } .cta-button-width-120 { width: 93.5px
+ !important; } .cta-button-width-130 { width: 101.3px !important; } .cta-button-width-140 { width: 109.1px !important; } .cta-button-width-150 { width: 117px !important; } .cta-button-width-160 { width: 124.7px !important; } .cta-button-width-170 { width: 132.5px !important; } .cta-button-width-180 { width: 140.3px !important; } .cta-button-width-190 { width: 148.1px !important; } .cta-button-width-200 { width: 156px !important; } .cta-button-width-210 { width: 163.7px !important; } .cta-button-width-220 { width: 171.5px !important; } .cta-button-width-230 { width: 179.3px !important; } .cta-button-width-240 { width: 187px !important; } .cta-button-width-250 { width: 195px !important; } .cta-button-width-260 { width: 202.7px !important; } .cta-button-width-270 { width: 210.5px !important;
+ } .cta-button-width-280 { width: 218.3px !important; } .cta-button-width-290 { width: 226.1px !important; } .cta-button-width-300 { width: 233.9px !important; } .cta-button-width-310 { width: 241.7px !important; } .cta-button-width-320 { width: 249.5px !important; } .cta-button-width-330 { width: 257.2px !important; } .cta-button-width-340 { width: 265px !important; } .cta-button-width-350 { width: 272px !important; } .cta-button-width-360 { width: 280px !important; } .cta-button-width-370 { width: 288px !important; } .cta-button-width-380 { width: 296px !important; } .cta-button-width-420 { width: 327px !important; } .cta-button-width-450 { width: 360px !important; }  .responsive-arrow-01 { width: 5px !important; height: 11px !important; vertical-align: -1.5px !important; }
+ .responsive-ls { letter-spacing: 7.8px !important; } .social-icon-size-01 { height: 18.7px !important; width: 18.7px !important; } }
+                @media only screen and (max-width:415px) { .responsive-logo { width: 100% !important; max-width: 142px !important; display: block !important; height: auto !important; } .responsive-logo-footer { width: 100% !important; max-width: 110px !important; display: block !important; height: auto !important; } .responsive-line { width: 31px !important; height: 114px !important; vertical-align: middle !important; } .responsive-star { width: 13px !important; height: 13px !important; } .responsive-image-size-01 { max-width: 78px !important; height: 78px !important; } .image-icon-01 { width: 32px !important; height: 32px !important; } .cta-button-width-100 { width: 64.8px !important; } .cta-button-width-110 { width: 71.3px !important; } .cta-button-width-120 { width: 77.8px !important;
+ } .cta-button-width-130 { width: 84.3px !important; } .cta-button-width-140 { width: 90.7px !important; } .cta-button-width-150 { width: 97.2px !important; } .cta-button-width-160 { width: 103.7px !important; } .cta-button-width-170 { width: 110.2px !important; } .cta-button-width-180 { width: 116.7px !important; } .cta-button-width-190 { width: 123.2px !important; } .cta-button-width-200 { width: 129.6px !important; } .cta-button-width-210 { width: 136.1px !important; } .cta-button-width-220 { width: 142.6px !important; } .cta-button-width-230 { width: 149.1px !important; } .cta-button-width-240 { width: 155.6px !important; } .cta-button-width-250 { width: 162.1px !important; } .cta-button-width-260 { width: 168.6px !important; } .cta-button-width-270 { width: 175px !important; }
+ .cta-button-width-280 { width: 181.5px !important; } .cta-button-width-290 { width: 188px !important; } .cta-button-width-300 { width: 194.5px !important; } .cta-button-width-310 { width: 201px !important; } .cta-button-width-320 { width: 207.5px !important; } .cta-button-width-330 { width: 214px !important; } .cta-button-width-340 { width: 220.4px !important; } .cta-button-width-350 { width: 227px !important; } .cta-button-width-360 { width: 233px !important; } .cta-button-width-370 { width: 240px !important; } .cta-button-width-380 { width: 246px !important; } .cta-button-width-420 { width: 272px !important; } .cta-button-width-450 { width: 340px !important; } .responsive-arrow-01 { width: 5px !important; height: 9px !important; vertical-align: -0.6px !important; } .responsive-ls {
+ letter-spacing: 6.5px !important; } .social-icon-size-01 { height: 15.5px !important; width: 15.5px !important; } .font-size-12 { font-size: 2.3vw !important; } .font-size-14 { font-size: 2.4vw !important; } .font-size-16 { font-size: 2.6vw !important; } .font-size-18 { font-size: 3vw !important; } .font-size-20 { font-size: 3.3vw !important; } .font-size-22 { font-size: 3.6vw !important; } .font-size-24 { font-size: 4vw !important; } .font-size-26 { font-size: 4.3vw !important; } .font-size-28 { font-size: 4.6vw !important; } .font-size-30 { font-size: 4.9vw !important; } .font-size-32 { font-size: 5.2vw !important; } .font-size-34 { font-size: 5.5vw !important; } .font-size-36 { font-size: 5.9vw !important; } .font-size-38 { font-size: 6.2vw !important; } .font-size-40 { font-size:
+ 6.5vw !important; } .font-size-42 { font-size: 6.8vw !important; } .font-size-44 { font-size: 7.1vw !important; } .font-size-46 { font-size: 7.4vw !important; } .font-size-48 { font-size: 7.7vw !important; } .font-size-50 { font-size: 8vw !important; } .font-size-88 { font-size: 14vw !important; } .line-height-12 { line-height: 2.4vw !important; } .line-height-16 { line-height: 2.9vw !important; } .line-height-20 { line-height: 3.6vw !important; } .line-height-24 { line-height: 4.3vw !important; } .line-height-28 { line-height: 4.9vw !important; } .line-height-32 { line-height: 5.5vw !important; } .line-height-36 { line-height: 6.2vw !important; } .line-height-40 { line-height: 6.8vw !important; } .line-height-44 { line-height: 7.5vw !important; } .line-height-48 { line-height: 8vw
+ !important; } .line-height-52 { line-height: 8.6vw !important; } .line-height-56 { line-height: 9.2vw !important; } .line-height-92 { line-height: 14.8vw !important; }.cta-text {font-size:2.3vw !important;} }
+
+</style>
+    
+</head>
+<body>
+    <table border="0" cellspacing="0" cellpadding="0" width="100%" mcdisabled-role="presentation">
+        <tr>
+            <td style="background-color: #e2e2e2;">
+                <table align="center" border="0" cellspacing="0" cellpadding="0" width="680" mcdisabled-role="presentation" class="responsive-cont">
+                    <tr>
+                        <td style="background-color: #e2e2e2;">
+                            <table align="center" border="0" cellspacing="0" cellpadding="0" width="640" mcdisabled-role="presentation" class="responsive-table">
+                                <tr>
+                                    <td align="center" style="padding: 20px 0px 20px 0px;"> 
+                                        <!--******* AmpScript to dynamically display emails using CADE framework *********-->
+<table border="0" cellpadding="0" cellspacing="0" width="640" style="min-width:640px;width:640px;padding:0px 0px 0px 0px;" class="responsive-table" role="presentation"><tr><td>
+
+
+<!-- Display the module as if it were a content block. -->
+<!-- 1B_Header_WIN10 --><table cellpadding="0" cellspacing="0" border="0" width="100%" role="presentation"><tr><td align="center"><!-- middleHeadText --><table cellpadding="0" cellspacing="0" border="0" width="100%" role="presentation"><tr><td bgcolor="#505050" align="center" style="font-family: 'Segoe UI', 'Segoe WP', wf_segoe-ui_semilight, Tahoma, Arial, sans-serif;font-weight: 400;font-size:15px;line-height:20px;color:#ffffff; padding:20px 5px; text-align:center;" class="font-size-16 line-height-20 padding-top-20 padding-right-04 padding-bottom-20 padding-left-04">Check out what's new, plus free wallpapers. |&nbsp;<a target="_blank" href="https://view.engage.windows.com/?qs=c0f52a445c65dc6226c514429005df500d1ec00424697d48f353ed27fe16208e53719fdccf283222ba5a05b5110a9f092f93f6ca4216c5625078e101d7c5843b3ebfeeebf1d839b81d934fb9f9f93fa4"  style="color:#ffffff;text-decoration: underline;" vlink="#ffffff" class="fixLinkWhite">
+<span style="white-space:nowrap;">View&nbsp;as&nbsp;webpage</span></a></td></tr></table><!-- end middleHeadText --></td></tr><tr><td align="center"><!-- headLogo --><table cellpadding="0" cellspacing="0" border="0" width="100%" role="presentation"><tr><td align="left" style="background-color:#ffffff;padding: 40px 0px 40px 20px;" class="padding-top-40 padding-bottom-40 padding-left-20"><a href=https://click.engage.windows.com/?qs=e5b7374440a7080579fcd59efb3294d2d57388c67cb19aa925cfe08df8b0dcd42dd6c1d3d981d2fd6846a2e85c81f11acc3cbb1e363de53e900a75885b84a47d target="_blank" ><img src="https://image.engage.windows.com/lib/fe831372726d0d7870/m/2/Windows_10_Logo_blue_218x40.png" width="210" alt="Windows Homepage" title="Windows Logo" border="0" style="display:block;width:210px;" class="responsive-logo" /></a></td>
+<td align="right" style="font-family:'Segoe UI', 'Segoe WP', wf_segoe-ui_light, Tahoma, Arial, sans-serif;font-size:13px;line-height: 16px;font-weight:600; background-color:#ffffff;padding: 40px 20px 40px 0px;" class="font-size-14 line-height-16 padding-top-40 padding-right-20 padding-bottom-40 padding-left-00"><a href=https://click.engage.windows.com/?qs=e5b7374440a70805fca8cc10fae2aad720b828564a8284ea66ab85102ca23b1a1da7e879f75078cb7984481602349c919bf0433a90d8437f3da8aa398f3f7e68 target="_blank"  style="color:#0078d7;text-decoration:underline;" class="fixLinkBlue"><span style="white-space:nowrap;">Microsoft&nbsp;Tips</span></a></td></tr></table><!-- end headLogo --></td></tr></table><!-- end 1B_Header_WIN10 --></td></tr><tr><td><table cellpadding="0" cellspacing="0" border="0" width="100%" role="presentation" style="background-color: #ffffff;"><!-- image --><tr><td align="center">
+<a href=https://click.engage.windows.com/?qs=e5b7374440a7080553c016acf008a1bbc639ad3755b9d900485d41f529cb069cc82938663f7a54dff3b1134a3133540020659115e28174ab80e426a8aaa58265 target="_blank" ><img src="https://image.engage.windows.com/lib/fe831372726d0d7870/m/6/5da2480b-e754-4f79-bdf4-35688a7d4d24.png" width="640" height="360" alt="An open laptop with a wallpaper from the Windows Throwback theme pack." title="Retro wallpaper" border="0" style="display:block;width:640px;height:360px;" class="responsive-img" /></a></td></tr><!-- end image --><!-- title --><tr>
+<td align="center" style="font-family: 'Segoe UI Semibold', wf_segoe-ui_semibold, 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif; font-size: 46px; font-weight: 500; line-height: 56px; color: #000000; padding:30px 20px 20px 20px;" class="font-size-46 line-height-56 padding-top-32 padding-right-20 padding-bottom-20 padding-left-20"><a href=https://click.engage.windows.com/?qs=e5b7374440a70805b8985a818ec17a701398c51e02853fa831f0be0aed0b67626ce76a838a32fc514ae9c35570fd5e7aee5e33662e271853745c45200b741fe7 target="_blank"  style="color:#000000;text-decoration:none;" class="fixLinkBlack">Retro rewind</a></td></tr><!-- end title --><!-- text --><tr>
+<td align="center" style="font-family: 'Segoe UI', wf_segoe-ui_light, 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;font-size:18px; font-weight:300; line-height:20px; color:#000000;padding:0px 15px 40px 15px;" class="font-size-18 line-height-20 padding-right-16 padding-bottom-40 padding-left-16">Go back in time to 1985 with fun wallpapers and sounds. Have fun looking at—and listening to—all the components of this tubular <span style="white-space:nowrap;">theme&nbsp;pack.</span></td></tr><!-- end text --><!-- button --><tr><td align="center" style="padding: 0px 0px 60px 0px;" class="padding-bottom-60"><table width="250" height="40" cellpadding="0" border="0" align="center" cellspacing="0" style="background-color:#ffffff" class="cta-button-width-250 auto-height"><tr>
+<td align="center" style="font-family: 'Segoe UI', 'Segoe WP', wf_segoe-ui_normal, Tahoma, Arial, sans-serif; color:#ffffff; line-height:16px; font-weight:600; font-size: 14px; padding:13px 0px 13px 0px; text-align:center; background-color:#0078d7; border: 1px solid #0078d7;" class="font-size-14 line-height-16 padding-top-12 padding-bottom-12"><a href=https://click.engage.windows.com/?qs=e5b7374440a70805c127241ac75e3e4d74db66826e27048408da8d7d33c314d653c31c3113d86d1bff70652db536a95c82d39fcc89a04e6f595e5cbae9196312 target="_blank"  style="color:#ffffff;text-decoration:none;" class="fixLinkWhite">TAKE YOUR PC BACK <span style="white-space:nowrap;">IN&nbsp;TIME<span>&nbsp;&nbsp;&nbsp;</span>
+<img src="http://image.engage.windows.com/lib/fe831372726d0d7870/m/2/CTA_White_Arrow.png" width="7" height="12" valign="middle" border="0" style="width: 7px; height: 12px; vertical-align:-0.5px;" class="responsive-arrow-01"></span></a></td></tr></table></td></tr><!-- end button --></table></td></tr><tr><td><table cellpadding="0" cellspacing="0" border="0" width="100%" role="presentation"><tr><td style="padding: 20px 0px 0px 0px; background-color: #e2e2e2;"><table cellpadding="0" cellspacing="0" border="0" width="100%" role="presentation" style="background-color: #ffffff;"><!-- image --><tr><td align="center" style="padding: 0px 20px 0px 20px;" class="padding-right-20 padding-left-20"><a href=https://click.engage.windows.com/?qs=e5b7374440a70805437f448bfe29aa508805611c413f19821524496553446b67600be43024e54e2d4b44d290ddcde72a68ee78ecf2e167c9778dbeb9aaad827f target="_blank" >
+<img src="https://image.engage.windows.com/lib/fe831372726d0d7870/m/6/6a8f1fd8-b77c-4e44-b7a4-0802acff9b7b.png" width="600" height="225" alt="A collage of five colorful nebulas." title="Outer space collage" border="0" style="display:block;width:600px;height:225px;" class="responsive-img" /></a></td></tr><!-- end image -->
+<!-- title --><tr><td align="center" style="font-family: 'Segoe UI Semibold', wf_segoe-ui_semibold, 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif; font-size: 46px; font-weight: 500; line-height: 56px; color: #000000; padding:40px 20px 40px 20px;" class="font-size-46 line-height-56 padding-top-40 padding-right-20 padding-bottom-40 padding-left-20"><a href=https://click.engage.windows.com/?qs=e5b7374440a70805fc9a893b38454c3becddf13c73dbf60508014b7c7ad095eced1fc051d1d56792af888f7c0ce0931611fed7d7755ac05579026b3ab4f075db target="_blank"  style="color:#000000;text-decoration:none;" class="fixLinkBlack">Looking for something a little <span style="white-space:nowrap;">less&nbsp;retro?</span></a></td></tr><!-- end title --><!-- link --><tr><td align="center" style="font-size: 7px; padding: 0px 0px 60px 0px;" class="padding-bottom-60">
+<a href=https://click.engage.windows.com/?qs=e5b7374440a70805f82c444439c55ea35a6248b54895c19bf2f9db24a3917f6c41614680a9fcf711d29de30436723f00e217a20468b1437195dbe2dbe831323d target="_blank"  style="font-family:'Segoe UI Bold', 'Segoe WP', wf_segoe-ui_bold, Tahoma, Arial, sans-serif;font-size:13px;line-height:16px;font-weight:700; text-decoration:none; color:#0078d7;" class="font-size-14 line-height-16 fixLinkBlue">DOWNLOAD THE COSMOS<span>&nbsp;&nbsp;&nbsp;</span><img src="http://image.engage.windows.com/lib/fe831372726d0d7870/m/2/CTA_Blue_Arrow.png" width="7" height="12" alt="" border="0" style="width: 7px; height: 12px; vertical-align:-1px;" class="responsive-arrow-01"></span></a></td></tr><!-- end link --></table></td></tr></table></td></tr><tr><td><table cellpadding="0" cellspacing="0" border="0" width="100%" role="presentation"><tr><td style="padding: 20px 0px 0px 0px; background-color: #e2e2e2;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" role="presentation" style="background-color: #ffffff;"><!-- TS Badge --><tr><td style="background-color: #e2e2e2;"><table width="24%" height="18" cellpadding="0" border="0" align="left" cellspacing="0" style="background-color:#FFD900;"><tr>
+<td align="center" style="font-family: 'Segoe UI Bold', 'Segoe WP', wf_segoe-ui_bold, Tahoma, Arial, sans-serif; color:#ffffff; line-height:16px; font-weight:700;font-size: 13px; padding:4px 8px 5px 8px; text-align:center; background-color:#000000;" class="font-size-14 line-height-16 padding-top-04 padding-right-08 padding-bottom-04 padding-left-08">BING QUIZ</td></tr></table></td></tr><!-- end TS Badge --><!-- image --><tr><td align="center"><a href=https://click.engage.windows.com/?qs=e5b7374440a7080546ad584ee34a0f0973c2386f01de628ff4d73fb2ca47c96bfe7e40434ae76c43a7a34d847478ed0073941f90699c8bc06a6f6c1345fe7339 target="_blank" ><img src="https://image.engage.windows.com/lib/fe831372726d0d7870/m/6/98356c51-e7e0-46a7-99fa-986866ffe38b.png" width="640" height="360" alt="A close-up shot of the moon" title="The moon" border="0" style="display:block;width:640px;height:360px;" class="responsive-img" /></a>
+</td></tr><!-- end image --><!-- title --><tr><td align="center" style="font-family: 'Segoe UI Semibold', wf_segoe-ui_semibold, 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif; font-size: 46px; font-weight: 500; line-height: 56px; color: #000000; padding:30px 20px 28px 20px;" class="font-size-46 line-height-56 padding-top-32 padding-right-20 padding-bottom-28 padding-left-20"><a href=https://click.engage.windows.com/?qs=e5b7374440a70805d43725cd4c84f78dc373270ce08860fa84f2f76411a32464f0b5973dca4411347e2472c878186988b7643d94443fec41e656597c303d136e target="_blank"  style="color:#000000;text-decoration:none;" class="fixLinkBlack">To the <span style="white-space:nowrap;">moon&nbsp;and&nbsp;back</span></a></td></tr><!-- end title --><!-- text --><tr>
+<td align="center" style="font-family: 'Segoe UI', wf_segoe-ui_light, 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;font-size:18px; font-weight:300; line-height:20px; color:#000000;padding:0px 15px 40px 15px;" class="font-size-18 line-height-20 padding-right-16 padding-bottom-40 padding-left-16">The moonwalk isn't just a dance. How much do you know about the <span style="white-space:nowrap;">Apollo&nbsp;11&nbsp;landing?</span></td></tr><!-- end text --><!-- link --><tr><td align="center" style="font-size: 7px; padding: 0px 0px 60px 0px;" class="padding-bottom-60">
+<a href=https://click.engage.windows.com/?qs=e5b7374440a70805134e005d82a22310f6ac03993daa58b39077153d559ee4da1145d5733adad5d9844f67beb1878027c9edfb64f03eaf434440654d95f7c541 target="_blank"  style="font-family:'Segoe UI Bold', 'Segoe WP', wf_segoe-ui_bold, Tahoma, Arial, sans-serif;font-size:13px;line-height:16px;font-weight:700; text-decoration:none; color:#0078d7;" class="font-size-14 line-height-16 fixLinkBlue">TAKE THE QUIZ<span>&nbsp;&nbsp;&nbsp;</span><img src="http://image.engage.windows.com/lib/fe831372726d0d7870/m/2/CTA_Blue_Arrow.png" width="7" height="12" alt="" border="0" style="width: 7px; height: 12px; vertical-align:-1px;" class="responsive-arrow-01"></span></a></td></tr><!-- end link --></table></td></tr></table></td></tr><tr><td><table cellpadding="0" cellspacing="0" border="0" width="100%" role="presentation"><tr><td style="padding: 20px 0px 0px 0px; background-color: #e2e2e2;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" role="presentation" style="background-color: #ffffff;"><!-- TS Badge --><tr><td style="background-color: #e2e2e2;"><table width="24%" height="18" cellpadding="0" border="0" align="left" cellspacing="0" style="background-color:#FFD900;"><tr>
+<td align="center" style="font-family: 'Segoe UI Bold', 'Segoe WP', wf_segoe-ui_bold, Tahoma, Arial, sans-serif; color:#ffffff; line-height:16px; font-weight:700;font-size: 13px; padding:4px 8px 5px 8px; text-align:center; background-color:#000000;" class="font-size-14 line-height-16 padding-top-04 padding-right-08 padding-bottom-04 padding-left-08">TIPS</td></tr></table></td></tr><!-- end TS Badge --><!-- image --><tr><td align="center"><a href=https://click.engage.windows.com/?qs=e5b7374440a708057da7760a47df453369e162132d0e8bfda9add329133df5f9d9cce568f090d1945189216e0b70c3222152bc264d9a5246ce298e01005eec05 target="_blank" >
+<img src="https://image.engage.windows.com/lib/fe831372726d0d7870/m/6/7e9ffa6e-6963-4ca2-9aca-00b06fdf2bdb.png" width="640" height="160" alt="Five emoji spell out the phrase 'It's raining cats and dogs,' from left to right: rain, cat, dog, cat, dog." title="Emoji collage" border="0" style="display:block;width:640px;height:160px;" class="responsive-img" /></a></td></tr><!-- end image --><!-- title --><tr><td align="center" style="font-family: 'Segoe UI Semibold', wf_segoe-ui_semibold, 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif; font-size: 46px; font-weight: 500; line-height: 56px; color: #000000; padding:30px 20px 28px 20px;" class="font-size-46 line-height-56 padding-top-32 padding-right-20 padding-bottom-28 padding-left-20">
+<a href=https://click.engage.windows.com/?qs=e5b7374440a708057c39da86fc7673a2f1a2dfb0702151561f077a702c94cca38ca6f48d2c4e024be5b12674b9ae89d761428800a6fbd2cf6fe012f2547e8ace target="_blank"  style="color:#000000;text-decoration:none;" class="fixLinkBlack">Easy emoji</a></td></tr><!-- end title --><!-- text --><tr><td align="center" style="font-family: 'Segoe UI', wf_segoe-ui_light, 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;font-size:18px; font-weight:300; line-height:20px; color:#000000;padding:0px 15px 40px 15px;" class="font-size-18 line-height-20 padding-right-16 padding-bottom-40 padding-left-16">Say what you mean. Easily add an emoji straight from your keyboard with this fun <span style="white-space:nowrap;">Windows&nbsp;10&nbsp;feature.</span></td></tr><!-- end text --><!-- link --><tr>
+<td align="center" style="font-family:'Segoe UI Bold', 'Segoe WP', wf_segoe-ui_bold, Tahoma, Arial, sans-serif;font-size:13px;line-height:16px;font-weight:700; text-decoration:none; color:#0078d7; padding:0px 0px 60px 0px;" class="padding-bottom-60 font-size-14 line-height-16"><a href=https://click.engage.windows.com/?qs=e5b7374440a70805ce22fb7ce011dd458797ad66844a55d82e7fb7596fa29f84d45167d9e772fbd893777eb4eefded3b333dba726319557f5b5155eac02ed92c target="_blank"  style="font-family:'Segoe UI Bold', 'Segoe WP', wf_segoe-ui_bold, Tahoma, Arial, sans-serif;font-size:13px;line-height:16px;font-weight:600; text-decoration:none; color:#0078d7;" class="font-size-14 line-height-16 fixLinkBlue">START TYPING EMOJI<span>&nbsp;&nbsp;&nbsp;</span>
+<img src="http://image.engage.windows.com/lib/fe831372726d0d7870/m/2/CTA_Blue_Arrow.png" width="7" height="12" alt="" border="0" style="width: 7px; height: 12px; vertical-align:-1px;" class="responsive-arrow-01"></a></td></tr><!-- end link --></table></td></tr></table></td></tr><tr><td><table cellpadding="0" cellspacing="0" border="0" width="100%" role="presentation"><tr><td style="padding: 20px 0px 0px 0px; background-color: #e2e2e2;"><table cellpadding="0" cellspacing="0" border="0" width="100%" role="presentation" style="background-color: #3b2e58;"><!-- TS Badge --><tr><td style="background-color: #e2e2e2;"><table width="24%" height="18" cellpadding="0" border="0" align="left" cellspacing="0" style="background-color:#FFD900;"><tr>
+<td align="center" style="font-family: 'Segoe UI Bold', 'Segoe WP', wf_segoe-ui_bold, Tahoma, Arial, sans-serif; color:#ffffff; line-height:16px; font-weight:700;font-size: 13px; padding:4px 8px 5px 8px; text-align:center; background-color:#000000;" class="font-size-14 line-height-16 padding-top-04 padding-right-08 padding-bottom-04 padding-left-08"><span style="white-space:nowrap;">MICROSOFT&nbsp;STORE</span></td></tr></table></td></tr><!-- end TS Badge --><tr><td style="padding:60px 0px 60px 0px; background-color:#3b2e58;" class="padding-bottom-60 padding-top-60"><table cellpadding="0" cellspacing="0" border="0" width="100%" role="presentation"><tr><td valign="middle" style="padding:0px 10px 0px 20px;width:53%;" class="padding-right-12 padding-left-20">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" role="presentation"><tr><td align="left" style="font-family: 'Segoe UI', wf_segoe-ui_light, 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;font-size:24px; font-weight:300; line-height:28px; color:#d59dff; padding:20px 0px 24px 0px;" class="font-size-24 line-height-28 padding-bottom-24"><a href=https://click.engage.windows.com/?qs=e5b7374440a70805c53b725ba47130f2b9ecf98e99c515b3f671e40d95d3607fb5c498c7c26c67ac1f3982d3d4c795c438db4ff2fbbf8f54244e4458a07b5fbe target="_blank"  style="color:#d59dff; text-decoration:none;" class="fixLinkWhite">Save up to $500 on select <span style="white-space:nowrap;">Windows&nbsp;10&nbsp;PCs.<sup style="line-height: 0px; font-size: 70%;">1</sup></span> <br /> Be brilliant.</a></td></tr><!-- button --><tr><td align="left" style="padding: 40px 0px 60px 0px;" class="padding-bottom-40 padding-bottom-60">
+<table width="200" height="40" cellpadding="0" border="0" align="left" cellspacing="0" style="background-color:#d59dff" class="cta-button-width-200 auto-height"><tr><td align="left" style="font-family: 'Segoe UI', 'Segoe WP', wf_segoe-ui_normal, Tahoma, Arial, sans-serif; color:#ffffff; line-height:16px; font-weight:600;font-size: 13px; padding:13px 0px 13px 0px; text-align:center; background-color:#d59dff; border: 1px solid #d59dff;" class="font-size-14 line-height-16 padding-top-12 padding-bottom-12"><a href=https://click.engage.windows.com/?qs=e5b7374440a7080538bf0b344329c2fcf5c815633d04ed78e3c03b70e8e5f2e25bf5ea82cdb1612546eb483dace862963139812509692cc231ef63a68f00b8eb target="_blank"  style="color:#ffffff;text-decoration:none;"><span style="white-space:nowrap;">SHOP&nbsp;BACK&nbsp;TO&nbsp;SCHOOL<span>&nbsp;&nbsp;&nbsp;</span>
+<img src="http://image.engage.windows.com/lib/fe831372726d0d7870/m/2/CTA_White_Arrow.png" width="7" height="12" valign="middle" border="0" style="width: 7px; height: 12px; vertical-align:-0.5px;" class="responsive-arrow-01"></span></a></td></tr></table></td></tr><!-- end button --></table></td><!-- image --><td align="right" valign="middle" style="padding:0px 20px 0px 10px;" class="padding-right-20 padding-left-12"><a href=https://click.engage.windows.com/?qs=e5b7374440a70805bb752707dc50803d2a09357edd9168eb7bcf92e99620403c9e5a338b3aecf2c8d8f86bf7eabdbb2daa611db50fa4d53560491a7d5f8c3101 target="_blank" >
+<img src="https://image.engage.windows.com/lib/fe831372726d0d7870/m/6/52261241-f071-401b-979c-0f3e07ccf3cc.png" width="270" height="270" alt="Photo image of Windows 10 PC and mouse." title="Windows 10 PC" border="0" style="display:block;width:270px;height:270px;vertical-align: middle;" class="responsive-img" /></a></td><!-- end image --></tr></table></td></tr></table></td></tr></table></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td><!-- 2_Social Bar --><table cellpadding="0" width="100%" border="0" align="center" cellspacing="0" style="background-color: #505050" class="responsive-table"><tr><td style="padding:20px 40px;" class="padding-top-20 padding-right-40 padding-bottom-20 padding-left-40"><table cellpadding="0" border="0" align="center" cellspacing="0" width="100%" style="background-color: #505050"><tbody><tr><td><table cellpadding="0" border="0" align="left" cellspacing="0"><tbody><tr>
+<td align="left" valign="middle" style="font-family: 'Segoe UI Regular', 'Segoe WP', wf_segoe-ui_normal, Tahoma, Arial, sans-serif;color:#ffffff; background-color: #505050;font-weight:300; font-size: 16px; line-height:20px; padding:0px 0px 0px 0px; text-align:left;" class="font-size-16 line-height-20">Follow Windows</td></tr>
+</tbody></table><table cellpadding="0" border="0" align="right" cellspacing="0"><tbody><tr><td align="left" valign="middle" style="background-color: #505050;padding:0px 20px 0px 0px; text-align:left;" class="padding-right-20"><a href=https://click.engage.windows.com/?qs=e5b7374440a7080502b3958313ba9bc23364a5a5a04d4120ecbc541b09376ff8d56f541e178083ad7b68c03bb8df955600182bc45c655b31f43a750a0af0c541 target="_blank"  style="text-decoration:none;"><img src="https://image.engage.windows.com/lib/fe831372726d0d7870/m/2/IconFB_24x24.jpg" width="24" height="24" alt="Windows on Facebook" title="Facebook Icon" style="display:block" border="0" class="social-icon-size-01" /></a></td><td align="right" valign="left" style="background-color: #505050;padding:0px 20px 0px 0px; text-align:left;" class="padding-right-20">
+<a href=https://click.engage.windows.com/?qs=e5b7374440a708050451085b3b6b864867b39254a1ccdaf3923991f307a4589cc7bad05aa0e810546736af562714ea2d06d2fc3995b93c20f508ffad5e713ad2 target="_blank"  style="text-decoration:none;"><img src="https://image.engage.windows.com/lib/fe831372726d0d7870/m/2/IconTW_24x24.jpg" width="24" height="24" alt="Windows on Twitter" title="Twitter Icon" style="display:block" border="0" class="social-icon-size-01" /></a></td><td align="right" valign="left" style="background-color: #505050;padding:0px 20px 0px 0px; text-align:left;" class="padding-right-20"><a href=https://click.engage.windows.com/?qs=e5b7374440a70805ce5bfec3853f6d070d74653df807edee1f640b9a6ec6944c8b86a35f019968cf9c24dc55eb90098a1ea9eb6446ba51a9e3252e5ef7fcd32f target="_blank"  style="text-decoration:none;">
+<img src="https://image.engage.windows.com/lib/fe831372726d0d7870/m/2/IconIG_24x24.jpg" width="24" height="24" alt="Windows on Instagram" title="Instagram Icon" style="display:block" border="0" class="social-icon-size-01" />
+</a></td><td align="right" valign="left" style="background-color: #505050;padding:0px 0px 0px 0px; text-align:left;"><a href=https://click.engage.windows.com/?qs=e5b7374440a70805a95550cc7407f473f45a93787d92446feae3588a0a9f410f334d941f083cf45587e48e9a7e5abf349b73a48096b21a5c684aa43cbb099b86 target="_blank"  style="text-decoration:none;"><img src="https://image.engage.windows.com/lib/fe831372726d0d7870/m/2/IconYT_24x24.jpg" width="24" height="24" alt="Windows on Youtube" title="Youtube Icon" style="display:block" border="0" class="social-icon-size-01" /></a></td></tr></tbody></table></td></tr></tbody></table></td></tr></table><!-- end 2_Social Bar --></td></tr><tr><td><!-- 3_Footer --><table cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;" class="responsive-table"><tr><td style="background-color:#d2d2d2;"><table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;" class="responsive-table"><tr>
+<td align="left" style="background-color:#d2d2d2;padding: 40px 40px 40px 40px;" class="padding-top-40 padding-right-40 padding-bottom-40 padding-left-40"><a href=https://click.engage.windows.com/?qs=e5b7374440a7080591f7c8d9313bc28f2b7bad607b5f552f81542588f462493a4ee3cd89412957c29371dd5ebeba516dc7a7deffac0aa21de0801b55f1cec270 target="_blank" >
+<img src="http://image.engage.xbox.com/lib/fe5b15707362017b7211/m/1/Microsoft_logo+copy.png" width="168" alt="Microsoft Homepage" title="Microsoft Logo" border="0" style="display:block;width:168px;" class="responsive-logo-footer" /></a></td></tr><tr><td align="left" style="background-color:#d2d2d2;font-family: 'Segoe UI Regular', 'Segoe WP', wf_segoe-ui_normal, Tahoma, Arial, sans-serif;font-size: 18px; line-height: 24px; font-weight: 400; color:#000000; padding: 0 40px 40px 40px; text-decoration: none;" class="font-size-18 line-height-20"><sup style="line-height: 0px; font-size: 70%;">1&nbsp;
+</sup>Offer valid from August 18, 2019 to August 31, 2019, while supplies last. Available only in Microsoft retail and online store in the United States (including Puerto Rico) and Canada. Offer valid only on select PCs. Not valid on prior orders or purchases; cannot be transferred or otherwise redeemed for cash or promo code(s). May not be combinable with other offers. Refunds will take into account the discount. Price discount does not include taxes, shipping or other fees. Void where prohibited or restricted by law. Microsoft reserves the right to modify or discontinue offers at any time. Limit of 5 offers per customer. Other exclusions and limits <span style="white-space:nowrap;">may&nbsp;apply.</span></td></tr><tr>
+<td align="left" style="background-color:#d2d2d2;font-family: 'Segoe UI Regular', 'Segoe WP', wf_segoe-ui_normal, Tahoma, Arial, sans-serif;font-size: 18px; line-height: 24px; font-weight: 400; color:#000000; padding: 0 40px 60px 40px; text-decoration:none;" class="font-size-18 line-height-24 padding-right-40 padding-bottom-60 padding-left-40"><a href="https://click.engage.windows.com/?qs=e5b7374440a70805913e36559a37394242c12447bc78ff4e4f767320ba257176bb14f438134d83ee9252b2eac683bfeb37c5f4f85cd4298523bea341b0f8f580" target="_blank"  style="text-decoration:underline; color:#2947a9;" class="fixLinkDarkBLue">Unsubscribe</a>&nbsp;|&nbsp;<a href=https://click.engage.windows.com/?qs=e5b7374440a708051a8632a5888f268698ab54d969b8b3a8c664f6692ace393b1ac7b4b3925b8e0691172b70eb0961d3b74ca9fee6bd3d92b27682ad53b5d6ea target="_blank"  style="text-decoration:underline; color:#2947a9;" class="fixLinkDarkBLue">Privacy Statement</a><br />Microsoft Corporation<br />One Microsoft Way
+<br />Redmond, WA 98052</td></tr></table></td></tr>
+</table><!-- end 3_Footer --></td></tr></table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" style="padding: 0px 0px 0px 0px; background-color: #ffffff;">
+                                        
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" style="padding: 0px 0px 0px 0px; background-color: #ffffff;">
+                                        
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" style="padding: 0px 0px 0px 0px; background-color: #ffffff;">
+                                        
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table><!-- 100% table -->
+<img src="https://click.engage.windows.com/open.aspx?ffcb10-feb212787d630d7a-fe521c7273650d747613-fe831372726d0d7870-ff991575-fe541c727d63027b7710-ff66127177&d=70082" width="1" height="1">
+</custom></body>
+</html>
+
+--5ylFwQIVRrQk=_?:--
+

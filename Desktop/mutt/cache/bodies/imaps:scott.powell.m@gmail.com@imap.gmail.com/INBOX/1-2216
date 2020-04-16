@@ -1,0 +1,1047 @@
+Delivered-To: scott.powell.m@gmail.com
+Received: by 2002:a4f:8804:0:0:0:0:0 with SMTP id k4csp2124837ivd;
+        Sat, 21 Mar 2020 13:32:08 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vubYXwCXaOg7fmOvf+VN5z42oBxrgwhYkZavNonbYUXRPOk1v4VSkD2hd+GJ0CZ30ZTx3hu
+X-Received: by 2002:a63:8643:: with SMTP id x64mr14367757pgd.108.1584822728220;
+        Sat, 21 Mar 2020 13:32:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584822728; cv=none;
+        d=google.com; s=arc-20160816;
+        b=LbEPBPIrfDtjgAHGikXyJ4pP5MdN8qsiLwOpITh8kSnej4EeoglNuzjauASmr/IGNM
+         W2Ymwor966Q0hLOykELRC3LbzRGKtbbgZtkLpwke2caHqr1nGBrIXMu26318TQqcXqa2
+         QJ6MorqKwlZzyypKdrhYIg/NY5K3BAs4fk50THWxUHrBtyi5AdTnfMl0omKZcoOzEH20
+         0ybTBaWbQ1RjXGjnHBcnyXsfMEPCDFJtd+7AcbJ0WOupdTiDRsZbbnrd33WF20T6ylbR
+         g3mdrkeEb8R5GkWiKtSsws8K+LTOA6ooms2+DFEVYcidxh2djrWvbQ5QNHgUnfQyaqDE
+         G+LA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:content-transfer-encoding:mime-version:list-unsubscribe
+         :message-id:subject:reply-to:from:to:date:dkim-signature
+         :dkim-signature;
+        bh=jpPBIvL5M2rFvZ7UK1LWDY0EU+66WMJo8BPe0SrUomg=;
+        b=oHGIO52PQKBAFu9ij++yFvTyelUKl8gFmHqTrCdMrVfEtX99o+QZwAnZWTIgQUhBnN
+         YWfncAOmPOTsEamnn6k0ppA5xzJzqpmv5JbP77PVTdOTA9gPUEdtsWedq87C8Xi+L0dl
+         HgM/dturR3QbHQUC3SvUn+a5b1x94AaeMlZ3XATd95C6TC8IpSXR4v7mdAGNPzoMbTpr
+         QIVz8Mst98eSiD3OR3bwhyhYMHjpNDpScovdjPjjFiLK74Zqmb7/RtFeCcTkxa5PlI0Y
+         QFzrjBIfQEcoNiq19sYQxjxWbxKX5Vwp8c59D5rd4Ja70+92JCPqQmLGNAI0IZ8fmSO8
+         zHKw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@tracktion.com header.s=4mjwi4fi4gkoz2gjw42zsr6bm6sgbssd header.b=goRxCWvp;
+       dkim=pass header.i=@amazonses.com header.s=hsbnp7p3ensaochzwyq5wwmceodymuwv header.b="EJ/OhHkF";
+       spf=pass (google.com: domain of 01010170fecbb317-1010df30-cceb-4e64-80f5-fcfce3285be5-000000@us-west-2.amazonses.com designates 54.240.27.158 as permitted sender) smtp.mailfrom=01010170fecbb317-1010df30-cceb-4e64-80f5-fcfce3285be5-000000@us-west-2.amazonses.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tracktion.com
+Return-Path: <01010170fecbb317-1010df30-cceb-4e64-80f5-fcfce3285be5-000000@us-west-2.amazonses.com>
+Received: from a27-158.smtp-out.us-west-2.amazonses.com (a27-158.smtp-out.us-west-2.amazonses.com. [54.240.27.158])
+        by mx.google.com with ESMTPS id n8si7410942pgt.81.2020.03.21.13.32.07
+        for <scott.powell.m@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 21 Mar 2020 13:32:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 01010170fecbb317-1010df30-cceb-4e64-80f5-fcfce3285be5-000000@us-west-2.amazonses.com designates 54.240.27.158 as permitted sender) client-ip=54.240.27.158;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@tracktion.com header.s=4mjwi4fi4gkoz2gjw42zsr6bm6sgbssd header.b=goRxCWvp;
+       dkim=pass header.i=@amazonses.com header.s=hsbnp7p3ensaochzwyq5wwmceodymuwv header.b="EJ/OhHkF";
+       spf=pass (google.com: domain of 01010170fecbb317-1010df30-cceb-4e64-80f5-fcfce3285be5-000000@us-west-2.amazonses.com designates 54.240.27.158 as permitted sender) smtp.mailfrom=01010170fecbb317-1010df30-cceb-4e64-80f5-fcfce3285be5-000000@us-west-2.amazonses.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tracktion.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=4mjwi4fi4gkoz2gjw42zsr6bm6sgbssd; d=tracktion.com; t=1584822727;
+	h=Date:To:From:Reply-To:Subject:Message-ID:List-Unsubscribe:MIME-Version:Content-Type:Content-Transfer-Encoding;
+	bh=e8EzEh/yxCra1+CmpSVIwwV2QF3WD683xU999nGSNTs=;
+	b=goRxCWvpZDmEc8/wnjbYzi1vhhJIPYN21ROFhxNEUA61WocZMpm1M0CxnPRTF1ak
+	zvXsv0H7sQHlHM5VRvVFGPy0wrZlAlHTeeGXWVQ5WHgS17J2NM8Vfj8jxnnMHK2oFVv
+	YVcooon2MtEGkwUfS/bl6QmJeVEvNyRiP2/q/9nk=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=hsbnp7p3ensaochzwyq5wwmceodymuwv; d=amazonses.com; t=1584822727;
+	h=Date:To:From:Reply-To:Subject:Message-ID:List-Unsubscribe:MIME-Version:Content-Type:Content-Transfer-Encoding:Feedback-ID;
+	bh=e8EzEh/yxCra1+CmpSVIwwV2QF3WD683xU999nGSNTs=;
+	b=EJ/OhHkFs9CEJZzCmw6ZUr3Fqd+Ub2rgEcMRYiwUV57EfQhZtpqNOgs+S1HsyUKi
+	5H5s8GQIdIMLgPm/tW4JvFcK+bZwmy2aOpWs5xebyb7POHO4p8Gp5DSBoOAH3RZEoTh
+	D3INfMACiwyu7sI45SJRtjSkdGqnEW7G/v8jWJis=
+Date: Sat, 21 Mar 2020 20:32:07 +0000
+To: scott.powell.m@gmail.com
+From: Tracktion <reply@tracktion.com>
+Reply-To: Tracktion <reply@tracktion.com>
+Subject: Tracktion Waveform 11 is Now Available
+Message-ID: <01010170fecbb317-1010df30-cceb-4e64-80f5-fcfce3285be5-000000@us-west-2.amazonses.com>
+X-Mailer: Sendy (https://sendy.co)
+List-Unsubscribe: <https://www.tracktion.com/newsletter/unsubscribe/H3MNHvgUEgjgYDtG8fCvY0zg2bgX763fnT9bNt892i4zdSw/tuhljqM3zcIMiQTGyXCi2A/6Rma6NNVEZAAEUWHGtpzzw>
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="b1_4f57db11a8abb4e85bf7530f91a80871"
+Content-Transfer-Encoding: 8bit
+X-SES-Outgoing: 2020.03.21-54.240.27.158
+Feedback-ID: 1.us-west-2.sAIEdyfDNNVlKz/sARbIe7Y8IUx/0ETsRyn6IIOmb8I=:AmazonSES
+
+This is a multi-part message in MIME format.
+
+--b1_4f57db11a8abb4e85bf7530f91a80871
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+See The New WAVEFORM PRO
+----------------------------------------
+Waveform is a rapidly evolving application specifically designed for the needs of modern music producers. Specializing in creative and inspirational workflows and avoiding features not explicitly needed allow the app to remain surprisingly fun and intuitive.
+
+Learn More
+https://www.tracktion.com/newsletter/l/K89TrNjq3w5jKM763EGsfBXw/wCyGEKwrEEP2meEjj48D892g/6Rma6NNVEZAAEUWHGtpzzw/products/waveform-pro
+
+
+Say Hello To WAVEFORM FREE
+----------------------------------------
+Waveform Free is unlike any other so called Free DAW – we fully acknowledge it has more capabilities than most enthusiast producers will ever need. There are no restrictions whatsoever – unlimited track count, add popular plugins and enjoy the deeply capable feature set.
+
+Learn More
+https://www.tracktion.com/newsletter/l/K89TrNjq3w5jKM763EGsfBXw/wCyGEKwrEEP2meEjj48D892g/6Rma6NNVEZAAEUWHGtpzzw/products/waveform-free
+
+
+
+Read full newsletter online here:
+https://www.tracktion.com/newsletter/w/K89TrNjq3w5jKM763EGsfBXw/tuhljqM3zcIMiQTGyXCi2A/6Rma6NNVEZAAEUWHGtpzzw
+
+
+
+---------------------------------------
+Explore everything Tracktion has to offer:
+https://www.tracktion.com/newsletter/l/K89TrNjq3w5jKM763EGsfBXw/wCyGEKwrEEP2meEjj48D892g/6Rma6NNVEZAAEUWHGtpzzw
+
+
+Find us on Facebook
+https://www.tracktion.com/newsletter/l/K89TrNjq3w5jKM763EGsfBXw/AU5hS892Pvet2Tx8OIABwFnQ/6Rma6NNVEZAAEUWHGtpzzw
+
+---------
+You're receiving this because you are a registered Tracktion user. These updates often include important information about your software. We promise not to bug you too often but, if you choose not to receive updates from us, please feel free to unsubscribe below.
+
+Unsubscribe from this mailing:
+https://www.tracktion.com/newsletter/unsubscribe/H3MNHvgUEgjgYDtG8fCvY0zg2bgX763fnT9bNt892i4zdSw/tuhljqM3zcIMiQTGyXCi2A/6Rma6NNVEZAAEUWHGtpzzw
+
+Our Mailing Address:
+Tracktion Software Corporation 
+11644 NE 80th St
+Kirkland, WA 98033
+
+© 2020 Tracktion Software Corp. All Rights Reserved.
+
+https://www.tracktion.com/newsletter/l/K89TrNjq3w5jKM763EGsfBXw/xGpq1lZd7GH892ed4RvY4763PA/6Rma6NNVEZAAEUWHGtpzzw
+
+
+--b1_4f57db11a8abb4e85bf7530f91a80871
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=3D"http://www.w3.org/1999/xhtml">
+<head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF=
+-8"/><meta name=3D"viewport" content=3D"width=3Ddevice-width; initial-scale=
+=3D1.0; maximum-scale=3D1.0;">
+=09<title>Tracktion : Music Production Software</title>
+=09<link href=3D"http://fonts.googleapis.com/css?family=3DMuli" rel=3D"styl=
+esheet" type=3D"text/css" />
+=09<style type=3D"text/css">html {
+            width: 100%;
+        }
+
+        ::-moz-selection {
+            background: #fefac7;
+            color: #4a4a4a;
+        }
+
+        ::selection {
+            background: #fefac7;
+            color: #4a4a4a;
+        }
+
+        body {
+            background-color: #232323;
+            margin: 0;
+            padding: 0;
+        }
+
+        .ReadMsgBody {
+            width: 100%;
+            background-color: #232323;
+        }
+
+        .ExternalClass {
+            width: 100%;
+            background-color: #232323;
+        }
+
+        a {
+            color: #D4A681;
+            text-decoration: underline;
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        a:hover {
+            color: #D4A681;
+            text-decoration: none;
+            font-weight: normal;
+            font-style: normal;
+            transition: all .25s ease-in-out;
+
+        }
+
+        a.heading-link {
+            text-decoration: none;
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        a.heading-link:hover {
+            text-decoration: none;
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        p, div {
+            margin: 0 !important;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        @media only screen and (max-width: 640px) {
+            body[yahoofix] {
+                width: auto !important;
+                padding: 0px 20px !important;
+            }
+
+            body[yahoofix] table table {
+                width: 100% !important;
+            }
+
+            body[yahoofix] table[class=3D"table-wrapper"] {
+                width: 100% !important;
+                margin: 0 auto !important;
+            }
+
+            body[yahoofix] table[class=3D"table-inner"] {
+                width: 100% !important;
+                margin: 0 auto !important;
+            }
+
+            body[yahoofix] table[class=3D"full"] {
+                width: 100% !important;
+                margin: 0 auto !important;
+            }
+
+            body[yahoofix] td[class=3D"center"] {
+                text-align: center !important;
+            }
+
+            body[yahoofix] td[class=3D"rewrite_padding"] {
+                padding: 30px !important;
+            }
+
+            body[yahoofix] img[class=3D"img_scale"] {
+                width: 100% !important;
+                height: auto !Important;
+            }
+
+            body[yahoofix] img[class=3D"img_scale75"] {
+                width: 75% !important;
+                height: auto !Important;
+            }
+
+        }
+
+        @media only screen and (max-width: 479px) {
+            body[yahoofix] {
+                width: auto !important;
+                padding: 0px 0px !important;
+            }
+
+            body[yahoofix] table table {
+                width: 100% !important;
+            }
+
+            body[yahoofix] table[class=3D"table-wrapper"] {
+                width: 100% !important;
+                margin: 0 auto !important;
+            }
+
+            body[yahoofix] table[class=3D"table-inner"] {
+                width: 100% !important;
+                margin: 0 auto !important;
+            }
+
+            body[yahoofix] table[class=3D"full"] {
+                width: 100% !important;
+                margin: 0 auto !important;
+            }
+
+            body[yahoofix] td[class=3D"center"] {
+                text-align: center !important;
+            }
+
+            body[yahoofix] td[class=3D"rewrite_padding"] {
+                padding: 30px !important;
+            }
+
+            body[yahoofix] img[class=3D"img_scale"] {
+                width: 100% !important;
+                height: auto !Important;
+            }
+
+            body[yahoofix] img[class=3D"img_scale75"] {
+                width: 75% !important;
+                height: auto !Important;
+            }
+
+            body[yahoofix] img[class=3D"img_scale50"] {
+                width: 50% !important;
+                height: auto !Important;
+            }
+
+            body[yahoofix] img[class=3D"img_scale25"] {
+                width: 25% !important;
+                height: auto !Important;
+            }
+
+            body[yahoofix] table[class=3D"mobile_hide"] {
+                display: none !important;
+            }
+
+            body[yahoofix] td[class=3D"mobile_tight"] {
+                padding-top: 0 !important;
+            }
+
+            p {
+                font-size: 14px !important;
+            }
+
+            .title > *,
+            .title p {
+                font-size: 20px !important;
+            }
+
+            .subtitle > *,
+            .subtitle p {
+                font-size: 17px !important;
+            }
+        }
+=09</style>
+</head>
+<body yahoofix=3D"">
+<table align=3D"center" bgcolor=3D"#232323" border=3D"0" cellpadding=3D"0" =
+cellspacing=3D"0" class=3D"mobile_hide" style=3D"padding: 0; margin: 0;" wi=
+dth=3D"100%">
+=09<tbody>
+=09=09<tr>
+=09=09=09<td align=3D"center" valign=3D"top">
+=09=09=09<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"table-wrapper" width=3D"640">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td style=3D"padding: 0px 20px;" width=3D"640">
+=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" class=3D"table-inner" width=3D"600">
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td valign=3D"top"><!-- START OF LEFT COLUMN-->
+=09=09=09=09=09=09=09=09=09<table align=3D"left" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"full" style=3D"border-collapse:collapse; =
+mso-table-lspace:0pt; mso-table-rspace:0pt;" width=3D"310"><!-- START OF IN=
+TRO TEXT-->
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"left" style=3D"padding-top=
+: 15px; font-weight: normal; font-size:12px ; color:#999999; font-family: '=
+Muli', Helvetica, Arial, sans-serif; line-height: 24px;mso-line-height-rule=
+: exactly;">Waveform Pro 11 is here!</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!-- END OF INTRO TEXT-->
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09<!-- END OF LEFT COLUMN--><!-- START OF SPACER--=
+>
+
+=09=09=09=09=09=09=09=09=09<table align=3D"left" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" style=3D"border-collapse:collapse; mso-table-lspac=
+e:0pt; mso-table-rspace:0pt;" width=3D"5">
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td height=3D"30" style=3D"line-height:=
+0;" width=3D"100%">&nbsp;</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09<!-- START OF SPACER-->
+
+=09=09=09=09=09=09=09=09=09<table align=3D"right" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"full" style=3D"border-collapse:collapse; =
+mso-table-lspace:0pt; mso-table-rspace:0pt;" width=3D"240"><!-- START OF LI=
+NK TEXT-->
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"right" style=3D"padding-to=
+p: 15px; font-weight: normal; font-size:12px ; color:#666666; font-family: =
+'Muli', Helvetica, Arial, sans-serif; line-height: 24px;mso-line-height-rul=
+e: exactly;"><span><a href=3D"https://www.tracktion.com/newsletter/w/K89TrN=
+jq3w5jKM763EGsfBXw/tuhljqM3zcIMiQTGyXCi2A/6Rma6NNVEZAAEUWHGtpzzw" >view in =
+browser</a> </span></td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!-- END OF LINK TEXT-->
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09=09</td>
+=09=09=09=09=09</tr>
+=09=09=09=09=09<!-- START OF VERTICAL SPACER-->
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td height=3D"20" style=3D"padding:0; line-height: 0;">&n=
+bsp;</td>
+=09=09=09=09=09</tr>
+=09=09=09=09=09<!-- END OF VERTICAL SPACER-->
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09</td>
+=09=09</tr>
+=09</tbody>
+</table>
+<!-- START OF BANNER / HERO IMAGE-->
+
+<table align=3D"center" bgcolor=3D"#232323" border=3D"0" cellpadding=3D"0" =
+cellspacing=3D"0" style=3D"padding: 0; margin: 0;" width=3D"100%">
+=09<tbody>
+=09=09<tr>
+=09=09=09<td align=3D"center" valign=3D"top">
+=09=09=09<table align=3D"center" bgcolor=3D"#362539" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" class=3D"table-wrapper" width=3D"600">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td style=3D"padding: 0;" width=3D"640">
+=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" class=3D"table-inner" width=3D"640">
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td valign=3D"top">
+=09=09=09=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"full" style=3D"border-collapse:collapse; =
+mso-table-lspace:0pt; mso-table-rspace:0pt;" width=3D"640"><!-- START OF HE=
+RO IMAGE-->
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"center" style=3D"padding: =
+0px; margin: 0; font-weight: normal; font-size:13px ; color:#464344; font-f=
+amily: 'Muli', Helvetica, Arial, sans-serif; line-height: 23px;"><span><a h=
+ref=3D"https://www.tracktion.com/newsletter/l/K89TrNjq3w5jKM763EGsfBXw/wCyG=
+EKwrEEP2meEjj48D892g/6Rma6NNVEZAAEUWHGtpzzw" style=3D"color:#D4A681;"><img =
+alt=3D"Tracktion Waveform Pro 11 Now Available" border=3D"0" class=3D"img_s=
+cale" height=3D"640" src=3D"https://www.tracktion.com/newsletter/uploads/49=
+vna-49fc5-a949.jpg" style=3D"display: block;" width=3D"640" /></a> </span><=
+/td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!-- END OF HERO IMAGE-->
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09=09</td>
+=09=09=09=09=09</tr>
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09</td>
+=09=09</tr>
+=09</tbody>
+</table>
+<!-- END OF BANNER / HERO IMAGE--><!-- START OF TITLE-->
+
+<table align=3D"center" bgcolor=3D"#232323" border=3D"0" cellpadding=3D"0" =
+cellspacing=3D"0" style=3D"padding: 0; margin: 0;" width=3D"100%">
+=09<tbody>
+=09=09<tr>
+=09=09=09<td align=3D"center" valign=3D"top">
+=09=09=09<table align=3D"center" bgcolor=3D"#362539" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" class=3D"table-wrapper" width=3D"640">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td style=3D"padding: 0 20px;" width=3D"640">
+=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" class=3D"table-inner" width=3D"600">
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td valign=3D"top">
+=09=09=09=09=09=09=09=09=09<table align=3D"left" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"full" style=3D"border-collapse:collapse; =
+mso-table-lspace:0pt; mso-table-rspace:0pt;" width=3D"100%"><!-- START OF T=
+EXT-->
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"center" class=3D"title" st=
+yle=3D"padding-top: 5px; font-weight: normal; font-size:24px ; color:#DECFE=
+B; font-family: 'Muli', Helvetica, Arial, sans-serif; line-height: 32px;mso=
+-line-height-rule: exactly;">
+=09=09=09=09=09=09=09=09=09=09=09=09<p><strong>See The New WAVEFORM PRO</st=
+rong></p>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!-- END OF TEXT-->
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09=09</td>
+=09=09=09=09=09</tr>
+=09=09=09=09=09<!-- START OF VERTICAL SPACER-->
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td style=3D"padding:0 10px; line-height: 10px;">&nbsp;</=
+td>
+=09=09=09=09=09</tr>
+=09=09=09=09=09<!-- END OF VERTICAL SPACER-->
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09</td>
+=09=09</tr>
+=09</tbody>
+</table>
+<!-- END OF TITLE--><!-- START OF LEFT DESCRIPTIONS RIGHT PRODUCT-->
+
+<table align=3D"center" bgcolor=3D"#232323" border=3D"0" cellpadding=3D"0" =
+cellspacing=3D"0" style=3D"padding: 0; margin: 0;" width=3D"100%">
+=09<tbody>
+=09=09<tr>
+=09=09=09<td align=3D"center" valign=3D"top">
+=09=09=09<table align=3D"center" bgcolor=3D"#362539" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" class=3D"table-wrapper" width=3D"640">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td style=3D"padding: 0 40px;" width=3D"640">
+=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" class=3D"table-inner" width=3D"560">
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td valign=3D"top">
+=09=09=09=09=09=09=09=09=09<table align=3D"left" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"full" style=3D"border-collapse:collapse; =
+mso-table-lspace:0pt; mso-table-rspace:0pt;" width=3D"100%"><!-- START OF T=
+EXT-->
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"center" style=3D"padding-t=
+op: 10px; font-weight: normal; font-size:16px; color:#D8D8D8; font-family: =
+'Muli', Helvetica, Arial, sans-serif; line-height: 24px;mso-line-height-rul=
+e: exactly;">
+=09=09=09=09=09=09=09=09=09=09=09=09<p>Waveform is a rapidly evolving appli=
+cation specifically designed for the needs of modern music producers. Speci=
+alizing in creative and inspirational workflows and avoiding features not e=
+xplicitly needed allow the app to remain surprisingly fun and intuitive.</p=
+>
+=09=09=09=09=09=09=09=09=09=09=09=09&nbsp;
+
+=09=09=09=09=09=09=09=09=09=09=09=09<p style=3D"line-height: 50px;"><a href=
+=3D"https://www.tracktion.com/newsletter/l/K89TrNjq3w5jKM763EGsfBXw/W3CKuNA=
+rkRY3hAsU1aP7wA/6Rma6NNVEZAAEUWHGtpzzw" style=3D"color:#DECFEB;"><img alt=
+=3D"Learn More" border=3D"0" class=3D"img_scale50" height=3D"40" src=3D"htt=
+ps://www.tracktion.com/newsletter/uploads/2cm49-49zz-4d9s.png" style=3D"dis=
+play: block;" width=3D"186" /></a></p>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!-- END OF TEXT-->
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09=09</td>
+=09=09=09=09=09</tr>
+=09=09=09=09=09<!-- START OF VERTICAL SPACER-->
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td style=3D"padding:0 40px; line-height: 40px;">&nbsp;</=
+td>
+=09=09=09=09=09</tr>
+=09=09=09=09=09<!-- END OF VERTICAL SPACER-->
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09</td>
+=09=09</tr>
+=09</tbody>
+</table>
+<!-- END OF LEFT DESCRIPTIONS RIGHT PRODUCT-->
+
+<table align=3D"center" bgcolor=3D"#232323" border=3D"0" cellpadding=3D"0" =
+cellspacing=3D"0" style=3D"padding: 0; margin: 0;" width=3D"100%">
+=09<tbody>
+=09=09<tr>
+=09=09=09<td align=3D"center" valign=3D"top">
+=09=09=09<table align=3D"center" bgcolor=3D"#362539" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" class=3D"table-wrapper" width=3D"600">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td style=3D"padding: 0;" width=3D"640">
+=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" class=3D"table-inner" width=3D"640">
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td valign=3D"top">
+=09=09=09=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"full" style=3D"border-collapse:collapse; =
+mso-table-lspace:0pt; mso-table-rspace:0pt;" width=3D"640"><!-- START OF HE=
+RO IMAGE-->
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"center" style=3D"padding: =
+0px; margin: 0; font-weight: normal; font-size:13px ; color:#464344; font-f=
+amily: 'Muli', Helvetica, Arial, sans-serif; line-height: 23px;"><span><a h=
+ref=3D"https://www.tracktion.com/newsletter/l/K89TrNjq3w5jKM763EGsfBXw/4fWA=
+viz6PzBonkEokuVGkA/6Rma6NNVEZAAEUWHGtpzzw" style=3D"color:#D4A681;"><img al=
+t=3D"Waveform Free DAW" border=3D"0" class=3D"img_scale" height=3D"286" src=
+=3D"https://www.tracktion.com/newsletter/uploads/595c-s9nc-60gf.png" style=
+=3D"display: block;" width=3D"591" /></a> </span></td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!-- END OF HERO IMAGE-->
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09=09</td>
+=09=09=09=09=09</tr>
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09</td>
+=09=09</tr>
+=09</tbody>
+</table>
+<!-- START OF TITLE-->
+
+<table align=3D"center" bgcolor=3D"#232323" border=3D"0" cellpadding=3D"0" =
+cellspacing=3D"0" style=3D"padding: 0; margin: 0;" width=3D"100%">
+=09<tbody>
+=09=09<tr>
+=09=09=09<td align=3D"center" valign=3D"top">
+=09=09=09<table align=3D"center" bgcolor=3D"#362539" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" class=3D"table-wrapper" width=3D"640">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td style=3D"padding: 0 20px;" width=3D"640">
+=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" class=3D"table-inner" width=3D"600">
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td valign=3D"top">
+=09=09=09=09=09=09=09=09=09<table align=3D"left" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"full" style=3D"border-collapse:collapse; =
+mso-table-lspace:0pt; mso-table-rspace:0pt;" width=3D"100%"><!-- START OF T=
+EXT-->
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"center" class=3D"title" st=
+yle=3D"padding-top: 5px; font-weight: normal; font-size:24px ; color:#DECFE=
+B; font-family: 'Muli', Helvetica, Arial, sans-serif; line-height: 32px;mso=
+-line-height-rule: exactly;">
+=09=09=09=09=09=09=09=09=09=09=09=09<p><strong>Say Hello To WAVEFORM FREE</=
+strong></p>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!-- END OF TEXT-->
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09=09</td>
+=09=09=09=09=09</tr>
+=09=09=09=09=09<!-- START OF VERTICAL SPACER-->
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td style=3D"padding:0 10px; line-height: 10px;">&nbsp;</=
+td>
+=09=09=09=09=09</tr>
+=09=09=09=09=09<!-- END OF VERTICAL SPACER-->
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09</td>
+=09=09</tr>
+=09</tbody>
+</table>
+<!-- END OF TITLE--><!-- START OF LEFT DESCRIPTIONS RIGHT PRODUCT-->
+
+<table align=3D"center" bgcolor=3D"#232323" border=3D"0" cellpadding=3D"0" =
+cellspacing=3D"0" style=3D"padding: 0; margin: 0;" width=3D"100%">
+=09<tbody>
+=09=09<tr>
+=09=09=09<td align=3D"center" valign=3D"top">
+=09=09=09<table align=3D"center" bgcolor=3D"#362539" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" class=3D"table-wrapper" width=3D"640">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td style=3D"padding: 0 40px;" width=3D"640">
+=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" class=3D"table-inner" width=3D"560">
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td valign=3D"top">
+=09=09=09=09=09=09=09=09=09<table align=3D"left" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"full" style=3D"border-collapse:collapse; =
+mso-table-lspace:0pt; mso-table-rspace:0pt;" width=3D"100%"><!-- START OF T=
+EXT-->
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"center" style=3D"padding-t=
+op: 10px; font-weight: normal; font-size:16px; color:#D8D8D8; font-family: =
+'Muli', Helvetica, Arial, sans-serif; line-height: 24px;mso-line-height-rul=
+e: exactly;">
+=09=09=09=09=09=09=09=09=09=09=09=09<p>Waveform Free is unlike any other so=
+ called Free DAW &ndash; we fully acknowledge it has more capabilities than=
+ most enthusiast producers will ever need. There are no restrictions whatso=
+ever &ndash; unlimited track count, add popular plugins and enjoy the deepl=
+y capable feature set.</p>
+=09=09=09=09=09=09=09=09=09=09=09=09&nbsp;
+
+=09=09=09=09=09=09=09=09=09=09=09=09<p style=3D"line-height: 50px;"><a href=
+=3D"https://www.tracktion.com/newsletter/l/K89TrNjq3w5jKM763EGsfBXw/4fWAviz=
+6PzBonkEokuVGkA/6Rma6NNVEZAAEUWHGtpzzw" style=3D"color:#DECFEB;"><img alt=
+=3D"Learn More" border=3D"0" class=3D"img_scale50" height=3D"40" src=3D"htt=
+ps://www.tracktion.com/newsletter/uploads/2cm49-49zz-4d9s.png" style=3D"dis=
+play: block;" width=3D"186" /></a></p>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!-- END OF TEXT-->
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09=09</td>
+=09=09=09=09=09</tr>
+=09=09=09=09=09<!-- START OF VERTICAL SPACER-->
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td style=3D"padding:0 40px; line-height: 80px;">&nbsp;</=
+td>
+=09=09=09=09=09</tr>
+=09=09=09=09=09<!-- END OF VERTICAL SPACER-->
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09</td>
+=09=09</tr>
+=09</tbody>
+</table>
+<!-- END OF LEFT DESCRIPTIONS RIGHT PRODUCT--><!-- START OF TITLE-->
+
+<table align=3D"center" bgcolor=3D"#232323" border=3D"0" cellpadding=3D"0" =
+cellspacing=3D"0" style=3D"padding: 0; margin: 0;" width=3D"100%">
+=09<tbody>
+=09=09<tr>
+=09=09=09<td align=3D"center" valign=3D"top">
+=09=09=09<table align=3D"center" bgcolor=3D"#362539" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" class=3D"table-wrapper" width=3D"640">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td style=3D"padding: 0 20px;" width=3D"640">
+=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" class=3D"table-inner" width=3D"600">
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td valign=3D"top">
+=09=09=09=09=09=09=09=09=09<table align=3D"left" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"full" style=3D"border-collapse:collapse; =
+mso-table-lspace:0pt; mso-table-rspace:0pt;" width=3D"100%"><!-- START OF T=
+EXT-->
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"center" class=3D"title" st=
+yle=3D"padding-top: 5px; font-weight: normal; font-size:24px; letter-spacin=
+g: 1px; color:#DECFEB; font-family: 'Muli', Helvetica, Arial, sans-serif; l=
+ine-height: 32px;mso-line-height-rule: exactly;">
+=09=09=09=09=09=09=09=09=09=09=09=09<p><strong>START EXPLORING NOW</strong>=
+</p>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!-- END OF TEXT-->
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09=09</td>
+=09=09=09=09=09</tr>
+=09=09=09=09=09<!-- START OF VERTICAL SPACER-->
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td style=3D"padding:0 10px; line-height: 20px;">&nbsp;</=
+td>
+=09=09=09=09=09</tr>
+=09=09=09=09=09<!-- END OF VERTICAL SPACER-->
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09</td>
+=09=09</tr>
+=09</tbody>
+</table>
+<!-- END OF TITLE--><!-- START OF LEFT DESCRIPTIONS RIGHT PRODUCT-->
+
+<table align=3D"center" bgcolor=3D"#232323" border=3D"0" cellpadding=3D"0" =
+cellspacing=3D"0" style=3D"padding: 0; margin: 0;" width=3D"100%">
+=09<tbody>
+=09=09<tr>
+=09=09=09<td align=3D"center" valign=3D"top">
+=09=09=09<table align=3D"center" bgcolor=3D"#362539" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" class=3D"table-wrapper" width=3D"640">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td style=3D"padding: 0px 40px;" width=3D"640">
+=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" class=3D"table-inner" width=3D"560">
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td valign=3D"top">
+=09=09=09=09=09=09=09=09=09<table align=3D"left" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"full" style=3D"border-collapse:collapse; =
+mso-table-lspace:0pt; mso-table-rspace:0pt;" width=3D"100%"><!-- START OF T=
+EXT-->
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"center" style=3D"padding-t=
+op: 10px; font-weight: normal; font-size:16px; color:#D8D8D8; font-family: =
+'Muli', Helvetica, Arial, sans-serif; line-height: 60px;mso-line-height-rul=
+e: exactly;">
+=09=09=09=09=09=09=09=09=09=09=09=09<p><a href=3D"https://www.tracktion.com=
+/newsletter/l/K89TrNjq3w5jKM763EGsfBXw/wCyGEKwrEEP2meEjj48D892g/6Rma6NNVEZA=
+AEUWHGtpzzw" style=3D"color:#DECFEB;"><img alt=3D"Tracktion logo" border=3D=
+"0" class=3D"img_scale50" height=3D"43" src=3D"https://www.tracktion.com/ne=
+wsletter/uploads/rnv2-ffnc-433cm.png" style=3D"display: block;" width=3D"18=
+0" /></a></p>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!-- END OF TEXT-->
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09=09</td>
+=09=09=09=09=09</tr>
+=09=09=09=09=09<!-- START OF VERTICAL SPACER-->
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td style=3D"padding:0 40px; line-height: 80px;">&nbsp;</=
+td>
+=09=09=09=09=09</tr>
+=09=09=09=09=09<!-- END OF VERTICAL SPACER-->
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09</td>
+=09=09</tr>
+=09</tbody>
+</table>
+<!-- END OF LEFT DESCRIPTIONS RIGHT PRODUCT--><!-- START OF SOCIAL BLOCK-->
+
+<table align=3D"center" bgcolor=3D"#232323" border=3D"0" cellpadding=3D"0" =
+cellspacing=3D"0" style=3D"padding: 0; margin: 0;" width=3D"100%">
+=09<tbody>
+=09=09<tr>
+=09=09=09<td align=3D"center" valign=3D"top">
+=09=09=09<table align=3D"center" bgcolor=3D"#000000" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" class=3D"table-wrapper" width=3D"640">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td style=3D"padding: 20px;" width=3D"640">
+=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" class=3D"table-inner" width=3D"600">
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td valign=3D"top"><!-- START OF LEFT COLUMN-->
+=09=09=09=09=09=09=09=09=09<table align=3D"left" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"full" style=3D"border-collapse:collapse; =
+mso-table-lspace:0pt; mso-table-rspace:0pt;" width=3D"290">
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"left" class=3D"center" sty=
+le=3D"text-transform: uppercase; padding-top: 4px; font-weight: normal; fon=
+t-size:18px ; color:#B2A8BC; font-family: 'Muli', Helvetica, Arial, sans-se=
+rif; line-height: 28px;mso-line-height-rule: exactly;"><span>follow us onli=
+ne </span></td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09<!-- END OF LEFT COLUMN--><!-- START OF SPACER--=
+>
+
+=09=09=09=09=09=09=09=09=09<table align=3D"left" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" style=3D"border-collapse:collapse; mso-table-lspac=
+e:0pt; mso-table-rspace:0pt;" width=3D"5">
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td height=3D"20" style=3D"line-height:=
+0;" width=3D"100%">&nbsp;</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09<!-- START OF SPACER--><!-- START OF RIGHT COLUM=
+N-->
+
+=09=09=09=09=09=09=09=09=09<table align=3D"right" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"full" style=3D"border-collapse:collapse; =
+mso-table-lspace:0pt; mso-table-rspace:0pt;" width=3D"290">
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"right" class=3D"center" st=
+yle=3D"margin: 0; font-size:14px ; color:#636363; font-family: 'Muli', Aria=
+l, sans-serif; line-height: 0px;"><span><a href=3D"https://www.tracktion.co=
+m/newsletter/l/K89TrNjq3w5jKM763EGsfBXw/AU5hS892Pvet2Tx8OIABwFnQ/6Rma6NNVEZ=
+AAEUWHGtpzzw" style=3D"color:#ededed; text-decoration: none;"><img alt=3D"f=
+acebook" border=3D"0" height=3D"32" src=3D"https://www.tracktion.com/newsle=
+tter/uploads/social-facebook.png" style=3D" display: inline-block;" width=
+=3D"32" /> </a> &nbsp; <a href=3D"https://www.tracktion.com/newsletter/l/K8=
+9TrNjq3w5jKM763EGsfBXw/dryd2r6JZWIxU7KrwStiaA/6Rma6NNVEZAAEUWHGtpzzw" style=
+=3D"color:#ededed; text-decoration: none;"> <img alt=3D"twitter" border=3D"=
+0" height=3D"32" src=3D"https://www.tracktion.com/newsletter/uploads/social=
+-twitter.png" style=3D" display: inline-block;" width=3D"32" /> </a> &nbsp;=
+ <a href=3D"https://www.tracktion.com/newsletter/l/K89TrNjq3w5jKM763EGsfBXw=
+/s8J99gtB6JGsWLwcox5e3g/6Rma6NNVEZAAEUWHGtpzzw" style=3D"color:#ededed; tex=
+t-decoration: none;"> <img alt=3D"youtube" border=3D"0" height=3D"32" src=
+=3D"https://www.tracktion.com/newsletter/uploads/social-youtube.png" style=
+=3D" display: inline-block;" width=3D"32" /> </a> &nbsp; <a href=3D"https:/=
+/www.tracktion.com/newsletter/l/K89TrNjq3w5jKM763EGsfBXw/3KHo69ImJktXVLG1BD=
+wbeQ/6Rma6NNVEZAAEUWHGtpzzw" style=3D"color:#ededed; text-decoration: none;=
+"> <img alt=3D"instagram" border=3D"0" height=3D"32" src=3D"https://www.tra=
+cktion.com/newsletter/uploads/social-instagram.png" style=3D" display: inli=
+ne-block;" width=3D"32" /> </a> </span></td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09<!-- END OF RIGHT COLUMN--></td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09=09</td>
+=09=09=09=09=09</tr>
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09</td>
+=09=09</tr>
+=09</tbody>
+</table>
+<!-- END OF SOCIAL BLOCK--><!-- START OF FOOTER-->
+
+<table align=3D"center" bgcolor=3D"#232323" border=3D"0" cellpadding=3D"0" =
+cellspacing=3D"0" style=3D"padding: 0; margin: 0;" width=3D"100%">
+=09<tbody>
+=09=09<tr>
+=09=09=09<td align=3D"center" valign=3D"top">
+=09=09=09<table align=3D"center" bgcolor=3D"#232323" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" class=3D"table-wrapper" width=3D"640">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td style=3D"padding: 20px;" width=3D"640">
+=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" class=3D"table-inner" width=3D"600">
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td valign=3D"top"><!-- START OF MIDDLE COLUMN--=
+>
+=09=09=09=09=09=09=09=09=09<table align=3D"left" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"full" style=3D"border-collapse:collapse; =
+mso-table-lspace:0pt; mso-table-rspace:0pt;"><!-- START OF TEXT-->
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"center" class=3D"center" s=
+tyle=3D"padding-top: 10px; font-weight: normal; font-size:11px ; color:#666=
+666; font-family: 'Muli', Helvetica, Arial, sans-serif; line-height:18px;ms=
+o-line-height-rule: exactly;"><multiline> <span> You are receiving this bec=
+ause you are a registered Tracktion user. These updates often include impor=
+tant information about your software. We promise not to bug you too often b=
+ut, if you choose not to receive updates from us, please feel free to unsub=
+scribe below. </span></multiline><br />
+=09=09=09=09=09=09=09=09=09=09=09=09<a href=3D"https://www.tracktion.com/ne=
+wsletter/unsubscribe/H3MNHvgUEgjgYDtG8fCvY0zg2bgX763fnT9bNt892i4zdSw/tuhljq=
+M3zcIMiQTGyXCi2A/6Rma6NNVEZAAEUWHGtpzzw" >unsubscribe</a></td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"center" class=3D"center" s=
+tyle=3D"padding-top: 10px; font-weight: normal; font-size:11px ; color:#666=
+666; font-family: 'Muli', Helvetica, Arial, sans-serif; line-height: 18px;m=
+so-line-height-rule: exactly;"><multiline> <span> <a href=3D"#" style=3D"te=
+xt-decoration: none; font-style: normal; color:#666666;">Tracktion Software=
+ Corporation<br />
+=09=09=09=09=09=09=09=09=09=09=09=0911644 NE 80th St<br />
+=09=09=09=09=09=09=09=09=09=09=09=09Kirkland, WA 98033</a><br />
+=09=09=09=09=09=09=09=09=09=09=09=09&copy; 2020 Tracktion Software Corporat=
+ion. All Rights Reserved. </span> </multiline></td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!-- END OF TEXT-->
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09<!-- END OF MIDDLE COLUMN--></td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09=09</td>
+=09=09=09=09=09</tr>
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09</td>
+=09=09</tr>
+=09</tbody>
+</table>
+<!-- END OF FOOTER--><!-- START OF SUB-FOOTER-->
+
+<table align=3D"center" bgcolor=3D"#232323" border=3D"0" cellpadding=3D"0" =
+cellspacing=3D"0" style=3D"padding: 0; margin: 0;" width=3D"100%">
+=09<tbody>
+=09=09<tr>
+=09=09=09<td align=3D"center" valign=3D"top">
+=09=09=09<table align=3D"center" bgcolor=3D"#232323" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" class=3D"table-wrapper" width=3D"640">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td style=3D"padding: 20px;" width=3D"640">
+=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" class=3D"table-inner" width=3D"600">
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td valign=3D"top">
+=09=09=09=09=09=09=09=09=09<table align=3D"left" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"full" style=3D"border-collapse:collapse; =
+mso-table-lspace:0pt; mso-table-rspace:0pt;" width=3D"600"><!-- START OF FO=
+OTER LOGO-->
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"center" class=3D"center" s=
+tyle=3D"padding: 0; font-weight: normal; font-size:14px ; color:#362539; fo=
+nt-family: 'Muli', Helvetica, Arial, sans-serif; line-height: 24px;mso-line=
+-height-rule: exactly;"><span><a href=3D"https://www.tracktion.com/newslett=
+er/l/K89TrNjq3w5jKM763EGsfBXw/xGpq1lZd7GH892ed4RvY4763PA/6Rma6NNVEZAAEUWHGt=
+pzzw" style=3D"color:#362539;"><img alt=3D"footer-logo" border=3D"0" height=
+=3D"37" src=3D"https://www.tracktion.com/newsletter/uploads/logo-audio-squa=
+dron-footer_2x.png" style=3D"display: inline-block;" width=3D"112" /> </a> =
+</span></td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<!-- END OF FOOTER LOGO-->
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09=09</td>
+=09=09=09=09=09</tr>
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09</td>
+=09=09</tr>
+=09=09<!-- START OF VERTICAL SPACER-->
+=09=09<tr>
+=09=09=09<td height=3D"30" style=3D"padding:0; line-height: 0;">&nbsp;</td>
+=09=09</tr>
+=09=09<!-- END OF VERTICAL SPACER-->
+=09</tbody>
+</table>
+<!-- END OF SUB-FOOTER--></body>
+</html>
+<img src=3D"https://www.tracktion.com/newsletter/t/6Rma6NNVEZAAEUWHGtpzzw/K=
+89TrNjq3w5jKM763EGsfBXw" alt=3D"" style=3D"width:1px;height:1px;"/>
+
+
+--b1_4f57db11a8abb4e85bf7530f91a80871--

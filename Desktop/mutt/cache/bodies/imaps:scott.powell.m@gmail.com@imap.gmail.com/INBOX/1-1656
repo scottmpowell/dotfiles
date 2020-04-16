@@ -1,0 +1,1990 @@
+Delivered-To: scott.powell.m@gmail.com
+Received: by 2002:a1c:26c4:0:0:0:0:0 with SMTP id m187csp5360184wmm;
+        Tue, 17 Sep 2019 05:34:43 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxnLm+yn39HaLN/qVDE7HGkY0QcDwAvOxgIx/xKSkJjbuuwpoY6O3Jw+HcsreytXKyFOEZl
+X-Received: by 2002:ae9:edcb:: with SMTP id c194mr3370893qkg.121.1568723683150;
+        Tue, 17 Sep 2019 05:34:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568723683; cv=none;
+        d=google.com; s=arc-20160816;
+        b=VfvaQgKgMQm8V4H/gcrWDEVRBSha1oPr8o+RJ9Pqp+OCccD+95knXnRF44MwlgOfB1
+         fYj5idGcE95LlVkQHW2LM+aQgj8faVmSiWms2FcjHT6snWJZNvHVjFkh2vNN1DF4bYUb
+         uHKWwOH8jBTXem2qHWeeAuwoUVrnJaoHxKZZG7aDJTo7XXK3TY576JDhaO0I9YyWdmcQ
+         w0Vo4tRI7bTpOy9NBl4xbv+X3ePHNkKwDzrLUA/6uq+K6Q4YGZVvjIwos2Cca1pbQ2aD
+         bIgDUIO8lcdKLQIjxsOkB+v44ELuXrz8WQCEcEFK6YETalIDkv147091zMpRMmOCd4u4
+         /z8Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:mime-version:subject:message-id:to:reply-to:from
+         :date:dkim-signature:dkim-signature;
+        bh=CNAwseCMTuT2yfMIPrv9v2WON7ciIGj1GhRqgkPGCXg=;
+        b=ftoMoXeO6zdJa1YCCDvlM2e/1rOahipxVKVcS2QlGO/YsDv/VfiMa0jfwd+peDZynH
+         1EuQFACm5Wr3CKBbO+tcn+wkOrtRMFXRNd7Qu+pqShFC2TpuoBvrESF9pr9y/PNOvOQd
+         cUQCkwOMjJsfmIKR1v+clJe6Wab+SJ5H8ED8HCe5SlrafcquyiZb9/HguxEUHPN9UlQ3
+         M9Ib/z+u5DWHqqF+Rh3lJjONdrFzqQD4pM6jE+w3yIcxF6UxReadc+jFjpeOGTy45mpv
+         d3sXQdrrUSIMt+quwddu03co1YXSWCvwSI1EBLSRFe7B6ff2AgMdN1pEbHXuLEmV2uzG
+         LW+w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@cybrary.it header.s=m1 header.b=eXBxjjSx;
+       dkim=pass header.i=@mktdns.com header.s=m1 header.b=KGPPuSa3;
+       spf=pass (google.com: domain of 948-bsi-099.0.2077.0.0.7685.9.2871123@email.cybrary.it designates 192.28.152.107 as permitted sender) smtp.mailfrom=948-BSI-099.0.2077.0.0.7685.9.2871123@email.cybrary.it;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=cybrary.it
+Return-Path: <948-BSI-099.0.2077.0.0.7685.9.2871123@email.cybrary.it>
+Received: from email.cybrary.it (email.cybrary.it. [192.28.152.107])
+        by mx.google.com with ESMTPS id t52si1512545qth.353.2019.09.17.05.34.42
+        for <scott.powell.m@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 17 Sep 2019 05:34:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 948-bsi-099.0.2077.0.0.7685.9.2871123@email.cybrary.it designates 192.28.152.107 as permitted sender) client-ip=192.28.152.107;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@cybrary.it header.s=m1 header.b=eXBxjjSx;
+       dkim=pass header.i=@mktdns.com header.s=m1 header.b=KGPPuSa3;
+       spf=pass (google.com: domain of 948-bsi-099.0.2077.0.0.7685.9.2871123@email.cybrary.it designates 192.28.152.107 as permitted sender) smtp.mailfrom=948-BSI-099.0.2077.0.0.7685.9.2871123@email.cybrary.it;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=cybrary.it
+Return-Path: <kenunderhill@cybrary.it>
+X-MSFBL: O56RhIi8BBBZhfPn0PJ4uGgunDwyZM/OaPcl0Da1ME0=|eyJiIjoiZHZwLTE5Mi0
+	yOC0xNTItMTA3IiwidSI6Ijk0OC1CU0ktMDk5Ojk0OTo3NDc0OjE1NzQ1OjA6NzY
+	4NTo5OjIwNzc6Mjg3MTEyMyIsImciOiJiZy1hYmQtNTkyIiwiciI6InNjb3R0LnB
+	vd2VsbC5tQGdtYWlsLmNvbSJ9
+Received: from [10.1.87.249] ([10.1.87.249:35697] helo=abmas01.marketo.org)
+	by abmta17.marketo.org (envelope-from <kenunderhill@cybrary.it>)
+	(ecelerity 4.2.38.62370 r(:)) with ESMTP
+	id 28/D1-11170-9C2D08D5; Tue, 17 Sep 2019 07:34:17 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1568723657;
+	s=m1; d=cybrary.it; i=@cybrary.it;
+	h=Date:From:To:Subject:MIME-Version:Content-Type;
+	bh=CNAwseCMTuT2yfMIPrv9v2WON7ciIGj1GhRqgkPGCXg=;
+	b=eXBxjjSxYtyRTQOfmUU+Xn8VIIHLqutH0a2nVlXGjVg/Ww2QoBVI6wW4VsJWY9Qj
+	6hSEizdq57Rz89GPU0fdHD/PLkOF33o+A+Z/Witc11dM3GqwIYLNcbqEYwyBPa9kUh2
+	DN4s5o03PjLOabPJZ/lnGw09apB+E46WWpV02i4o=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1568723657;
+	s=m1; d=mktdns.com; i=@mktdns.com;
+	h=Date:From:To:Subject:MIME-Version:Content-Type;
+	bh=CNAwseCMTuT2yfMIPrv9v2WON7ciIGj1GhRqgkPGCXg=;
+	b=KGPPuSa3rozcEAON6UWWJh+R5SoTpntac8dsDCG7r/2r0sgyi9nDxZzNPmVUOVbr
+	k4Jue1hRC6VzalcHaG7ueSAtA1+RdHK5sO4Uj0E33UVgGE+SEL3f2V2Nngl4duqnzpM
+	WcKwVEZ1PN+rllHkAQGuqQQiM4KWkB1IdM51vccY=
+Date: Tue, 17 Sep 2019 07:34:17 -0500 (CDT)
+From: "Ken Underhill, Cybrary" <kenunderhill@cybrary.it>
+Reply-To: kenunderhill@cybrary.it
+To: scott.powell.m@gmail.com
+Message-ID: <1753862741.1331584091.1568723657196.JavaMail.mktmail@abmas01.marketo.org>
+Subject: NEW: Enroll in the updated Penetration Tester Career Program
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1331584089_953999981.1568723657196"
+X-PVIQ: mkto-948BSI099-000001-000000-002077
+X-Binding: bg-abd-592
+X-MarketoID: 948-BSI-099:949:7474:15745:0:7685:9:2077:2871123
+X-MktArchive: false
+List-Unsubscribe: <mailto:MJWDCTDFMRVU2ZDVJBWEK6JQGJKEITCRPB3T2PI.2077.7685.9@unsub-ab.mktomail.com>
+X-Mailfrom: 948-BSI-099.0.2077.0.0.7685.9.2871123@email.cybrary.it
+X-MSYS-API: {"options":{"open_tracking":false,"click_tracking":false}}
+X-MktMailDKIM: true
+
+------=_Part_1331584089_953999981.1568723657196
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+New and Improved Career Path:
+Penetration Tester
+
+The brand new=C2=A0Penetration Tester Career Path <https://go.cybrary.it/tY=
+Ir320XBU0VK00DSc0001t>=C2=A0helps prepare=C2=A0individuals for roles as ent=
+ry-level pentesters and ethical hackers. Start learning fast, gaining pract=
+ical knowledge, and developing=C2=A0hands-on skills.
+=C2=A0
+50% OFF code: CAREER50
+Monthly and Annual Memberships
+
+GET JOB READY
+https://www.cybrary.it/upgrade/
+
+Hurry, Offer Ends TODAY!
+
+
+-----------------------------------------------------
+
+
+Everything You Need To=C2=A0Succeed
+
+
+Guided Syllabus
+
+The Penetration Tester Career Path syllabus gives you a detailed roadmap of=
+ the courses, labs, and=20
+assessments to complete the program.
+
+REVIEW YOUR SYLLABUS >>=20
+<https://go.cybrary.it/NS00vB2Y0001rXI0MDc0U3V>
+
+
+Unlimited Virtual Labs
+
+Gain hands-on experience with CTF assessments, virtual labs, and practice e=
+xams. After joining Insider Pro you will have unlimited lab access to devel=
+op your skills.
+
+LAUNCH LABS>>=20
+<https://go.cybrary.it/ZSDcr01NY000020Uw30VIBX>
+
+
+Mentors & Community
+
+When you join Insider Pro you will be immersed in a community of motivated =
+cyber professionals as well as be mentored by industry veterans who will le=
+ad you to your career goals every step of the way.
+
+JOIN THE COMMUNITY >>=20
+<https://go.cybrary.it/uuD000UScV0Y0L03Xr2BI10>
+
+
+-----------------------------------------------------
+
+
+Level Up Your Career
+Join Insider Pro <https://go.cybrary.it/DBxc00O0ISU00X01VD3r0Y2>
+=C2=A0
+50% OFF code: CAREER50
+Monthly and Annual Memberships
+
+START 7-DAY TRIAL
+https://www.cybrary.it/upgrade/
+
+Offer Ends Today, September 17th
+
+
+-----------------------------------------------------
+
+
+Pen Tester Career Path=C2=A0Success=20
+
+"I got a job as a cybersecurity analyst at Radware with a salary I=E2=80=99=
+ve never even dreamed about AND with no prior experience."
+
+Alexei
+Pen Tester Career Path: 4 months
+
+
+-----------------------------------------------------
+
+
+
+
+=C2=A9 2019 Cybrary, Inc. All Rights Reserved.
+5801 University Research Court STE 150, College Park, MD 20740
+
+This email was sent to scott.powell.m@gmail.com. If you no longer wish to r=
+eceive these emails you may unsubscribe here: https://pages.cybrary.it/Unsu=
+bscribePage.html?mkt_unsubscribe=3D1&mkt_tok=3DeyJpIjoiWVdFd1pqVTBNR0UyWldO=
+aiIsInQiOiJheHdJUzJ1cGkwOHZZRmJ1OHczcllCQkVEQ040Z2EzS1A2eWZqaHBIaXB0VkQwTFN=
+vRXdLY1g5TS9ra0JQSGYwd1hKRmMxcFJhcm5JU2ozL05WbmlicVZveXNNVVIvcFFYVkIwMGRxVW=
+dleWYwblJ0V0dUbVRnczdJNHdFVFFHcSJ9.
+
+------=_Part_1331584089_953999981.1568723657196
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=3D"http://www.w3.org/1999/xhtml" style=3D"width: 100%;">
+<head>=20
+<!-- Marketo Variable Definitions -->                                      =
+                                                                           =
+                =20
+<!-- Other Meta Tags -->=20
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8" />=
+=20
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1,=
+ minimum-scale=3D1, maximum-scale=3D1" />=20
+<meta name=3D"robots" content=3D"noindex,nofollow" />=20
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge" />=20
+<link href=3D"https://fonts.googleapis.com/css?family=3DMontserrat:300,400,=
+700" rel=3D"stylesheet" type=3D"text/css" />=20
+<link href=3D"https://fonts.googleapis.com/css?family=3DQuestrial:300,400,7=
+00" rel=3D"stylesheet" type=3D"text/css" />=20
+<!--[if mso]>
+=09=09<style type=3D'text/css'>
+=09=09.primary-font {
+=09=09font-family: Arial, sans-serif !important;
+=09=09}
+=09=09</style>
+=09=09<![endif]-->=20
+<!--[if mso]>
+=09=09<style type=3D'text/css'>
+=09=09.secondary-font {
+=09=09font-family: Arial, sans-serif !important;
+=09=09}
+=09=09</style>
+=09=09<![endif]-->=20
+<style>
+=09=09=09/*startcommon*/
+=09=09=09@media only screen and (max-width: 640px) {
+=09=09=09=09table.m_boxing{
+=09=09=09=09=09width: 100% !important;
+=09=09=09=09}
+=09=09=09}
+=09=09=09/*endcommon*/
+=09=09</style>=20
+<style media=3D"all">
+/* CLIENT-SPECIFIC STYLES */
+#outlook a {
+  padding: 0;
+}
+/* Force Outlook to provide a "view in browser" message */
+.ReadMsgBody {
+  width: 100%;
+}
+.ExternalClass {
+  width: 100%;
+}
+/* Force Hotmail to display emails at full width */
+.ExternalClass,
+.ExternalClass p,
+.ExternalClass span,
+.ExternalClass font,
+.ExternalClass td,
+.ExternalClass div {
+  line-height: 100%;
+}
+/* Force Hotmail to display normal line spacing */
+/* iOS BLUE LINKS */
+.appleBody a {
+  color: .m_000;
+  text-decoration: none;
+}
+.appleFooter a {
+  color: .m_000;
+  text-decoration: none;
+}
+@-ms-viewport {=20
+    width: device-width;=20
+}
+
+</style>=20
+<style media=3D"all">
+@media only screen and (max-width: 640px) {
+
+/*starttablet*/
+
+body {
+=09width: auto !important;
+}
+
+table.table600{
+=09width: 450px !important;
+}
+
+table.table-inner{
+=09width: 86% !important;
+}
+
+table.table1-2{
+=09width: 47% !important;
+=09clear: both;
+}
+
+table.table1-3{
+=09width: 29.4% !important;
+}
+
+table.table1-4{
+=09width: 100% !important;
+=09text-align: left !important;
+}
+
+table.table2-3{
+=09width: 64% !important;
+=09text-align: center !important;
+}
+
+table.table3-3{
+=09width: 100% !important;
+=09text-align: center !important;
+=09clear: both;
+}
+
+table.footer-logo{
+=09width: 10% !important;
+=09text-align: right !important;
+}
+
+td.outer{
+=09min-width: 0 !important;
+}
+
+td.stack{
+=09padding-bottom: 40px !important;
+}
+
+.stack-tablet {
+=09padding-bottom: 20px !important;
+=09overflow: visible !important;
+=09float: none !important;
+=09mso-hide: none !important;
+=09display: block !important;
+}
+
+img.mobile-img{
+=09width: 100% !important;
+=09height: auto !important;
+}
+
+td.center-tablet{
+=09text-align: center !important;
+}
+
+td.hide-tablet{
+=09display: none !important;
+}
+
+table.footer-column{
+=09width: 47% !important;
+=09text-align: left !important;
+}
+
+.m_header td {
+=09text-align: center !important;
+}
+
+.m_hero .background {
+=09background-size: cover !important;
+}
+
+.m_overlay-image .background {
+=09background-size: cover !important;
+}
+
+.mktoVideoThumbnail{
+=09width: 100% !important;
+=09height: auto!important;
+=09max-height:inherit!important;
+=09min-height:inherit!important;
+}
+
+.m_menu {
+=09padding-top: 10px !important;
+=09padding-right: 0 !important;
+=09padding-bottom: 10px !important;
+=09padding-left: 0 !important;
+}
+
+.m_menu p {
+=09display: block !important;
+=09padding-top: 0 !important;
+=09padding-right: 0 !important;
+=09padding-bottom: 10px !important;
+=09padding-left: 0 !important;
+}
+
+.m_horizontal img {
+=09display: inline-block;
+=09margin-top: 0;
+=09margin-right: auto;
+=09margin-bottom: 30px;
+=09margin-left: auto;
+}
+
+.m_article .table1-2 {
+=09width: 100% !important;
+=09clear: both;
+}
+
+.m_article .cta table {
+=09margin-top: 0 !important;
+=09margin-right: auto !important;
+=09margin-bottom: 0 !important;
+=09margin-left: auto !important;
+}
+
+.m_overlay-image .box {
+=09float: none !important;
+=09width: 220px;
+=09margin-top: 0 !important;
+=09margin-right: auto !important;
+=09margin-bottom: 0 !important;
+=09margin-left: auto !important;
+}
+
+.m_contacts .table1-2 {
+=09width: 100% !important;
+=09clear: both;
+=09text-align: center !important;
+}
+
+.m_free-image img {
+=09width: 450px !important;
+=09height: auto;
+}
+
+.m_team .spacer,
+.m_three-articles .spacer {
+=09width: 28px !important;
+}
+
+.m_features .spacer {
+=09width: 26px;
+}
+
+/*endtablet*/
+
+}
+
+@media only screen and (max-width: 479px) {
+
+/*startmobile*/
+
+body {
+=09width: auto !important;
+}
+
+table.table600{
+=09width: 290px !important;
+}
+
+table.table-inner{
+=09width: 80% !important;
+=09float: none !important;
+}
+
+table.table1-2{
+=09width: 100% !important;
+=09clear: both;
+}
+
+table.table1-3{
+=09width: 100% !important;
+=09clear: both;
+}
+
+table.table1-4{
+=09width: 100% !important;
+=09text-align: center !important;
+}
+
+table.table2-3{
+=09width: 100% !important;
+=09text-align: center !important;
+}
+
+table.table3-3{
+=09width: 100% !important;
+=09text-align: center !important;
+=09clear: both;
+}
+
+table.footer-logo{
+=09width: 60% !important;
+=09text-align: center !important;
+}
+
+td.outer{
+=09min-width: 0 !important;
+}
+
+td.td3-1{
+=09width: 60% !important;
+=09text-align: center !important;
+}
+
+.stack-smartphone {
+=09padding-bottom: 20px !important;
+=09overflow: visible !important;
+=09float: none !important;
+=09display: block !important;
+=09mso-hide: none !important;
+}
+
+td.center-smartphone{
+=09text-align: center !important;
+}
+
+img.mobile-img{
+=09width: 100% !important;
+}
+
+td.center-tablet{
+=09text-align: center !important;
+}
+
+td.hide-smartphone{
+=09display: none !important;
+}
+
+table.footer-column{
+=09width: 100% !important;
+=09text-align: center !important;
+}
+
+.m_free-image img {
+=09width: 290px !important;
+=09height: auto;
+}
+
+.m_horizontal img {
+=09margin-top: 0 !important;
+=09margin-right: auto !important;
+=09margin-bottom: 0 !important;
+=09margin-left: auto !important;
+}
+
+.m_hero .background {
+=09background-size: cover !important;
+}
+
+.m_overlay-image .background {
+=09background-size: cover !important;
+}
+
+/*endmobile*/
+
+}
+
+
+</style>=20
+</head>=20
+<body style=3D"margin-bottom: 0; -webkit-text-size-adjust: 100%; padding-bo=
+ttom: 0; min-width: 100%; margin-top: 0; margin-right: 0; -ms-text-size-adj=
+ust: 100%; margin-left: 0; padding-top: 0; padding-right: 0; padding-left: =
+0; width: 100%;"><style type=3D"text/css">div#emailPreHeader{ display: none=
+ !important; }</style><div id=3D"emailPreHeader" style=3D"mso-hide:all; vis=
+ibility:hidden; opacity:0; color:transparent; mso-line-height-rule:exactly;=
+ line-height:0; font-size:0px; overflow:hidden; border-width:0; display:non=
+e !important;">The brand new Penetration Tester Career Path helps prepare i=
+ndividuals for roles as entry-level pentesters and ethical hackers. </div>=
+=20
+<div style=3D"display:none; white-space:nowrap; font:15px courier; line-hei=
+ght:0;">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</div>=20
+<!-- Outer table START -->=20
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" styl=
+e=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-=
+lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0; border-collapse: col=
+lapse;">=20
+<tbody>=20
+<tr>=20
+<td class=3D"outer" valign=3D"top" style=3D"-webkit-hyphens: none;-webkit-t=
+ext-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-brea=
+k: break-word;-ms-text-size-adjust: 100%;-moz-hyphens: none;hyphens: none;f=
+ont-family: 'Montserrat', Arial, sans-serif;min-width: 600px;border-collaps=
+e: collapse;background-color:#FFFFFF;">=20
+<table width=3D"640" align=3D"center" id=3D"boxing" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" class=3D"m_boxing">=20
+<tbody>=20
+<tr>=20
+<td class=3D"mktoContainer boxedbackground" id=3D"template-wrapper" style=
+=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-l=
+space: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit-hyphens:=
+ none; -moz-hyphens: none; hyphens: none; font-family: 'Montserrat', Arial,=
+ sans-serif; border-collapse: collapse;">
+<table id=3D"blankSpace" style=3D"-webkit-text-size-adjust: 100%; -ms-text-=
+size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spa=
+cing: 0; border-collapse: collapse;" align=3D"center" border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0" width=3D"100%" class=3D"mktoModule m_blankSpace=
+">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;background-color:#FFFFFF;" bgcolor=
+=3D"#FFFFFF" valign=3D"top">=20
+<table class=3D"table600" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:40px;font-size:40px;" he=
+ight=3D"40px">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table id=3D"free-image" style=3D"-webkit-text-size-adjust: 100%; -ms-text-=
+size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spa=
+cing: 0; border-collapse: collapse;" align=3D"center" border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0" width=3D"100%" class=3D"mktoModule m_free-image=
+">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;background-color:#FFFFFF;" bgcolor=
+=3D"#FFFFFF" valign=3D"top">=20
+<center>=20
+<table class=3D"table600" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:1px;font-size:1px;" heig=
+ht=3D"1px">&nbsp;</td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; font-family: 'Montserrat=
+', Arial, sans-serif; border-collapse: collapse;">=20
+<center>=20
+<div style=3D"display:inline-block" class=3D"mktoImg" id=3D"photo4" mktoloc=
+kimgsize=3D"true" mktolockimgstyle=3D"false">=20
+<a href=3D
+"https://go.cybrary.it/j2JS013VB00cU0rDIYs0X00" target=3D"_blank"
+><img src=3D"https://pages.cybrary.it/rs/948-BSI-099/images/MarketoCybraryL=
+ogo.png" style=3D"-ms-interpolation-mode: bicubic; outline: none; border-ri=
+ght-width: 0; border-bottom-width: 0; border-left-width: 0; text-decoration=
+: none; border-top-width: 0; width: auto; height: auto; max-width: 100%; di=
+splay: block; line-height: 100%;" width=3D"600" /></a>=20
+</div>=20
+</center> </td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:1px;font-size:1px;" heig=
+ht=3D"1px">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+</center> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table id=3D"free-image52036925-b809-4acc-924b-b96cc2ee9625" style=3D"-webk=
+it-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0p=
+t; mso-table-rspace: 0pt; border-spacing: 0; border-collapse: collapse;" al=
+ign=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"10=
+0%" class=3D"mktoModule m_free-image">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;background-color:#FFFFFF;" bgcolor=
+=3D"#FFFFFF" valign=3D"top">=20
+<center>=20
+<table class=3D"table600" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:20px;font-size:20px;" he=
+ight=3D"20px">&nbsp;</td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; font-family: 'Montserrat=
+', Arial, sans-serif; border-collapse: collapse;">=20
+<center>=20
+<div style=3D"display:inline-block" class=3D"mktoImg" id=3D"photo452036925-=
+b809-4acc-924b-b96cc2ee9625" mktolockimgsize=3D"true" mktolockimgstyle=3D"f=
+alse">=20
+<a href=3D
+"https://go.cybrary.it/tYIr320XBU0VK00DSc0001t" target=3D"_blank"
+><img alt=3D"penetheader.jpg" src=3D"https://pages.cybrary.it/rs/948-BSI-09=
+9/images/penetheader.jpg" style=3D"-ms-interpolation-mode: bicubic; outline=
+: none; border-right-width: 0; border-bottom-width: 0; border-left-width: 0=
+; text-decoration: none; border-top-width: 0; width: auto; height: auto; ma=
+x-width: 100%; display: block; line-height: 100%;" width=3D"600" /></a>=20
+</div>=20
+</center> </td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:20px;font-size:20px;" he=
+ight=3D"20px">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+</center> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table id=3D"free-text" style=3D"-webkit-text-size-adjust: 100%; -ms-text-s=
+ize-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spac=
+ing: 0; border-collapse: collapse;" align=3D"center" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" width=3D"100%" class=3D"mktoModule m_free-text">=
+=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;background-color:#FFFFFF;" bgcolor=
+=3D"#FFFFFF" valign=3D"top">=20
+<center>=20
+<table class=3D"table600" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:10px;font-size:10px;" he=
+ight=3D"10px">&nbsp;</td>=20
+</tr>=20
+<tr>=20
+<td class=3D"primary-font text" style=3D"-moz-hyphens: none;-webkit-text-si=
+ze-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: bre=
+ak-word;-webkit-hyphens: none;-ms-text-size-adjust: 100%;hyphens: none;font=
+-family:'Montserrat', Arial, sans-serif;font-size: 14px;color: #333333;line=
+-height: 170%;border-collapse: collapse;">=20
+<div class=3D"mktoText" id=3D"text4">=20
+<p style=3D"text-align: center;"><span style=3D"color: #000000;"><strong><s=
+pan style=3D"font-size: 30px; line-height: 45px;"><span style=3D"font-size:=
+ 32px;"><span style=3D"font-size: 24px;">New and Improved Career Path:</spa=
+n><br />Penetration Tester</span><br /></span></strong></span></p>=20
+<p style=3D"text-align: center;"><span style=3D"font-size: 16px; color: #00=
+0000;">The brand new&nbsp;<span style=3D"color: #e50914;"><strong><a href=
+=3D
+"https://go.cybrary.it/tYIr320XBU0VK00DSc0001t" target=3D"_blank" style=3D"=
+color: #e50914;"
+>Penetration Tester Career Path</a></strong></span>&nbsp;helps prepare&nbsp=
+;individuals for roles as entry-level pentesters and ethical hackers. Start=
+ learning fast, gaining practical knowledge, and developing&nbsp;<strong>ha=
+nds-on skills</strong>.<br />&nbsp;</span></p>=20
+<p style=3D"text-align: center;"><span style=3D"font-size: 24px; line-heigh=
+t: 32px;"><strong><span style=3D"color: #e50914;">50% OFF</span> <span styl=
+e=3D"color: #000000;">code:</span> <span style=3D"color: #e50914;">CAREER50=
+<br /></span></strong></span><span style=3D"color: #999999; font-size: 20px=
+;">Monthly and Annual Memberships</span></p>=20
+</div></td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:5px;font-size:5px;" heig=
+ht=3D"5px">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+</center> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table id=3D"callToAction" style=3D"-webkit-text-size-adjust: 100%; -ms-tex=
+t-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-s=
+pacing: 0; border-collapse: collapse;" align=3D"center" border=3D"0" cellpa=
+dding=3D"0" cellspacing=3D"0" width=3D"100%" class=3D"mktoModule m_callToAc=
+tion">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;background-color:#FFFFFF;" bgcolor=
+=3D"#FFFFFF" valign=3D"top">=20
+<table class=3D"table600" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:1px;font-size:1px;" heig=
+ht=3D"1px">&nbsp;</td>=20
+</tr>=20
+<tr>=20
+<td class=3D"cta" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-ad=
+just: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break=
+-word; -webkit-hyphens: none; -moz-hyphens: none; hyphens: none; font-famil=
+y: 'Montserrat', Arial, sans-serif; border-collapse: collapse;">=20
+<center>=20
+<table style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;=
+ mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0; border-co=
+llapse: collapse;" align=3D"center" border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; font-family: 'Montserrat=
+', Arial, sans-serif; border-collapse: collapse;" align=3D"center" bgcolor=
+=3D"#E50914"> <a href=3D
+"https://go.cybrary.it/uuD000UScV0Y0L03Xr2BI10" target=3D"_blank" class=3D"=
+primary-font button" style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-=
+adjust: 100%;display: inline-block;font-size: 14px;font-family:'Montserrat'=
+, Arial, sans-serif;color: white;padding-top: 12px;padding-right: 18px;padd=
+ing-bottom: 12px;padding-left: 18px;border-top-width:10px;border-right-widt=
+h:10px;letter-spacing:=20
+2px;border-left-width:10px;border-top-style: solid;border-right-style: soli=
+d;border-bottom-style: solid;border-left-style: solid;border-top-color:#E50=
+914;border-right-color:#E50914;border-bottom-color:#E50914;border-left-colo=
+r:#E50914;border-bottom-width:10px;text-decoration:=20
+none;background-color:#E50914;"
+>GET JOB READY</a> </td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+</center> </td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:1px;font-size:1px;" heig=
+ht=3D"1px">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table id=3D"free-text0d320947-bcbb-4c31-b436-9d0cbc4cdaa4" style=3D"-webki=
+t-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt=
+; mso-table-rspace: 0pt; border-spacing: 0; border-collapse: collapse;" ali=
+gn=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100=
+%" class=3D"mktoModule m_free-text">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;background-color:#FFFFFF;" bgcolor=
+=3D"#FFFFFF" valign=3D"top">=20
+<center>=20
+<table class=3D"table600" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:1px;font-size:1px;" heig=
+ht=3D"1px">&nbsp;</td>=20
+</tr>=20
+<tr>=20
+<td class=3D"primary-font text" style=3D"-moz-hyphens: none;-webkit-text-si=
+ze-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: bre=
+ak-word;-webkit-hyphens: none;-ms-text-size-adjust: 100%;hyphens: none;font=
+-family:'Montserrat', Arial, sans-serif;font-size: 14px;color: #333333;line=
+-height: 170%;border-collapse: collapse;">=20
+<div class=3D"mktoText" id=3D"text40d320947-bcbb-4c31-b436-9d0cbc4cdaa4">=
+=20
+<p style=3D"text-align: center;"><span style=3D"color: #e50914;"><strong><s=
+pan style=3D"font-size: 16px;">Hurry, Offer Ends TODAY!</span></strong><br =
+/></span></p>=20
+</div></td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:25px;font-size:25px;" he=
+ight=3D"25px">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+</center> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table id=3D"Separator" style=3D"-webkit-text-size-adjust: 100%; -ms-text-s=
+ize-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spac=
+ing: 0; border-collapse: collapse;" align=3D"center" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" width=3D"100%" class=3D"mktoModule m_Separator">=
+=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;background-color:#FFFFFF;" bgcolor=
+=3D"#FFFFFF" valign=3D"top">=20
+<table class=3D"table600" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:15px;font-size:15px;" he=
+ight=3D"15px">&nbsp;</td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; font-family: 'Montserrat=
+', Arial, sans-serif; border-collapse: collapse;">=20
+<center>=20
+<table class=3D"table-inner" style=3D"-webkit-text-size-adjust: 100%; -ms-t=
+ext-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border=
+-spacing: 0; border-collapse: collapse;" align=3D"center" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; font-family: 'Montserrat=
+', Arial, sans-serif; border-collapse: collapse;">=20
+<table class=3D"table3-3" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse;" border=3D"0" cellpadding=3D"0" cellsp=
+acing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr style=3D"height: 10px;">=20
+<td class=3D"bordered" style=3D"hyphens: none;-webkit-text-size-adjust: 100=
+%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webki=
+t-hyphens: none;-moz-hyphens: none;-ms-text-size-adjust: 100%;font-family: =
+'Montserrat', Arial, sans-serif;border-top-style: none;border-bottom-width:=
+1px;border-bottom-style: solid;border-bottom-color:#b2b2b2;border-collapse:=
+ collapse;"></td>=20
+</tr>=20
+<tr style=3D"height: 10px;">=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; font-family: 'Montserrat=
+', Arial, sans-serif; border-collapse: collapse;"></td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+</center> </td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:15px;font-size:15px;" he=
+ight=3D"15px">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table id=3D"free-text0d320947-bcbb-4c31-b436-9d0cbc4cdaa480c5a41e-940a-47b=
+4-b4b5-86eb16565e11" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size=
+-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing=
+: 0; border-collapse: collapse;" align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" width=3D"100%" class=3D"mktoModule m_free-text">=
+=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;background-color:#FFFFFF;" bgcolor=
+=3D"#FFFFFF" valign=3D"top">=20
+<center>=20
+<table class=3D"table600" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:25px;font-size:25px;" he=
+ight=3D"25px">&nbsp;</td>=20
+</tr>=20
+<tr>=20
+<td class=3D"primary-font text" style=3D"-moz-hyphens: none;-webkit-text-si=
+ze-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: bre=
+ak-word;-webkit-hyphens: none;-ms-text-size-adjust: 100%;hyphens: none;font=
+-family:'Montserrat', Arial, sans-serif;font-size: 14px;color: #333333;line=
+-height: 170%;border-collapse: collapse;">=20
+<div class=3D"mktoText" id=3D"text40d320947-bcbb-4c31-b436-9d0cbc4cdaa480c5=
+a41e-940a-47b4-b4b5-86eb16565e11">=20
+<p style=3D"text-align: center; line-height: 36px;"><span style=3D"font-siz=
+e: 30px; color: #000000;"><b>Everything You Need To&nbsp;Succeed</b></span>=
+</p>=20
+</div></td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:1px;font-size:1px;" heig=
+ht=3D"1px">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+</center> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table id=3D"header5c412b31-784b-449a-8a0a-f642b347cfbf" style=3D"-webkit-t=
+ext-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; m=
+so-table-rspace: 0pt; border-spacing: 0; border-collapse: collapse;" align=
+=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%"=
+ class=3D"mktoModule m_header">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;background-color:#ffffff;" bgcolor=
+=3D"#ffffff" valign=3D"top">=20
+<table class=3D"table600" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:20px;font-size:20px;" he=
+ight=3D"20px">&nbsp;</td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; font-family: 'Montserrat=
+', Arial, sans-serif; border-collapse: collapse;">=20
+<center>=20
+<table class=3D"table3-3" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse;" align=3D"left" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" width=3D"220">=20
+<tbody>=20
+<tr>=20
+<td class=3D"center-tablet logo" style=3D"-webkit-hyphens: none; -webkit-te=
+xt-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-br=
+eak: break-word; -ms-text-size-adjust: 100%; -moz-hyphens: none; hyphens: n=
+one; font-family: 'Montserrat', Arial, sans-serif; text-align: left; border=
+-collapse: collapse;">=20
+<div style=3D"display:inline-block" class=3D"mktoImg" id=3D"logo5c412b31-78=
+4b-449a-8a0a-f642b347cfbf" mktolockimgsize=3D"true" mktolockimgstyle=3D"fal=
+se">=20
+<a href=3D
+"https://go.cybrary.it/NS00vB2Y0001rXI0MDc0U3V" target=3D"_blank"
+><img src=3D"https://pages.cybrary.it/rs/948-BSI-099/images/guidedsyllabus.=
+png" style=3D"-ms-interpolation-mode: bicubic; outline: none; border-right-=
+width: 0; border-bottom-width: 0; border-left-width: 0; text-decoration: no=
+ne; border-top-width: 0; max-width: 100%; line-height: 100%; width: 300px; =
+display: inline-block; height: auto;padding-top:20px" height=3D"auto" width=
+=3D"173" /></a>=20
+</div> </td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+<table class=3D"table3-3" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse;" align=3D"right" border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0" width=3D"340">=20
+<tbody>=20
+<tr class=3D"stack-tablet" style=3D"max-height:0px;overflow:hidden;padding-=
+left: 0; overflow: hidden; margin-left: 0; padding-top: 0; padding-right: 0=
+; padding-bottom: 0; float: left; margin-top: 0; margin-right: 0; margin-bo=
+ttom: 0; mso-hide: all; display: none;">=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; font-family: 'Montserrat=
+', Arial, sans-serif; border-collapse: collapse;">&nbsp;</td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:8px;font-size:8px;" heig=
+ht=3D"8px">&nbsp;</td>=20
+</tr>=20
+<tr style=3D"outline: medium none;" class=3D"date">=20
+<td class=3D"secondary-font center-tablet" style=3D"-moz-hyphens: none;-web=
+kit-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word=
+-break: break-word;-webkit-hyphens: none;-ms-text-size-adjust: 100%;hyphens=
+: none;font-family:'Questrial', Arial, sans-serif;text-align: right;color: =
+#878b99;font-size: 12px;border-collapse: collapse;" valign=3D"middle">=20
+<div class=3D"mktoText" id=3D"date5c412b31-784b-449a-8a0a-f642b347cfbf">=20
+<p style=3D"text-align: left;"><strong><span style=3D"color: #000000; font-=
+family: arial, helvetica, sans-serif; font-size: 16px;"><b style=3D"color: =
+#000000; font-family: arial, helvetica, sans-serif; font-size: 16px; font-s=
+tyle: normal; font-variant-ligatures: normal; font-variant-caps: normal; le=
+tter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-=
+transform: none; white-space:=20
+normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; backg=
+round-color: #ffffff; text-decoration-style: initial; text-decoration-color=
+: initial;">Guided Syllabus</b><br /></span></strong><span style=3D"color: =
+#000000; font-family: arial, helvetica, sans-serif; font-size: 16px;">The P=
+enetration Tester Career Path syllabus gives you a detailed roadmap of the =
+courses, labs, and assessments to complete the program.</span><span style=
+=3D"color: #000000; font-family: arial, helvetica, sans-serif; font-size: 1=
+6px;"><br /></span><span style=3D"color: #ff0000;"><strong><span style=3D"f=
+ont-family: arial, helvetica, sans-serif; font-size: 16px;"><a href=3D
+"https://go.cybrary.it/NS00vB2Y0001rXI0MDc0U3V" target=3D"_blank" style=3D"=
+color: #ff0000;"
+>REVIEW YOUR SYLLABUS &gt;&gt;</a></span></strong></span><br /></p>=20
+</div></td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+</center> </td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:20px;font-size:20px;" he=
+ight=3D"20px">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table id=3D"header5c412b31-784b-449a-8a0a-f642b347cfbf8eabb7f3-f94f-4194-8=
+bd7-34b8d601e0e4" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-ad=
+just: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0=
+; border-collapse: collapse;" align=3D"center" border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" width=3D"100%" class=3D"mktoModule m_header">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;background-color:#ffffff;" bgcolor=
+=3D"#ffffff" valign=3D"top">=20
+<table class=3D"table600" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:20px;font-size:20px;" he=
+ight=3D"20px">&nbsp;</td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; font-family: 'Montserrat=
+', Arial, sans-serif; border-collapse: collapse;">=20
+<center>=20
+<table class=3D"table3-3" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse;" align=3D"left" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" width=3D"220">=20
+<tbody>=20
+<tr>=20
+<td class=3D"center-tablet logo" style=3D"-webkit-hyphens: none; -webkit-te=
+xt-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-br=
+eak: break-word; -ms-text-size-adjust: 100%; -moz-hyphens: none; hyphens: n=
+one; font-family: 'Montserrat', Arial, sans-serif; text-align: left; border=
+-collapse: collapse;">=20
+<div style=3D"display:inline-block" class=3D"mktoImg" id=3D"logo5c412b31-78=
+4b-449a-8a0a-f642b347cfbf8eabb7f3-f94f-4194-8bd7-34b8d601e0e4" mktolockimgs=
+ize=3D"true" mktolockimgstyle=3D"false">=20
+<a href=3D
+"https://go.cybrary.it/ZSDcr01NY000020Uw30VIBX" target=3D"_blank"
+><img src=3D"https://pages.cybrary.it/rs/948-BSI-099/images/unlimitedlabs.p=
+ng" style=3D"-ms-interpolation-mode: bicubic; outline: none; border-right-w=
+idth: 0; border-bottom-width: 0; border-left-width: 0; text-decoration: non=
+e; border-top-width: 0; max-width: 100%; line-height: 100%; width: 300px; d=
+isplay: inline-block; height: auto; padding-top:20px" height=3D"auto" width=
+=3D"173" /></a>=20
+</div> </td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+<table class=3D"table3-3" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse;" align=3D"right" border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0" width=3D"340">=20
+<tbody>=20
+<tr class=3D"stack-tablet" style=3D"max-height:0px;overflow:hidden;padding-=
+left: 0; overflow: hidden; margin-left: 0; padding-top: 0; padding-right: 0=
+; padding-bottom: 0; float: left; margin-top: 0; margin-right: 0; margin-bo=
+ttom: 0; mso-hide: all; display: none;">=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; font-family: 'Montserrat=
+', Arial, sans-serif; border-collapse: collapse;">&nbsp;</td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:8px;font-size:8px;" heig=
+ht=3D"8px">&nbsp;</td>=20
+</tr>=20
+<tr style=3D"outline: medium none;" class=3D"date">=20
+<td class=3D"secondary-font center-tablet" style=3D"-moz-hyphens: none;-web=
+kit-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word=
+-break: break-word;-webkit-hyphens: none;-ms-text-size-adjust: 100%;hyphens=
+: none;font-family:'Questrial', Arial, sans-serif;text-align: right;color: =
+#878b99;font-size: 12px;border-collapse: collapse;" valign=3D"middle">=20
+<div class=3D"mktoText" id=3D"date5c412b31-784b-449a-8a0a-f642b347cfbf8eabb=
+7f3-f94f-4194-8bd7-34b8d601e0e4">=20
+<p style=3D"text-align: left;"><span color=3D"#000000" face=3D"arial, helve=
+tica, sans-serif" style=3D"color: #000000; font-family: arial, helvetica, s=
+ans-serif;"><span style=3D"font-size: 16px;"><b>Unlimited Virtual Labs<br /=
+></b>Gain hands-on experience with CTF assessments, virtual labs, and pract=
+ice exams. After joining Insider Pro you will have unlimited lab access to =
+develop your skills.<br /><strong><span style=3D"color: #ff0000;"><a href=
+=3D
+"https://go.cybrary.it/ZSDcr01NY000020Uw30VIBX" target=3D"_blank" style=3D"=
+color: #ff0000;"
+>LAUNCH LABS&gt;&gt;</a></span></strong><br /></span></span></p>=20
+</div></td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+</center> </td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:20px;font-size:20px;" he=
+ight=3D"20px">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table id=3D"header5c412b31-784b-449a-8a0a-f642b347cfbf8eabb7f3-f94f-4194-8=
+bd7-34b8d601e0e4a0fd7967-86be-40a4-a5dc-44c77e26f89c" style=3D"-webkit-text=
+-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-=
+table-rspace: 0pt; border-spacing: 0; border-collapse: collapse;" align=3D"=
+center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" cla=
+ss=3D"mktoModule m_header">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;background-color:#ffffff;" bgcolor=
+=3D"#ffffff" valign=3D"top">=20
+<table class=3D"table600" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:20px;font-size:20px;" he=
+ight=3D"20px">&nbsp;</td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; font-family: 'Montserrat=
+', Arial, sans-serif; border-collapse: collapse;">=20
+<center>=20
+<table class=3D"table3-3" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse;" align=3D"left" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" width=3D"220">=20
+<tbody>=20
+<tr>=20
+<td class=3D"center-tablet logo" style=3D"-webkit-hyphens: none; -webkit-te=
+xt-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-br=
+eak: break-word; -ms-text-size-adjust: 100%; -moz-hyphens: none; hyphens: n=
+one; font-family: 'Montserrat', Arial, sans-serif; text-align: left; border=
+-collapse: collapse;">=20
+<div style=3D"display:inline-block" class=3D"mktoImg" id=3D"logo5c412b31-78=
+4b-449a-8a0a-f642b347cfbf8eabb7f3-f94f-4194-8bd7-34b8d601e0e4a0fd7967-86be-=
+40a4-a5dc-44c77e26f89c" mktolockimgsize=3D"true" mktolockimgstyle=3D"false"=
+>=20
+<a href=3D
+"https://go.cybrary.it/uuD000UScV0Y0L03Xr2BI10" target=3D"_blank"
+><img src=3D"https://pages.cybrary.it/rs/948-BSI-099/images/community.png" =
+style=3D"-ms-interpolation-mode: bicubic; outline: none; border-right-width=
+: 0; border-bottom-width: 0; border-left-width: 0; text-decoration: none; b=
+order-top-width: 0; max-width: 100%; line-height: 100%; width: 300px; displ=
+ay: inline-block; height: auto; padding-top:20px" height=3D"auto" width=3D"=
+173" /></a>=20
+</div> </td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+<table class=3D"table3-3" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse;" align=3D"right" border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0" width=3D"340">=20
+<tbody>=20
+<tr class=3D"stack-tablet" style=3D"max-height:0px;overflow:hidden;padding-=
+left: 0; overflow: hidden; margin-left: 0; padding-top: 0; padding-right: 0=
+; padding-bottom: 0; float: left; margin-top: 0; margin-right: 0; margin-bo=
+ttom: 0; mso-hide: all; display: none;">=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; font-family: 'Montserrat=
+', Arial, sans-serif; border-collapse: collapse;">&nbsp;</td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:8px;font-size:8px;" heig=
+ht=3D"8px">&nbsp;</td>=20
+</tr>=20
+<tr style=3D"outline: medium none;" class=3D"date">=20
+<td class=3D"secondary-font center-tablet" style=3D"-moz-hyphens: none;-web=
+kit-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word=
+-break: break-word;-webkit-hyphens: none;-ms-text-size-adjust: 100%;hyphens=
+: none;font-family:'Questrial', Arial, sans-serif;text-align: right;color: =
+#878b99;font-size: 12px;border-collapse: collapse;" valign=3D"middle">=20
+<div class=3D"mktoText" id=3D"date5c412b31-784b-449a-8a0a-f642b347cfbf8eabb=
+7f3-f94f-4194-8bd7-34b8d601e0e4a0fd7967-86be-40a4-a5dc-44c77e26f89c">=20
+<p style=3D"text-align: left;"><span style=3D"font-family: arial, helvetica=
+, sans-serif;"><strong><span style=3D"color: #000000; font-size: 16px;">Men=
+tors &amp; Community<br /></span></strong><span style=3D"color: #000000; fo=
+nt-size: 16px;">When you join Insider Pro you will be immersed in a communi=
+ty of motivated cyber professionals as well as be mentored by industry vete=
+rans who will lead you to your career goals every step of the way.<br /></s=
+pan><span style=3D"color: #ff0000;"><strong><span style=3D"font-size: 16px;=
+"><a href=3D
+"https://go.cybrary.it/uuD000UScV0Y0L03Xr2BI10" target=3D"_blank" style=3D"=
+color: #ff0000;"
+>JOIN THE COMMUNITY &gt;&gt;</a></span></strong></span></span><br /></p>=20
+</div></td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+</center> </td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:20px;font-size:20px;" he=
+ight=3D"20px">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table id=3D"Separatore8424f9a-0c57-45e6-bf70-9da62b1cc5babd855ed0-9899-47f=
+4-b100-75e521e24d5f269247c6-1786-48a3-ab18-5facf1142da5" style=3D"-webkit-t=
+ext-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; m=
+so-table-rspace: 0pt; border-spacing: 0; border-collapse: collapse;" align=
+=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%"=
+ class=3D"mktoModule m_Separator">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;background-color:#FFFFFF;" bgcolor=
+=3D"#FFFFFF" valign=3D"top">=20
+<table class=3D"table600" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:15px;font-size:15px;" he=
+ight=3D"15px">&nbsp;</td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; font-family: 'Montserrat=
+', Arial, sans-serif; border-collapse: collapse;">=20
+<center>=20
+<table class=3D"table-inner" style=3D"-webkit-text-size-adjust: 100%; -ms-t=
+ext-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border=
+-spacing: 0; border-collapse: collapse;" align=3D"center" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; font-family: 'Montserrat=
+', Arial, sans-serif; border-collapse: collapse;">=20
+<table class=3D"table3-3" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse;" border=3D"0" cellpadding=3D"0" cellsp=
+acing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr style=3D"height: 10px;">=20
+<td class=3D"bordered" style=3D"hyphens: none;-webkit-text-size-adjust: 100=
+%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webki=
+t-hyphens: none;-moz-hyphens: none;-ms-text-size-adjust: 100%;font-family: =
+'Montserrat', Arial, sans-serif;border-top-style: none;border-bottom-width:=
+1px;border-bottom-style: solid;border-bottom-color:#b2b2b2;border-collapse:=
+ collapse;"></td>=20
+</tr>=20
+<tr style=3D"height: 10px;">=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; font-family: 'Montserrat=
+', Arial, sans-serif; border-collapse: collapse;"></td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+</center> </td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:15px;font-size:15px;" he=
+ight=3D"15px">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table id=3D"free-text0d320947-bcbb-4c31-b436-9d0cbc4cdaa480c5a41e-940a-47b=
+4-b4b5-86eb16565e11f2f3cb7e-5847-454c-a967-0631dc30c1124b5c1c57-6728-4b54-b=
+577-1da4fa14bbbfb365166c-6892-476c-8657-891316dbc251" style=3D"-webkit-text=
+-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-=
+table-rspace: 0pt; border-spacing: 0; border-collapse: collapse;" align=3D"=
+center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" cla=
+ss=3D"mktoModule m_free-text">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;background-color:#FFFFFF;" bgcolor=
+=3D"#FFFFFF" valign=3D"top">=20
+<center>=20
+<table class=3D"table600" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:25px;font-size:25px;" he=
+ight=3D"25px">&nbsp;</td>=20
+</tr>=20
+<tr>=20
+<td class=3D"primary-font text" style=3D"-moz-hyphens: none;-webkit-text-si=
+ze-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: bre=
+ak-word;-webkit-hyphens: none;-ms-text-size-adjust: 100%;hyphens: none;font=
+-family:'Montserrat', Arial, sans-serif;font-size: 14px;color: #333333;line=
+-height: 170%;border-collapse: collapse;">=20
+<div class=3D"mktoText" id=3D"text40d320947-bcbb-4c31-b436-9d0cbc4cdaa480c5=
+a41e-940a-47b4-b4b5-86eb16565e11f2f3cb7e-5847-454c-a967-0631dc30c1124b5c1c5=
+7-6728-4b54-b577-1da4fa14bbbfb365166c-6892-476c-8657-891316dbc251">=20
+<p style=3D"text-align: center;"><span style=3D"font-size: 26px; line-heigh=
+t: 38px;"><strong><span style=3D"font-size: 32px; color: #000000;"><span>Le=
+vel Up Your Career<br /></span></span><span style=3D"text-decoration: under=
+line; color: #000000; font-size: 26px;"><span style=3D"text-decoration: und=
+erline; color: #000000;"><span style=3D"color: #000000;"><a href=3D
+"https://go.cybrary.it/DBxc00O0ISU00X01VD3r0Y2" target=3D"_blank" id=3D"" s=
+tyle=3D"color: #000000; text-decoration: underline;"
+>Join Insider Pro</a><br /></span></span></span><span style=3D"color: #0000=
+00;"><span style=3D"font-size: 30px;"><span style=3D"color: #000000;"><span=
+ style=3D"font-size: 30px;"><span style=3D"color: #000000;">&nbsp;</span></=
+span></span></span></span><span style=3D"text-decoration: underline; color:=
+ #000000;"><span style=3D"font-size:=20
+30px;"><span style=3D"text-decoration: underline; color: #000000;"><span st=
+yle=3D"font-size: 30px;"><span style=3D"color: #000000;"><br /></span></spa=
+n></span></span></span></strong></span><span style=3D"font-size: 30px; line=
+-height: 32px;"><strong><span style=3D"color: #e50914;">50% OFF</span> <spa=
+n style=3D"color: #000000;">code:</span> <span style=3D"color: #e50914;">CA=
+REER50<br /></span></strong></span><span style=3D"color: #999999; font-size=
+: 20px;">Monthly and Annual Memberships</span></p>=20
+</div></td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:10px;font-size:10px;" he=
+ight=3D"10px">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+</center> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table id=3D"callToAction57b13c3b-f31c-4af3-831c-2f31c41f2cf8" style=3D"-we=
+bkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: =
+0pt; mso-table-rspace: 0pt; border-spacing: 0; border-collapse: collapse;" =
+align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"=
+100%" class=3D"mktoModule m_callToAction">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;background-color:#FFFFFF;" bgcolor=
+=3D"#FFFFFF" valign=3D"top">=20
+<table class=3D"table600" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:1px;font-size:1px;" heig=
+ht=3D"1px">&nbsp;</td>=20
+</tr>=20
+<tr>=20
+<td class=3D"cta" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-ad=
+just: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break=
+-word; -webkit-hyphens: none; -moz-hyphens: none; hyphens: none; font-famil=
+y: 'Montserrat', Arial, sans-serif; border-collapse: collapse;">=20
+<center>=20
+<table style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;=
+ mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0; border-co=
+llapse: collapse;" align=3D"center" border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; font-family: 'Montserrat=
+', Arial, sans-serif; border-collapse: collapse;" align=3D"center" bgcolor=
+=3D"#E50914"> <a href=3D
+"https://go.cybrary.it/uuD000UScV0Y0L03Xr2BI10" target=3D"_blank" class=3D"=
+primary-font button" style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-=
+adjust: 100%;display: inline-block;font-size: 14px;font-family:'Montserrat'=
+, Arial, sans-serif;color: white;padding-top: 12px;padding-right: 18px;padd=
+ing-bottom: 12px;padding-left: 18px;border-top-width:10px;border-right-widt=
+h:10px;letter-spacing:=20
+2px;border-left-width:10px;border-top-style: solid;border-right-style: soli=
+d;border-bottom-style: solid;border-left-style: solid;border-top-color:#E50=
+914;border-right-color:#E50914;border-bottom-color:#E50914;border-left-colo=
+r:#E50914;border-bottom-width:10px;text-decoration:=20
+none;background-color:#E50914;"
+>START 7 DAY TRIAL</a> </td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+</center> </td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:1px;font-size:1px;" heig=
+ht=3D"1px">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table id=3D"free-text0d320947-bcbb-4c31-b436-9d0cbc4cdaa480c5a41e-940a-47b=
+4-b4b5-86eb16565e11f2f3cb7e-5847-454c-a967-0631dc30c1124b5c1c57-6728-4b54-b=
+577-1da4fa14bbbfb365166c-6892-476c-8657-891316dbc251038e479f-bdee-4fb3-b50f=
+-c32719b19285" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjus=
+t: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0; b=
+order-collapse: collapse;" align=3D"center" border=3D"0" cellpadding=3D"0" =
+cellspacing=3D"0" width=3D"100%" class=3D"mktoModule m_free-text">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;background-color:#FFFFFF;" bgcolor=
+=3D"#FFFFFF" valign=3D"top">=20
+<center>=20
+<table class=3D"table600" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:1px;font-size:1px;" heig=
+ht=3D"1px">&nbsp;</td>=20
+</tr>=20
+<tr>=20
+<td class=3D"primary-font text" style=3D"-moz-hyphens: none;-webkit-text-si=
+ze-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: bre=
+ak-word;-webkit-hyphens: none;-ms-text-size-adjust: 100%;hyphens: none;font=
+-family:'Montserrat', Arial, sans-serif;font-size: 14px;color: #333333;line=
+-height: 170%;border-collapse: collapse;">=20
+<div class=3D"mktoText" id=3D"text40d320947-bcbb-4c31-b436-9d0cbc4cdaa480c5=
+a41e-940a-47b4-b4b5-86eb16565e11f2f3cb7e-5847-454c-a967-0631dc30c1124b5c1c5=
+7-6728-4b54-b577-1da4fa14bbbfb365166c-6892-476c-8657-891316dbc251038e479f-b=
+dee-4fb3-b50f-c32719b19285">=20
+<p style=3D"text-align: center;"><span style=3D"color: #e50914;"><strong><s=
+pan style=3D"font-size: 16px;">Offer Ends Today, September 17th</span></str=
+ong><br /></span></p>=20
+</div></td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:25px;font-size:25px;" he=
+ight=3D"25px">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+</center> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table id=3D"Separatore8424f9a-0c57-45e6-bf70-9da62b1cc5babd855ed0-9899-47f=
+4-b100-75e521e24d5f" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size=
+-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing=
+: 0; border-collapse: collapse;" align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" width=3D"100%" class=3D"mktoModule m_Separator">=
+=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;background-color:#FFFFFF;" bgcolor=
+=3D"#FFFFFF" valign=3D"top">=20
+<table class=3D"table600" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:15px;font-size:15px;" he=
+ight=3D"15px">&nbsp;</td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; font-family: 'Montserrat=
+', Arial, sans-serif; border-collapse: collapse;">=20
+<center>=20
+<table class=3D"table-inner" style=3D"-webkit-text-size-adjust: 100%; -ms-t=
+ext-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border=
+-spacing: 0; border-collapse: collapse;" align=3D"center" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; font-family: 'Montserrat=
+', Arial, sans-serif; border-collapse: collapse;">=20
+<table class=3D"table3-3" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse;" border=3D"0" cellpadding=3D"0" cellsp=
+acing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr style=3D"height: 10px;">=20
+<td class=3D"bordered" style=3D"hyphens: none;-webkit-text-size-adjust: 100=
+%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webki=
+t-hyphens: none;-moz-hyphens: none;-ms-text-size-adjust: 100%;font-family: =
+'Montserrat', Arial, sans-serif;border-top-style: none;border-bottom-width:=
+1px;border-bottom-style: solid;border-bottom-color:#b2b2b2;border-collapse:=
+ collapse;"></td>=20
+</tr>=20
+<tr style=3D"height: 10px;">=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; font-family: 'Montserrat=
+', Arial, sans-serif; border-collapse: collapse;"></td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+</center> </td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:15px;font-size:15px;" he=
+ight=3D"15px">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table id=3D"free-text0d320947-bcbb-4c31-b436-9d0cbc4cdaa480c5a41e-940a-47b=
+4-b4b5-86eb16565e11f2f3cb7e-5847-454c-a967-0631dc30c1124d5860c9-5c2e-450e-a=
+d39-8756e528f3fa" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-ad=
+just: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0=
+; border-collapse: collapse;" align=3D"center" border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" width=3D"100%" class=3D"mktoModule m_free-text">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;background-color:#FFFFFF;" bgcolor=
+=3D"#FFFFFF" valign=3D"top">=20
+<center>=20
+<table class=3D"table600" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:25px;font-size:25px;" he=
+ight=3D"25px">&nbsp;</td>=20
+</tr>=20
+<tr>=20
+<td class=3D"primary-font text" style=3D"-moz-hyphens: none;-webkit-text-si=
+ze-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: bre=
+ak-word;-webkit-hyphens: none;-ms-text-size-adjust: 100%;hyphens: none;font=
+-family:'Montserrat', Arial, sans-serif;font-size: 14px;color: #333333;line=
+-height: 170%;border-collapse: collapse;">=20
+<div class=3D"mktoText" id=3D"text40d320947-bcbb-4c31-b436-9d0cbc4cdaa480c5=
+a41e-940a-47b4-b4b5-86eb16565e11f2f3cb7e-5847-454c-a967-0631dc30c1124d5860c=
+9-5c2e-450e-ad39-8756e528f3fa">=20
+<p style=3D"text-align: center;"><span style=3D"font-size: 30px; line-heigh=
+t: 36px; color: #000000;"><span style=3D"font-size: 30px;"><b>Pen Tester Ca=
+reer Path&nbsp;Success</b></span></span></p>=20
+<p style=3D"text-align: center;"><span style=3D"color: #ff0000;"><strong><s=
+pan style=3D"font-size: 20px;"><img src=3D"https://na-ab30.marketo.com/rs/c=
+ybrary1/images/redquote.png" alt=3D"redquote.png" height=3D"66" width=3D"65=
+" /><br />"I got a job as a cybersecurity analyst at Radware with a salary =
+I=E2=80=99ve never even dreamed about AND with no prior experience."</span>=
+</strong></span><br /><span style=3D"font-size: 16px;"><br /><span style=3D=
+"color: #000000;"><strong><span style=3D"font-size: 20px;">Alexei</span><br=
+ /></strong></span></span><span style=3D"font-size: 16px; color: #000000;">=
+<strong>Pen Tester Career Path: 4 months</strong></span><br /></p>=20
+</div></td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:20px;font-size:20px;" he=
+ight=3D"20px">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+</center> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table id=3D"Separatore8424f9a-0c57-45e6-bf70-9da62b1cc5babd855ed0-9899-47f=
+4-b100-75e521e24d5f269247c6-1786-48a3-ab18-5facf1142da569e3584d-8fbd-4202-9=
+ec5-9c69710c82abfa39f4b1-9d1f-4291-8126-58b0dcb0603c" style=3D"-webkit-text=
+-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-=
+table-rspace: 0pt; border-spacing: 0; border-collapse: collapse;" align=3D"=
+center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" cla=
+ss=3D"mktoModule m_Separator">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;background-color:#FFFFFF;" bgcolor=
+=3D"#FFFFFF" valign=3D"top">=20
+<table class=3D"table600" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:15px;font-size:15px;" he=
+ight=3D"15px">&nbsp;</td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; font-family: 'Montserrat=
+', Arial, sans-serif; border-collapse: collapse;">=20
+<center>=20
+<table class=3D"table-inner" style=3D"-webkit-text-size-adjust: 100%; -ms-t=
+ext-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border=
+-spacing: 0; border-collapse: collapse;" align=3D"center" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; font-family: 'Montserrat=
+', Arial, sans-serif; border-collapse: collapse;">=20
+<table class=3D"table3-3" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse;" border=3D"0" cellpadding=3D"0" cellsp=
+acing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr style=3D"height: 10px;">=20
+<td class=3D"bordered" style=3D"hyphens: none;-webkit-text-size-adjust: 100=
+%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webki=
+t-hyphens: none;-moz-hyphens: none;-ms-text-size-adjust: 100%;font-family: =
+'Montserrat', Arial, sans-serif;border-top-style: none;border-bottom-width:=
+1px;border-bottom-style: solid;border-bottom-color:#b2b2b2;border-collapse:=
+ collapse;"></td>=20
+</tr>=20
+<tr style=3D"height: 10px;">=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; font-family: 'Montserrat=
+', Arial, sans-serif; border-collapse: collapse;"></td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+</center> </td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:15px;font-size:15px;" he=
+ight=3D"15px">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table id=3D"free-text0d320947-bcbb-4c31-b436-9d0cbc4cdaa480c5a41e-940a-47b=
+4-b4b5-86eb16565e11f2f3cb7e-5847-454c-a967-0631dc30c1124b5c1c57-6728-4b54-b=
+577-1da4fa14bbbfb365166c-6892-476c-8657-891316dbc251038e479f-bdee-4fb3-b50f=
+-c32719b19285ff2c37c9-59de-4485-8f7b-47d1b6ea5e9e78fd4116-b4f2-4b05-8bcb-77=
+957bc93af5" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: =
+100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0; bord=
+er-collapse: collapse;" align=3D"center" border=3D"0" cellpadding=3D"0" cel=
+lspacing=3D"0" width=3D"100%" class=3D"mktoModule m_free-text">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;background-color:#FFFFFF;" bgcolor=
+=3D"#FFFFFF" valign=3D"top">=20
+<center>=20
+<table class=3D"table600" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:25px;font-size:25px;" he=
+ight=3D"25px">&nbsp;</td>=20
+</tr>=20
+<tr>=20
+<td class=3D"primary-font text" style=3D"-moz-hyphens: none;-webkit-text-si=
+ze-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: bre=
+ak-word;-webkit-hyphens: none;-ms-text-size-adjust: 100%;hyphens: none;font=
+-family:'Montserrat', Arial, sans-serif;font-size: 14px;color: #333333;line=
+-height: 170%;border-collapse: collapse;">=20
+<div class=3D"mktoText" id=3D"text40d320947-bcbb-4c31-b436-9d0cbc4cdaa480c5=
+a41e-940a-47b4-b4b5-86eb16565e11f2f3cb7e-5847-454c-a967-0631dc30c1124b5c1c5=
+7-6728-4b54-b577-1da4fa14bbbfb365166c-6892-476c-8657-891316dbc251038e479f-b=
+dee-4fb3-b50f-c32719b19285ff2c37c9-59de-4485-8f7b-47d1b6ea5e9e78fd4116-b4f2=
+-4b05-8bcb-77957bc93af5">=20
+<p style=3D"text-align: center;"><br /></p>=20
+<p style=3D"text-align: center;"><span style=3D"font-size: 12px; color: #99=
+9999;">=C2=A9 2019 Cybrary, Inc. All Rights Reserved.</span></p>=20
+<p style=3D"text-align: center;"><span style=3D"color: #999999; font-size: =
+12px;"><span style=3D"font-style: normal; font-variant-ligatures: normal; f=
+ont-variant-caps: normal; font-weight: normal; letter-spacing: normal; orph=
+ans: 2; text-align: center; text-indent: 0px; text-transform: none; white-s=
+pace: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;=
+ font-family: Arial, Helvetica, sans-serif; float: none; display: inline !i=
+mportant;">5801 University Research Court STE 150, College Park, MD 20740</=
+span></span></p>=20
+<p style=3D"text-align: center;"><br /></p>=20
+</div></td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;font-family: 'Montserrat', Arial=
+, sans-serif;border-collapse: collapse;line-height:25px;font-size:25px;" he=
+ight=3D"25px">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+</center> </td>=20
+</tr>=20
+</tbody>=20
+</table></td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+<!-- Outer Table END --> =20
+
+<img src=3D"https://go.cybrary.it/trk?t=3D1&mid=3DOTQ4LUJTSS0wOTk6OTQ5Ojc0N=
+zQ6MTU3NDU6MDo3Njg1Ojk6MjA3NzoyODcxMTIzOnNjb3R0LnBvd2VsbC5tQGdtYWlsLmNvbQ%3=
+D%3D" width=3D"1" height=3D"1" style=3D"display:none !important;" alt=3D"" =
+/>
+
+<p><font face=3D"Verdana" size=3D"1">This email was sent to scott.powell.m@=
+gmail.com. If you no longer wish to receive these emails you may <a href=3D
+"https://go.cybrary.it/u/c0c032rB0VDS01YIP0UyX00"
+>unsubscribe</a> at any time. </font> </p>
+</body>
+</html>
+------=_Part_1331584089_953999981.1568723657196--

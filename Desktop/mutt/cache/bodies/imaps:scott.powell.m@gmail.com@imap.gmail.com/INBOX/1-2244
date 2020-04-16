@@ -1,0 +1,740 @@
+Delivered-To: scott.powell.m@gmail.com
+Received: by 2002:a4f:f8d:0:0:0:0:0 with SMTP id 135csp3595954ivp;
+        Tue, 31 Mar 2020 12:31:28 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtIaZ/7y44Wf3wM93Hfhau4yZvhTGS26HpV+nrvK8Fxh2C80E2egZd4zWRHIDVSEtTYJ7oh
+X-Received: by 2002:a05:6638:20d:: with SMTP id e13mr16911712jaq.56.1585683088257;
+        Tue, 31 Mar 2020 12:31:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585683088; cv=none;
+        d=google.com; s=arc-20160816;
+        b=uCzC3b5En+fBHPrJpGZzUDiVQI8uwlBGjlvu4EcyUd+PTTv8ELr8RK7ivupQ6rmD4+
+         zoV4qVJLPfX+hvzNMYWxWqR019/0dGgVZu/n2VfCRuIAv+vG6UvdbknRZh/86sRp+uEA
+         cY5VYkAIGytPj99givCpIYCK/sgDeAowoDyDi9o6EJsdn7fGOD3RC4Kh3ytTW3HySXoo
+         msbjeHioVEzRHW1G0Op7YsyiAw/t/gkcBimAUHd2WXm3o9MB7qPvUujUmxLJNUYUtH0o
+         sA5hSTLkfmgGX6qcJkwVylRhJnxu6jB4tP1HDPs4Xh4IkTb45BBvyUmMXwJrBOd3pvDQ
+         AITw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:subject:from:to:reply-to
+         :message-id:sender:date:dkim-signature:dkim-signature;
+        bh=Hd36u0RKs7ZwPQ6cOnnfb3Sk0IL2dPVPlnjZGA+ZmOM=;
+        b=vDRU1EZ/bmGScVTQtYQ75D4RNZ0m0Lb28anzObY771UrweG7MGgG7H3JiCTkOVTxq1
+         rCEbErOcTd2H9DYndRYfUPuK0qPKOzk+g7IXx4xrsqwN3HgQOlBvz8jXbwlV4VXIJAvV
+         cMDPwfbhoyIR8ODDRL8p69J2WzCmE/gNlHxk7x+4zRhjpogACoWeHhot4dXadJ2fAVyJ
+         l5PXARH2dJjAudlgLa3F7xiLT7VmgsW0yqe628a61dSkBj6atXmHpCXm0zzRD3ht+AEW
+         sVDXWmOBC1WZeoHerfSkNosCdSKfvbU8SlqyhrUt/OWvzqW1sm8hEbEfK7+H7IHXIr58
+         6aOw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@portsmouthabbey.myenotice.com header.s=mx header.b=RZzzFiKr;
+       dkim=pass header.i=@mailgun.org header.s=mg header.b=jfePUOsr;
+       spf=pass (google.com: domain of bounce+3ab523.49347-scott.powell.m=gmail.com@portsmouthabbey.myenotice.com designates 166.78.71.119 as permitted sender) smtp.mailfrom="bounce+3ab523.49347-scott.powell.m=gmail.com@portsmouthabbey.myenotice.com";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=myenotice.com
+Return-Path: <bounce+3ab523.49347-scott.powell.m=gmail.com@portsmouthabbey.myenotice.com>
+Received: from mail.a2.static.myenotice.com (mail.a2.static.myenotice.com. [166.78.71.119])
+        by mx.google.com with UTF8SMTPS id p21si14037125jan.106.2020.03.31.12.31.26
+        for <scott.powell.m@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 31 Mar 2020 12:31:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce+3ab523.49347-scott.powell.m=gmail.com@portsmouthabbey.myenotice.com designates 166.78.71.119 as permitted sender) client-ip=166.78.71.119;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@portsmouthabbey.myenotice.com header.s=mx header.b=RZzzFiKr;
+       dkim=pass header.i=@mailgun.org header.s=mg header.b=jfePUOsr;
+       spf=pass (google.com: domain of bounce+3ab523.49347-scott.powell.m=gmail.com@portsmouthabbey.myenotice.com designates 166.78.71.119 as permitted sender) smtp.mailfrom="bounce+3ab523.49347-scott.powell.m=gmail.com@portsmouthabbey.myenotice.com";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=myenotice.com
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=portsmouthabbey.myenotice.com;
+ q=dns/txt; s=mx; t=1585683087; h=Content-Transfer-Encoding:
+ Mime-Version: Content-Type: Subject: From: To: Reply-To: Message-Id:
+ Sender: Date: X-Feedback-Id;
+ bh=Hd36u0RKs7ZwPQ6cOnnfb3Sk0IL2dPVPlnjZGA+ZmOM=; b=RZzzFiKr1s5+r2Ergz6vJgRO/4lNvGob7tZjkD7fZmrDwxyAYc5s3AfNV3EvbrE2i6L5UsWY
+ 0wjEbDJj8v+HwQmKmGzzYoZUv4CLZoQY5NGWf4EVkpU7HUqXSj9/NMZhBJQ0rJQrVGd4uJ8s
+ etdsS11RmubL3SI1TqXcEygnlCY=
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mailgun.org; q=dns/txt; s=mg;
+ t=1585683087; h=Content-Transfer-Encoding: Mime-Version: Content-Type:
+ Subject: From: To: Reply-To: Message-Id: Sender: Date: X-Feedback-Id;
+ bh=Hd36u0RKs7ZwPQ6cOnnfb3Sk0IL2dPVPlnjZGA+ZmOM=; b=jfePUOsrToTXvoj56/kseItMnrib8lIBlT6sMhJCb+JP36gW7gwDnBXwOBZFCTPOQE6geUhP
+ 3CQtbm0MWutGItS2uK2ghwxp2+x00O92MmMwJrijdLCPA/jfnnKmJez/2OIfDRFgor7tjOtS
+ SK3SIXHFzf80IfGpSbi9ytDbuzg=
+X-Feedback-Id: 5321b7683867746215752ade:mailgun
+X-Mailgun-Sending-Ip: 166.78.71.119
+X-Mailgun-Sid: WyJkMjExNCIsICJzY290dC5wb3dlbGwubUBnbWFpbC5jb20iLCAiNDkzNDciXQ==
+X-Mailgun-Batch-Id: 5e839a74d6eb140252aad0a9
+Received: by luna.mailgun.net with HTTP; Tue, 31 Mar 2020 19:31:00 +0000
+Date: Tue, 31 Mar 2020 19:31:00 +0000
+Sender: noreply@portsmouthabbey.myenotice.com
+Message-Id: <20200331193100.1.9BFB1381CA909AC3@portsmouthabbey.myenotice.com>
+X-Mailgun-Variables: {"enoticeid": "3267"}
+Reply-To: "Portsmouth Abbey School" <communications@portsmouthabbey.org>
+To: scott.powell.m@gmail.com
+From: Portsmouth Abbey School <noreply@portsmouthabbey.myenotice.com>
+Subject: March Musings 2020
+Content-Type: text/html; charset="ascii"
+Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+
+<!--
+
+This message was intended to be viewed in HTML format. If your email client=
+ is unable to display HTML emails, please copy and paste the following URL =
+into your web browser.
+
+http://www.portsmouthabbey.org/cf_enotify/view.cfm?n=3D3267&u=3D16607&e=3D1=
+6623
+
+--><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://=
+www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns=3D"http://ww=
+w.w3.org/1999/xhtml" xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"u=
+rn:schemas-microsoft-com:office:office">  <head>  <!--[if gte mso 9]><xml><=
+o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch>=
+</o:OfficeDocumentSettings></xml><![endif]-->  <meta http-equiv=3D"Content-=
+Type" content=3D"text/html; charset=3Dutf-8">  <meta name=3D"viewport" cont=
+ent=3D"width=3Ddevice-width">  <!--[if !mso]><!-->  <meta http-equiv=3D"X-U=
+A-Compatible" content=3D"IE=3Dedge">  <!--<![endif]-->  <title></title>  <!=
+--[if !mso]><!-->  <!--<![endif]-->  <style type=3D"text/css">   body {    =
+margin: 0;    padding: 0;   }    table,   td,   tr {    vertical-align: top=
+;    border-collapse: collapse;   }    * {    line-height: inherit;   }    =
+a[x-apple-data-detectors=3Dtrue] {    color: inherit !important;    text-de=
+coration: none !important;   }  </style>  <style type=3D"text/css" id=3D"me=
+dia-query">   @media (max-width: 620px) {     .block-grid,    .col {     mi=
+n-width: 320px !important;     max-width: 100% !important;     display: blo=
+ck !important;    }     .block-grid {     width: 100% !important;    }     =
+=2Ecol {     width: 100% !important;   =20=
+}     .col>div {     margin: 0 auto; =
+   }     img.fullwidth,    img.fullwidthOnMobile {     max-width: 100% !imp=
+ortant;    }     .no-stack .col {     min-width: 0 !important;     display:=
+ table-cell !important;    }     .no-stack.two-up .col {     width: 50% !im=
+portant;    }     .no-stack .col.num4 {     width: 33% !important;    }    =
+ .no-stack .col.num8 {     width: 66% !important;    }     .no-stack .col.n=
+um4 {     width: 33% !important;    }     .no-stack .col.num3 {     width: =
+25% !important;    }     .no-stack .col.num6 {     width: 50% !important;  =
+  }     .no-stack .col.num9 {     width: 75% !important;    }     .video-bl=
+ock {     max-width: none !important;    }     .mobile_hide {     min-heigh=
+t: 0px;     max-height: 0px;     max-width: 0px;     display: none;     ove=
+rflow: hidden;     font-size: 0px;    }     .desktop_hide {     display: bl=
+ock !important;     max-height: none !important;    }   }  </style> </head>=
+  <body class=3D"clean-body" style=3D"margin: 0; padding: 0; -webkit-text-s=
+ize-adjust: 100%; background-color: #DCDCDC;">  <!--[if IE]><div class=3D"i=
+e-browser"><![endif]-->  <table class=3D"nl-container" style=3D"table-layou=
+t: fixed; vertical-align: top; min-width: 320px; Margin: 0 auto; border-spa=
+cing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace=
+: 0pt; background-color: #DCDCDC; width: 100%;" cellpadding=3D"0" cellspaci=
+ng=3D"0" role=3D"presentation" width=3D"100%" bgcolor=3D"#DCDCDC" valign=3D=
+"top">   <tbody>    <tr style=3D"vertical-align: top;" valign=3D"top">     =
+<td style=3D"word-break: break-word; vertical-align: top;" valign=3D"top"> =
+     <!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0"><tr><td align=3D"center" style=3D"background-color:#DC=
+DCDC"><![endif]-->      <div style=3D"background-color:transparent;">      =
+ <div class=3D"block-grid " style=3D"Margin: 0 auto; min-width: 320px; max-=
+width: 600px; overflow-wrap: break-word; word-wrap: break-word; word-break:=
+ break-word; background-color: #FFFFFF;">        <div style=3D"border-colla=
+pse: collapse;display: table;width: 100%;background-color:#FFFFFF;">       =
+  <!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0" style=3D"background-color:transparent;"><tr><td align=
+=3D"center"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=
+=3D"width:600px"><tr class=3D"layout-full-width" style=3D"background-color:=
+#FFFFFF"><![endif]-->         <!--[if (mso)|(IE)]><td align=3D"center" widt=
+h=3D"600" style=3D"background-color:#FFFFFF;width:600px; border-top: 0px so=
+lid transparent; border-left: 0px solid transparent; border-bottom: 0px sol=
+id transparent; border-right: 0px solid transparent;" valign=3D"top"><table=
+ width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0"><tr><td st=
+yle=3D"padding-right: 0px; padding-left: 0px; padding-top:0px; padding-bott=
+om:0px;"><![endif]-->         <div class=3D"col num12" style=3D"min-width: =
+320px; max-width: 600px; display: table-cell; vertical-align: top; width: 6=
+00px;">          <div style=3D"width:100% !important;">           <!--[if (=
+!mso)&(!IE)]><!-->           <div style=3D"border-top:0px solid transparent=
+; border-left:0px solid transparent; border-bottom:0px solid transparent; b=
+order-right:0px solid transparent; padding-top:0px; padding-bottom:0px; pad=
+ding-right: 0px; padding-left: 0px;">            <!--<![endif]-->          =
+  <div class=3D"img-container center  autowidth  fullwidth" align=3D"center=
+" style=3D"padding-right: 0px;padding-left: 0px;">             <!--[if mso]=
+><table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0"><tr=
+ style=3D"line-height:0px"><td style=3D"padding-right: 0px;padding-left: 0p=
+x;" align=3D"center"><![endif]--><a href=3D"http://email.portsmouthabbey.my=
+enotice.com/c/eJxdUMuOwyAQ-xpyRAwTCBxygFB-Y9W82qhJqRKqqH-_wO6pEtJ4DDK2x7bWW=
+DfV0nLGGUME0AiMUaDaeguooDOaadMhqdkr7PHYwjver30_fej2mZ4hLsNEh7BV91b1PWv02HPN=
+5cR4I5SaNegREIdaQF-t7T3GF0FDuE_nPE_6rRn2W7oZ5p8iPX_Ssi7Pxxz287qPdJg3gn67Luv=
+t_STogHCZJ3LZJPjOlJQs4-kPc0x4nI6Y1vz7QbjIBkS2IIqJPC9fRgpXzJSHReGRaHR1asmA1d=
+a6zhmD3QWEdUYBcxcJqUcLTdd47xuhk4NO1FY65ZlQDjwwU-3tMYQYU_RzWle6pWZvOVFp8b_RZ=
+WxzpF-aAHpF" target=3D"_blank" style=3D"outline:none" tabindex=3D"-1"> <img=
+ class=3D"center  autowidth  fullwidth" align=3D"center" border=3D"0" src=
+=3D"https://d15k2d11r6t6rl.cloudfront.net/public/users/Integrators/5eb55a21=
+-9496-46ce-8161-f092fc9def23/portsmouthabbey/March%202020%20masthead.png" a=
+lt=3D"Musings January 2020" title=3D"Musings January 2020" style=3D"text-de=
+coration: none; -ms-interpolation-mode: bicubic; height: auto; border: none=
+; width: 100%; max-width: 600px; display: block;" width=3D"600"></a>       =
+      <!--[if mso]></td></tr></table><![endif]-->            </div>        =
+    <!--[if (!mso)&(!IE)]><!-->           </div>           <!--<![endif]-->=
+          </div>         </div>         <!--[if (mso)|(IE)]></td></tr></tab=
+le><![endif]-->         <!--[if (mso)|(IE)]></td></tr></table></td></tr></t=
+able><![endif]-->        </div>       </div>      </div>      <div style=3D=
+"background-color:#DCDCDC;">       <div class=3D"block-grid two-up" style=
+=3D"Margin: 0 auto; min-width: 320px; max-width: 600px; overflow-wrap: brea=
+k-word; word-wrap: break-word; word-break: break-word; background-color: #F=
+FFFFF;">        <div style=3D"border-collapse: collapse;display: table;widt=
+h: 100%;background-color:#FFFFFF;">         <!--[if (mso)|(IE)]><table widt=
+h=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"backgr=
+ound-color:#DCDCDC;"><tr><td align=3D"center"><table cellpadding=3D"0" cell=
+spacing=3D"0" border=3D"0" style=3D"width:600px"><tr class=3D"layout-full-w=
+idth" style=3D"background-color:#FFFFFF"><![endif]-->         <!--[if (mso)=
+|(IE)]><td align=3D"center" width=3D"300" style=3D"background-color:#FFFFFF=
+;width:300px; border-top: 0px solid transparent; border-left: 0px solid tra=
+nsparent; border-bottom: 0px solid transparent; border-right: 0px solid tra=
+nsparent;" valign=3D"top"><table width=3D"100%" cellpadding=3D"0" cellspaci=
+ng=3D"0" border=3D"0"><tr><td style=3D"padding-right: 10px; padding-left: 1=
+0px; padding-top:10px; padding-bottom:0px;"><![endif]-->         <div class=
+=3D"col num6" style=3D"max-width: 320px; min-width: 300px; display: table-c=
+ell; vertical-align: top; width: 300px;">          <div style=3D"width:100%=
+ !important;">           <!--[if (!mso)&(!IE)]><!-->           <div style=
+=3D"border-top:0px solid transparent; border-left:0px solid transparent; bo=
+rder-bottom:0px solid transparent; border-right:0px solid transparent; padd=
+ing-top:10px; padding-bottom:0px; padding-right: 10px; padding-left: 10px;"=
+>            <!--<![endif]-->            <!--[if mso]><table width=3D"100%"=
+ cellpadding=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-=
+right: 0px; padding-left: 0px; padding-top: 0px; padding-bottom: 0px; font-=
+family: Arial, sans-serif"><![endif]-->            <div style=3D"color:#FCF=
+CFC;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;line-height:=
+1.2;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;"=
+>             <div style=3D"font-size: 12px; line-height: 1.2; font-family:=
+ 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #FCFCFC; mso-line-h=
+eight-alt: 14px;">              <div style=3D"font-size: 12px; line-height:=
+ 1.2; mso-line-height-alt: 14px;">               <p style=3D"font-size: 14p=
+x; line-height: 1.2; mso-line-height-alt: 17px; margin: 0;"><strong><span s=
+tyle=3D"color: #000000; font-size: 14px;">MUSINGS</span></strong></p>      =
+        </div>             </div>            </div>            <!--[if mso]=
+></td></tr></table><![endif]-->            <!--[if (!mso)&(!IE)]><!-->     =
+      </div>           <!--<![endif]-->          </div>         </div>     =
+    <!--[if (mso)|(IE)]></td></tr></table><![endif]-->         <!--[if (mso=
+)|(IE)]></td><td align=3D"center" width=3D"300" style=3D"background-color:#=
+FFFFFF;width:300px; border-top: 0px solid transparent; border-left: 0px sol=
+id transparent; border-bottom: 0px solid transparent; border-right: 0px sol=
+id transparent;" valign=3D"top"><table width=3D"100%" cellpadding=3D"0" cel=
+lspacing=3D"0" border=3D"0"><tr><td style=3D"padding-right: 10px; padding-l=
+eft: 10px; padding-top:10px; padding-bottom:5px;"><![endif]-->         <div=
+ class=3D"col num6" style=3D"max-width: 320px; min-width: 300px; display: t=
+able-cell; vertical-align: top; width: 300px;">          <div style=3D"widt=
+h:100% !important;">           <!--[if (!mso)&(!IE)]><!-->           <div s=
+tyle=3D"border-top:0px solid transparent; border-left:0px solid transparent=
+; border-bottom:0px solid transparent; border-right:0px solid transparent; =
+padding-top:10px; padding-bottom:5px; padding-right: 10px; padding-left: 10=
+px;">            <!--<![endif]-->            <!--[if mso]><table width=3D"1=
+00%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padd=
+ing-right: 0px; padding-left: 0px; padding-top: 0px; padding-bottom: 0px; f=
+ont-family: Arial, sans-serif"><![endif]-->            <div style=3D"color:=
+#FCFCFC;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;line-hei=
+ght:1.2;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0=
+px;">             <div style=3D"font-family: 'Helvetica Neue', Helvetica, A=
+rial, sans-serif; font-size: 12px; line-height: 1.2; color: #FCFCFC; mso-li=
+ne-height-alt: 14px;">              <p style=3D"font-size: 12px; line-heigh=
+t: 1.2; text-align: right; mso-line-height-alt: 14px; margin: 0;"><strong><=
+span style=3D"color: #000000; font-size: 12px;"><span style=3D"font-size: 1=
+4px;">MARCH 2020&nbsp;</span></span></strong></p>             </div>       =
+     </div>            <!--[if mso]></td></tr></table><![endif]-->         =
+   <!--[if (!mso)&(!IE)]><!-->           </div>           <!--<![endif]--> =
+         </div>         </div>         <!--[if (mso)|(IE)]></td></tr></tabl=
+e><![endif]-->         <!--[if (mso)|(IE)]></td></tr></table></td></tr></ta=
+ble><![endif]-->        </div>       </div>      </div>      <div style=3D"=
+background-color:#DCDCDC;">       <div class=3D"block-grid " style=3D"Margi=
+n: 0 auto; min-width: 320px; max-width: 600px; overflow-wrap: break-word; w=
+ord-wrap: break-word; word-break: break-word; background-color: #FFFFFF;"> =
+       <div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#FFFFFF;">         <!--[if (mso)|(IE)]><table width=3D"100%=
+" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"background-colo=
+r:#DCDCDC;"><tr><td align=3D"center"><table cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0" style=3D"width:600px"><tr class=3D"layout-full-width" s=
+tyle=3D"background-color:#FFFFFF"><![endif]-->         <!--[if (mso)|(IE)]>=
+<td align=3D"center" width=3D"600" style=3D"background-color:#FFFFFF;width:=
+600px; border-top: 0px solid transparent; border-left: 0px solid transparen=
+t; border-bottom: 0px solid transparent; border-right: 0px solid transparen=
+t;" valign=3D"top"><table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0=
+" border=3D"0"><tr><td style=3D"padding-right: 20px; padding-left: 20px; pa=
+dding-top:0px; padding-bottom:0px;"><![endif]-->         <div class=3D"col =
+num12" style=3D"min-width: 320px; max-width: 600px; display: table-cell; ve=
+rtical-align: top; width: 600px;">          <div style=3D"width:100% !impor=
+tant;">           <!--[if (!mso)&(!IE)]><!-->           <div style=3D"borde=
+r-top:0px solid transparent; border-left:0px solid transparent; border-bott=
+om:0px solid transparent; border-right:0px solid transparent; padding-top:0=
+px; padding-bottom:0px; padding-right: 20px; padding-left: 20px;">         =
+   <!--<![endif]-->            <!--[if mso]><table width=3D"100%" cellpaddi=
+ng=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-right: 0px=
+; padding-left: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Ar=
+ial, sans-serif"><![endif]-->            <div style=3D"color:#555555;font-f=
+amily:'Helvetica Neue', Helvetica, Arial, sans-serif;line-height:1.2;paddin=
+g-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;">         =
+    <div style=3D"font-size: 12px; line-height: 1.2; font-family: 'Helvetic=
+a Neue', Helvetica, Arial, sans-serif; color: #555555; mso-line-height-alt:=
+ 14px;">              <div style=3D"font-size: 12px; line-height: 1.2; mso-=
+line-height-alt: 14px;"><span style=3D"font-size: 12px;"><em><strong>Musing=
+s is a monthly e-newsletter sent to Portsmouth Abbey parents, alumni and fr=
+iends that contains informal news designed to keep you better informed abou=
+t the School, the Monastery and our community. For day-to-day news about Sc=
+hool and Monastery events, activities and "goings-on," we invite you to vis=
+it the <span style=3D"color: #808080; font-size: 12px;"><a style=3D"text-de=
+coration: none; color: #0068A5;" href=3D"http://email.portsmouthabbey.myeno=
+tice.com/c/eJxdUU1vhCAQ_TXu0fCtHDygwq3pT2gU0SUrslGs2X9foO2hTUjmzczL483M1BCO=
+SXWzDQIIAIwh5BgCUMKSt6qFuIad4ICLDhcEPP0eDufPcB_G0bxK9zKbD1abUnt3uzeMMA2nGnM=
+yo4GO1QDARAbMKBo5BXq-rc09hGeBRYFUfNd1lf81_b7Ejp4_svT8islqt8fs92vYp1LPrsDKDX=
+Zdzq3APSwQSxEjVkV4phJjIGHzjRGOeDJHiGn6_SgQTQZoskCziRTlPyO5ls1EThzPnZsNuao2c=
+yUR1JtPs4Wsp87gYqTq8OeuTSr17zr40eyJSdN2YZ0g-2U6M9nTZaZM8_xp6sE9B7tsuf12HnZb=
+jp8xHtEb7tuqJ0SoFlUV6akkPYecyhooXJFOiJpKIDETGLWSd4IS2smKy7ZlXU8EJOq2N4f2IcT=
+9X2ZdSxfPuyQb-ZQ_Z7VTk_b6BXQrpBc" target=3D"_blank" rel=3D"noopener norefer=
+rer">News </a></span>section of our School website. Also, be sure to follow=
+ us on <span style=3D"color: #808080; font-size: 12px;"><a style=3D"text-de=
+coration: none; color: #0068A5;" href=3D"http://email.portsmouthabbey.myeno=
+tice.com/c/eJxdUMmOhCAU_Bo8Evbl4MH13Ml8wAQBW9PadJSO8e8HnM4cJiF5VTxSVJUrmaZM=
+FnNJEEGIUow1xQhBDHXd15gq3FQa6aqhgKFX2OK-hneczDD4E66nf4Y4Ww9tWIupHNiguVIGjVZ=
+5ZIlz6ZmTynJjlDCiWMopxhegFSB9OsdxwP-aYbunjR2_L-nxTGSZn48xbIfZHLTjCmi_mnm5v5=
+-AthgQkSclQib4zldCoIz9LyY0Yef3mGj-fQeEZwM8W-CXiTy70Vg_hPC4SMpzLW9_7qrs7stOI=
+SwfvYc_kyRDNdFMK1nXfaWZYpy3TGJOFO86jZFkUiitqW4ToqRBkgvWyI61Pa-0rIqt3G2IMRVx=
+-GWBa-r5nvNdnX76nV2ZA_4Ax0uAoA" target=3D"_blank" rel=3D"noopener noreferre=
+r">Facebook</a></span>, <span style=3D"color: #808080; font-size: 12px;"><a=
+ style=3D"text-decoration: none; color: #0068A5;" href=3D"http://email.port=
+smouthabbey.myenotice.com/c/eJxdUMuOhCAQ_Bo9EqB5HjyoI7-xQcUZMyoTZMb49wvunDY=
+hUN2kqqt6rJgGJsu5ophiDECIBoIxIkg3piGgSFtrrOsWCoZfPsR99e_4sH3vTrSebvNxHhwa_F=
+o-KsuYm-SoBOmdVLpnVg4Ug-7VoLBVU7lUjxhfBdQFNekcx4H-a_pwTz_D9HNJT2cqlnl7Tj4cN=
+oxomNYCzGrn5f7eCriRgor8AhUywXduCYEzdn-YQsKj22Mq8_S9oDwb4NlCuuIxx-hCxl2KcfUu=
+K8F-3LZ_yU93Jj6HRmEwdcug60xdCyMIoYrXytwY5o1uW2wYYcYkFUW7TkvBucw8yhuiy1Dtg48=
+xpT7csqA1LfWew1wL_C5zHquc5hcynXmt" target=3D"_blank" rel=3D"noopener norefe=
+rrer">Twitter</a></span>, <span style=3D"color: #808080; font-size: 12px;">=
+<a style=3D"text-decoration: none; color: #0068A5;" href=3D"http://email.po=
+rtsmouthabbey.myenotice.com/c/eJxdkMuOhCAQRb8GlwYoKGThQkXW8wcTH9ht2kdHMca_H=
+3A6s5gEUreo5HLq9rnQIFQy5pxySgEY08AoTVmqS1syyFhVaKqLCoig73Xz-7we_tm0rbvS-XLL=
+6sfOpd06J898EBrbATVDpRVm2dA2koMWPW8yyBpIpvzp_ZtAQbgN5zzP9L_nuj3CpBu-b-vhCs0=
+0Lq9h3c5m69NumAnYuRmnx7EQMIxwjBU4qiCP-IRIo3a_mkPQvdt9aOPvO-EyAsiIIG-IWOsrMB=
+ytu3VY554du9tu8fVHWUTKj-MrKDDUWsTMoCxrUyoqqKRYS2EMgpCqLjOUrLYoCl2HG5hKY6ytl=
+NS0sIWqki3fu9X7EMXppimdQ9KPuOGd6ifhsc_jij_t8YAI" target=3D"_blank" rel=3D"n=
+oopener noreferrer">YouTube</a></span>, and <span style=3D"color: #808080; =
+font-size: 12px;"><a style=3D"text-decoration: none; color: #0068A5;" href=
+=3D"http://email.portsmouthabbey.myenotice.com/c/eJxdUMuOhCAQ_Bo9GrpbQA4e8P=
+UbG0ScMetjoswa_37BndMmJF1Fh6KqhjJXlMt0KpEhY0QAioCxDDJVdRVQAbVWTOmakpy9tt0fy=
+_b2T9P37sqWy62bn6zL7Lakz5IMG4yUzsIwsh6JC4E272UBfLDO5ulcPr1_JaQT7MI5zzP7r7nt=
+j7Cx49ctPV6BzNP6PW77afYhs-OSULeYaX6814QaSFDESShkgO94JQSL2P1hpIAHd_hA4-9Hgjw=
+a4NECv03E2U7r4c1jN8vNQqB7e5vazY9bj8-TW-vbXUFOSyigQeCABYhKU6VyKHijRJ130HLFal=
+5Lahm2vCMt20bJVhPqBlGKiqd7edjN-1DC6eY5W0LHj5jt7vPT7TSUMdwvZhJ9uA" target=3D=
+"_blank" rel=3D"noopener noreferrer">Instagram</a></span>. Thank you.</stro=
+ng></em></span></div>             </div>            </div>            <!--[=
+if mso]></td></tr></table><![endif]-->            <!--[if (!mso)&(!IE)]><!-=
+->           </div>           <!--<![endif]-->          </div>         </di=
+v>         <!--[if (mso)|(IE)]></td></tr></table><![endif]-->         <!--[=
+if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->        </di=
+v>       </div>      </div>      <div style=3D"background-color:transparent=
+;">       <div class=3D"block-grid " style=3D"Margin: 0 auto; min-width: 32=
+0px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word; wo=
+rd-break: break-word; background-color: #FFFFFF;">        <div style=3D"bor=
+der-collapse: collapse;display: table;width: 100%;background-color:#FFFFFF;=
+">         <!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cell=
+spacing=3D"0" border=3D"0" style=3D"background-color:transparent;"><tr><td =
+align=3D"center"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" st=
+yle=3D"width:600px"><tr class=3D"layout-full-width" style=3D"background-col=
+or:#FFFFFF"><![endif]-->         <!--[if (mso)|(IE)]><td align=3D"center" w=
+idth=3D"600" style=3D"background-color:#FFFFFF;width:600px; border-top: 0px=
+ solid transparent; border-left: 0px solid transparent; border-bottom: 0px =
+solid transparent; border-right: 0px solid transparent;" valign=3D"top"><ta=
+ble width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0"><tr><td=
+ style=3D"padding-right: 0px; padding-left: 0px; padding-top:5px; padding-b=
+ottom:5px;"><![endif]-->         <div class=3D"col num12" style=3D"min-widt=
+h: 320px; max-width: 600px; display: table-cell; vertical-align: top; width=
+: 600px;">          <div style=3D"width:100% !important;">           <!--[i=
+f (!mso)&(!IE)]><!-->           <div style=3D"border-top:0px solid transpar=
+ent; border-left:0px solid transparent; border-bottom:0px solid transparent=
+; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; =
+padding-right: 0px; padding-left: 0px;">            <!--<![endif]-->       =
+     <table class=3D"divider" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" width=3D"100%" style=3D"table-layout: fixed; vertical-align: top; borde=
+r-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-r=
+space: 0pt; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-=
+adjust: 100%;" role=3D"presentation" valign=3D"top">             <tbody>   =
+           <tr style=3D"vertical-align: top;" valign=3D"top">              =
+ <td class=3D"divider_inner" style=3D"word-break: break-word; vertical-alig=
+n: top; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adju=
+st: 100%; padding-top: 5px; padding-right: 0px; padding-bottom: 5px; paddin=
+g-left: 0px;" valign=3D"top">                <table class=3D"divider_conten=
+t" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D=
+"table-layout: fixed; vertical-align: top; border-spacing: 0; border-collap=
+se: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-top: 1px=
+ solid #BBBBBB; height: 0px; width: 100%;" align=3D"center" role=3D"present=
+ation" height=3D"0" valign=3D"top">                 <tbody>                =
+  <tr style=3D"vertical-align: top;" valign=3D"top">                   <td =
+style=3D"word-break: break-word; vertical-align: top; -ms-text-size-adjust:=
+ 100%; -webkit-text-size-adjust: 100%;" height=3D"0" valign=3D"top"><span><=
+/span></td>                  </tr>                 </tbody>                =
+</table>               </td>              </tr>             </tbody>       =
+     </table>            <!--[if (!mso)&(!IE)]><!-->           </div>      =
+     <!--<![endif]-->          </div>         </div>         <!--[if (mso)|=
+(IE)]></td></tr></table><![endif]-->         <!--[if (mso)|(IE)]></td></tr>=
+</table></td></tr></table><![endif]-->        </div>       </div>      </di=
+v>      <div style=3D"background-color:transparent;">       <div class=3D"b=
+lock-grid two-up" style=3D"Margin: 0 auto; min-width: 320px; max-width: 600=
+px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-wor=
+d; background-color: #FFFFFF;">        <div style=3D"border-collapse: colla=
+pse;display: table;width: 100%;background-color:#FFFFFF;">         <!--[if =
+(mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" borde=
+r=3D"0" style=3D"background-color:transparent;"><tr><td align=3D"center"><t=
+able cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"width:600px"=
+><tr class=3D"layout-full-width" style=3D"background-color:#FFFFFF"><![endi=
+f]-->         <!--[if (mso)|(IE)]><td align=3D"center" width=3D"300" style=
+=3D"background-color:#FFFFFF;width:300px; border-top: 0px solid transparent=
+; border-left: 0px solid transparent; border-bottom: 0px solid transparent;=
+ border-right: 0px solid transparent;" valign=3D"top"><table width=3D"100%"=
+ cellpadding=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-=
+right: 0px; padding-left: 0px; padding-top:0px; padding-bottom:0px;"><![end=
+if]-->         <div class=3D"col num6" style=3D"max-width: 320px; min-width=
+: 300px; display: table-cell; vertical-align: top; width: 300px;">         =
+ <div style=3D"width:100% !important;">           <!--[if (!mso)&(!IE)]><!-=
+->           <div style=3D"border-top:0px solid transparent; border-left:0p=
+x solid transparent; border-bottom:0px solid transparent; border-right:0px =
+solid transparent; padding-top:0px; padding-bottom:0px; padding-right: 0px;=
+ padding-left: 0px;">            <!--<![endif]-->            <div class=3D"=
+img-container center  autowidth  fullwidth" align=3D"center" style=3D"paddi=
+ng-right: 0px;padding-left: 0px;">             <!--[if mso]><table width=3D=
+"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0"><tr style=3D"line-h=
+eight:0px"><td style=3D"padding-right: 0px;padding-left: 0px;" align=3D"cen=
+ter"><![endif]--><a href=3D"http://email.portsmouthabbey.myenotice.com/c/eJ=
+xdUc3OgyAQfBo9Gv4tBw8o9DW-oGA1FWkQY_r2H9CempDs7EBmh1nTEY5JW68dAggAjCHkGALQw=
+Ib39x7iGxwEB1wMuCLg5UM8nD_josfRvhv3truP62Sbybt66W6Ej2bUjCOM2slyepvBaCilo-Fs=
+mlG9dUuMrwqLCt3Tua6r-dX04ZFupvmvSM_v1Gzr_px9uHQwzTS7Ct-dXrfHuVdYwgqxXDFibYJ=
+nphgDGdsPRjhhY4-Y2jz9qBDNBmi2QIuJXNWPkcIVM-mNO491L1DqkD682aPwc_CusP4MpS5WG6=
+ePaD-t02FaCsrxfn08kziWQvZEEEUgp5xToAAbJGqJ5JgBeRsUU1hIDkgLsOK9Er1CVEnFeiCJE=
+GCoQ3dMPsYU4GW3rXFpP4-cS9nFdy-r6XIw_3eDkRU" target=3D"_blank" style=3D"outl=
+ine:none" tabindex=3D"-1"> <img class=3D"center  autowidth  fullwidth" alig=
+n=3D"center" border=3D"0" src=3D"https://d15k2d11r6t6rl.cloudfront.net/publ=
+ic/users/Integrators/5eb55a21-9496-46ce-8161-f092fc9def23/portsmouthabbey/1=
+_6.png" alt=3D"March For Life 2020" title=3D"March For Life 2020" style=3D"=
+text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; borde=
+r: none; width: 100%; max-width: 300px; display: block;" width=3D"300"></a>=
+             <!--[if mso]></td></tr></table><![endif]-->            </div> =
+           <div class=3D"img-container center  autowidth  fullwidth" align=
+=3D"center" style=3D"padding-right: 0px;padding-left: 0px;">             <!=
+--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=
+=3D"0"><tr style=3D"line-height:0px"><td style=3D"padding-right: 0px;paddin=
+g-left: 0px;" align=3D"center"><![endif]--><a href=3D"http://email.portsmou=
+thabbey.myenotice.com/c/eJxdUcuugyAQ_RpdGmAUZOECi_7GDUWwpD4awZj-_QVu76Zhkjn=
+zyMzhzNTVHGpWuo4gghAAxhwwQhWueD_2GFp8ExxxcYOiRq_9CH7dz_BQ97t5V-vbbHtw2lR6X8=
+tHBw3mXDGFmCYEWca4RbZGdqJUWY1puXSPEF4FiIKM0a7rqr5n7sccK9r-5NH2HYPFbU-7H5c6p=
+krbtYBxVW6Zz60AiQtCkwdCWYRnSlGKEjZ_mEDEk_Ehhmm7L0iTCDSJQpNJJD98Ecm5TCb2rKd3=
+W4ZSHfHDi_E5Pzkf1KZNrixGHdt_293MbvOfzc84DiSLupJaSM6BiGZgMMRHb3IYxlG2BNG6wai=
+XNWaCy5b2MPQStTDUVLAGi6Y8Oq_3EKJkl1mWao0XmZMSWf3PJdzUJSl-AW2YjXI" target=3D=
+"_blank" style=3D"outline:none" tabindex=3D"-1"> <img class=3D"center  auto=
+width  fullwidth" align=3D"center" border=3D"0" src=3D"https://d15k2d11r6t6=
+rl.cloudfront.net/public/users/Integrators/5eb55a21-9496-46ce-8161-f092fc9d=
+ef23/portsmouthabbey/3_4.png" alt=3D"Tribute to Mr. Bragan" title=3D"Tribut=
+e to Mr. Bragan" style=3D"text-decoration: none; -ms-interpolation-mode: bi=
+cubic; height: auto; border: none; width: 100%; max-width: 300px; display: =
+block;" width=3D"300"></a>             <!--[if mso]></td></tr></table><![en=
+dif]-->            </div>            <div class=3D"img-container center  au=
+towidth  fullwidth" align=3D"center" style=3D"padding-right: 0px;padding-le=
+ft: 0px;">             <!--[if mso]><table width=3D"100%" cellpadding=3D"0"=
+ cellspacing=3D"0" border=3D"0"><tr style=3D"line-height:0px"><td style=3D"=
+padding-right: 0px;padding-left: 0px;" align=3D"center"><![endif]--><a href=
+=3D"http://email.portsmouthabbey.myenotice.com/c/eJxdUUGOhCAQfI0eDdAicvCggt=
+_YMAijWZGJYsz8foGd0yQkXd1NiqJq7moONSvXjiCCEADGHDBCFa74MA0YWjz2HPF-hKJGL3-E0=
+_krLOrxMO_Kvc3uw6pNpb0rlw5ZrR6WgrWmBcOI0oQz1taasBm0suXWLSG8CugLMsVz33f1zemP=
+Z9xo-5Op7Ts227r_Wn_c6pgrbV0Bk1Pr9rz2AgQuSJMqkIZFeKVR06CEzT8mEPFszhDb9PpZEJo=
+E0CSBZhGpyi8heZbFxDvuOtc9Q6GO-OHNnHmutDavYOa8OcM1mz3kjXDq0EtGydiPgt9IC0JINq=
+KJjVQ2fBiwIHUt-5EOA-ETxS30RFCMZMyhgYkyKnFkkQRLwScySiiP7tQ-hGjdbbatcjGZZ3Ikp=
+_BJZJ27ZMkfDj2QCw" target=3D"_blank" style=3D"outline:none" tabindex=3D"-1"=
+> <img class=3D"center  autowidth  fullwidth" align=3D"center" border=3D"0"=
+ src=3D"https://d15k2d11r6t6rl.cloudfront.net/public/users/Integrators/5eb5=
+5a21-9496-46ce-8161-f092fc9def23/portsmouthabbey/4_3.png" alt=3D"Young Alum=
+ni Spotlight Naya Onyiuke" title=3D"Young Alumni Spotlight Naya Onyiuke" st=
+yle=3D"text-decoration: none; -ms-interpolation-mode: bicubic; height: auto=
+; border: none; width: 100%; max-width: 300px; display: block;" width=3D"30=
+0"></a>             <!--[if mso]></td></tr></table><![endif]-->            =
+</div>            <!--[if (!mso)&(!IE)]><!-->           </div>           <!=
+--<![endif]-->          </div>         </div>         <!--[if (mso)|(IE)]><=
+/td></tr></table><![endif]-->         <!--[if (mso)|(IE)]></td><td align=3D=
+"center" width=3D"300" style=3D"background-color:#FFFFFF;width:300px; borde=
+r-top: 0px solid transparent; border-left: 0px solid transparent; border-bo=
+ttom: 0px solid transparent; border-right: 0px solid transparent;" valign=
+=3D"top"><table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=
+=3D"0"><tr><td style=3D"padding-right: 0px; padding-left: 0px; padding-top:=
+0px; padding-bottom:0px;"><![endif]-->         <div class=3D"col num6" styl=
+e=3D"max-width: 320px; min-width: 300px; display: table-cell; vertical-alig=
+n: top; width: 300px;">          <div style=3D"width:100% !important;">    =
+       <!--[if (!mso)&(!IE)]><!-->           <div style=3D"border-top:0px s=
+olid transparent; border-left:0px solid transparent; border-bottom:0px soli=
+d transparent; border-right:0px solid transparent; padding-top:0px; padding=
+-bottom:0px; padding-right: 0px; padding-left: 0px;">            <!--<![end=
+if]-->            <div class=3D"img-container center  autowidth  fullwidth"=
+ align=3D"center" style=3D"padding-right: 0px;padding-left: 0px;">         =
+    <!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" =
+border=3D"0"><tr style=3D"line-height:0px"><td style=3D"padding-right: 0px;=
+padding-left: 0px;" align=3D"center"><![endif]--><a href=3D"http://email.po=
+rtsmouthabbey.myenotice.com/c/eJxdkEGOhCAQRU-jSwOUICxcgMo1JojQbVqlo3SMtx9wZ=
+tUJSf2iwuPXn9paQN2Uc0sQQQgAYwEYoQpXQmmFgeNOCiRkB0WN3mGPxxo-8WnG0V3VerktxNm6=
+yoa1fLbGW-pry5w3icqEGYmAhho-WoMm4sulfcb4LkAWRKdznmf1zQz7I02s_7nR_krNMm8vH_b=
+T7FNl_VqAXs28PD5bAT0uCMsVCGuS_OQrxlDW7k8TSHpyR0xt_v0oCM0GaLZAbxO5Dl9G1rCZI7=
+r9uoe3q_vFjXq5K9G45EopJgjhiuqOKkxrKlFHEK0ZSNC8k1pI0vBeD6BYD1z0WKuBQ8c6pcq9P=
+WyIMWVwumWp1hTxI692x_kf7Ty1ebdfYJx_lg" target=3D"_blank" style=3D"outline:n=
+one" tabindex=3D"-1"> <img class=3D"center  autowidth  fullwidth" align=3D"=
+center" border=3D"0" src=3D"https://d15k2d11r6t6rl.cloudfront.net/public/us=
+ers/Integrators/5eb55a21-9496-46ce-8161-f092fc9def23/portsmouthabbey/March%=
+202020%20Musings%20Tiles.png" alt=3D"Model UN BU and Georgetown" title=3D"M=
+odel UN BU and Georgetown" style=3D"text-decoration: none; -ms-interpolatio=
+n-mode: bicubic; height: auto; border: none; width: 100%; max-width: 300px;=
+ display: block;" width=3D"300"></a>             <!--[if mso]></td></tr></t=
+able><![endif]-->            </div>            <div class=3D"img-container =
+center  autowidth  fullwidth" align=3D"center" style=3D"padding-right: 0px;=
+padding-left: 0px;">             <!--[if mso]><table width=3D"100%" cellpad=
+ding=3D"0" cellspacing=3D"0" border=3D"0"><tr style=3D"line-height:0px"><td=
+ style=3D"padding-right: 0px;padding-left: 0px;" align=3D"center"><![endif]=
+--><a href=3D"http://email.portsmouthabbey.myenotice.com/c/eJxdUtuupCAQ_Brn=
+0TS03B58UNHf2HjB0RyFiTJr5u8XmJmHPQkJ1UV3UdA9lYXCQtzWkgIFQCREIQHISa7qriYoSVM=
+pUFWDWQEPd_hzd0-_9MNgXvn-Mtb5dTT56PbbUqIUA0xIVS_ZMHIYi3EYiJgmLoWYGd62cvH-kW=
+GV0S6s67ry35ruuIeTcf6TpOdXCLbV_szuuPpjysd5z7Db-3W7P22GmmSUxx0pFwE-I8U5RGzem=
+GLAkzl9COPtZ0ZZNMCiBZZMxL39ZSRxyUzICc_bn3b1ie2suaII1eavsf78n5uMD-bOr75oBxd8=
+p7DftpTyze0eLriKYDK9fZdv65vSvU1FenHWHQkd7lM_fwi_mHf8Ffbm2BOgQFQChMmCF4oBCCg=
+-__ATHoe6BY1EACO6qUXoeNUQwLqRWAPnVSu0bgTRSkpdoOqk4LQLS7aNYkxDW92O8hyd96GBl9=
+m2fA_zcY99SbPwmYt1KmNj_gEYMrSx" target=3D"_blank" style=3D"outline:none" ta=
+bindex=3D"-1"> <img class=3D"center  autowidth  fullwidth" align=3D"center"=
+ border=3D"0" src=3D"https://d15k2d11r6t6rl.cloudfront.net/public/users/Int=
+egrators/5eb55a21-9496-46ce-8161-f092fc9def23/portsmouthabbey/5_2.png" alt=
+=3D"Culinary Club Spotlight" title=3D"Culinary Club Spotlight" style=3D"tex=
+t-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: =
+none; width: 100%; max-width: 300px; display: block;" width=3D"300"></a>   =
+          <!--[if mso]></td></tr></table><![endif]-->            </div>    =
+        <div class=3D"img-container center  autowidth  fullwidth" align=3D"=
+center" style=3D"padding-right: 0px;padding-left: 0px;">             <!--[i=
+f mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"=
+0"><tr style=3D"line-height:0px"><td style=3D"padding-right: 0px;padding-le=
+ft: 0px;" align=3D"center"><![endif]--><a href=3D"http://email.portsmouthab=
+bey.myenotice.com/c/eJxdUUGOhCAQfI0eTUMDwsGDjvqNDYM4Y1bFKK6Z3y-ws5dJIF1dQHd=
+RPVRMISvzqaJAARAJUUgAClKopm8ISnKrFaj6hhmDze3-WNzpn_p-t69iednV-cnYwrglf1ZEKY=
+k4ahk2guVAJQWjhQUzmNHqfK6e3m8Z1hntw7quq_is6fZHODHjVyo9vkIyT-v36PZL70NhxiXDf=
+tHT_DjXDFuSUREjUlEGeEZKCIjY_mGKAQ_28CGN3Y-M8iiARwk8iYix-xCSuCQm3FnOY1oTbPUe=
+PjzbI_GP6eefH3R60m7u8Jtb7fDu-h1KYdvwTkmKyEvJmk4KrnomFJcCJCgqW1EDQ8WEULKHFgX=
+ATdGuq8u-ZpR2fb5Xh3HeB7suO8_FEqbxiC4k599TmIYq2vALrjWMQw" target=3D"_blank" =
+style=3D"outline:none" tabindex=3D"-1"> <img class=3D"center  autowidth  fu=
+llwidth" align=3D"center" border=3D"0" src=3D"https://d15k2d11r6t6rl.cloudf=
+ront.net/public/users/Integrators/5eb55a21-9496-46ce-8161-f092fc9def23/port=
+smouthabbey/7_1.png" alt=3D"Field Trip to New Bedford Whaling Museum" title=
+=3D"Field Trip to New Bedford Whaling Museum" style=3D"text-decoration: non=
+e; -ms-interpolation-mode: bicubic; height: auto; border: none; width: 100%=
+; max-width: 300px; display: block;" width=3D"300"></a>             <!--[if=
+ mso]></td></tr></table><![endif]-->            </div>            <!--[if (=
+!mso)&(!IE)]><!-->           </div>           <!--<![endif]-->          </d=
+iv>         </div>         <!--[if (mso)|(IE)]></td></tr></table><![endif]-=
+->         <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif=
+]-->        </div>       </div>      </div>      <div style=3D"background-c=
+olor:transparent;">       <div class=3D"block-grid two-up" style=3D"Margin:=
+ 0 auto; min-width: 320px; max-width: 600px; overflow-wrap: break-word; wor=
+d-wrap: break-word; word-break: break-word; background-color: #FFFFFF;">   =
+     <div style=3D"border-collapse: collapse;display: table;width: 100%;bac=
+kground-color:#FFFFFF;">         <!--[if (mso)|(IE)]><table width=3D"100%" =
+cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"background-color:=
+transparent;"><tr><td align=3D"center"><table cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0" style=3D"width:600px"><tr class=3D"layout-full-width" s=
+tyle=3D"background-color:#FFFFFF"><![endif]-->         <!--[if (mso)|(IE)]>=
+<td align=3D"center" width=3D"300" style=3D"background-color:#FFFFFF;width:=
+300px; border-top: 0px solid transparent; border-left: 0px solid transparen=
+t; border-bottom: 0px solid transparent; border-right: 0px solid transparen=
+t;" valign=3D"top"><table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0=
+" border=3D"0"><tr><td style=3D"padding-right: 0px; padding-left: 0px; padd=
+ing-top:0px; padding-bottom:0px;"><![endif]-->         <div class=3D"col nu=
+m6" style=3D"max-width: 320px; min-width: 300px; display: table-cell; verti=
+cal-align: top; width: 300px;">          <div style=3D"width:100% !importan=
+t;">           <!--[if (!mso)&(!IE)]><!-->           <div style=3D"border-t=
+op:0px solid transparent; border-left:0px solid transparent; border-bottom:=
+0px solid transparent; border-right:0px solid transparent; padding-top:0px;=
+ padding-bottom:0px; padding-right: 0px; padding-left: 0px;">            <!=
+--<![endif]-->            <div class=3D"img-container center  autowidth  fu=
+llwidth" align=3D"center" style=3D"padding-right: 0px;padding-left: 0px;"> =
+            <!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0"><tr style=3D"line-height:0px"><td style=3D"padding-rig=
+ht: 0px;padding-left: 0px;" align=3D"center"><![endif]--><a href=3D"http://=
+email.portsmouthabbey.myenotice.com/c/eJxdktuOhCAMhp_GuTRA8cCFFx5fY-NgHcmqT=
+BTXzD79Fpy92E1M-rfA7wftUEgFMruZQjDBGADnCjhjMY9V1VUccl6Xiqmyhkiyp93cvtjDTf39=
+jq94eeFqndEYa7vcpmKUOfYAOdM59KlGpJP8PuAo-wRTDre5mJx7RlBGoqPvPM_4v6fdHrSix49=
+gPb4omc36Odrt7Lch1uMSQbf0Zn4cawQNj0TqI4g0I3n4Upoyr_HSAkgPuDtK_d_3SCQeIPEISY=
+Dwsf0HEmoBhvbQ9ZZjNS5UuxVPbyIa_MLV7X9rAzqC23_9s_ZuiTuk_TyHLb97u6clKi92dwxkF=
+VZ7N83o8HLbUNvHar4xODT0CiGeZnV4SYpLEIJx9RaXj54MAS4XYniBT7oWNLKpKsZE2ZRQJ5A3=
+dVom0CpZZznL20pJJSsBZSkTlmVCNTnjZdcmvMukEG0ibluxa-scte7EeY4XmoyH70iYgvdEmKH=
+wLfkB5Xq3Bw" target=3D"_blank" style=3D"outline:none" tabindex=3D"-1"> <img=
+ class=3D"center  autowidth  fullwidth" align=3D"center" border=3D"0" src=
+=3D"https://d15k2d11r6t6rl.cloudfront.net/public/users/Integrators/5eb55a21=
+-9496-46ce-8161-f092fc9def23/portsmouthabbey/6_2.png" alt=3D"Wrestling Wrap=
+up 2020" title=3D"Wrestling Wrapup 2020" style=3D"text-decoration: none; -m=
+s-interpolation-mode: bicubic; height: auto; border: none; width: 100%; max=
+-width: 300px; display: block;" width=3D"300"></a>             <!--[if mso]=
+></td></tr></table><![endif]-->            </div>            <!--[if (!mso)=
+&(!IE)]><!-->           </div>           <!--<![endif]-->          </div>  =
+       </div>         <!--[if (mso)|(IE)]></td></tr></table><![endif]-->   =
+      <!--[if (mso)|(IE)]></td><td align=3D"center" width=3D"300" style=3D"=
+background-color:#FFFFFF;width:300px; border-top: 0px solid transparent; bo=
+rder-left: 0px solid transparent; border-bottom: 0px solid transparent; bor=
+der-right: 0px solid transparent;" valign=3D"top"><table width=3D"100%" cel=
+lpadding=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-righ=
+t: 0px; padding-left: 0px; padding-top:0px; padding-bottom:0px;"><![endif]-=
+->         <div class=3D"col num6" style=3D"max-width: 320px; min-width: 30=
+0px; display: table-cell; vertical-align: top; width: 300px;">          <di=
+v style=3D"width:100% !important;">           <!--[if (!mso)&(!IE)]><!-->  =
+         <div style=3D"border-top:0px solid transparent; border-left:0px so=
+lid transparent; border-bottom:0px solid transparent; border-right:0px soli=
+d transparent; padding-top:0px; padding-bottom:0px; padding-right: 0px; pad=
+ding-left: 0px;">            <!--<![endif]-->            <div class=3D"img-=
+container center  autowidth  fullwidth" align=3D"center" style=3D"padding-r=
+ight: 0px;padding-left: 0px;">             <!--[if mso]><table width=3D"100=
+%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0"><tr style=3D"line-heigh=
+t:0px"><td style=3D"padding-right: 0px;padding-left: 0px;" align=3D"center"=
+><![endif]--><a href=3D"http://email.portsmouthabbey.myenotice.com/c/eJxdUl=
+2PgyAQ_DX6aPgQlAcfFMvfuKBga06lETzTf38LbS-5JsadGTezg4tpSkHLKp8bgghClGIsKEaow=
+IXoVIdpjWUrkGglzUp0d3vwqzvCTQ-DfRTrw24uzKMtRrfmt8awYZq0YRMhJddMUE20EZMRZBTG=
+UJMvzS2Ee0bbjCh4zvMsPj3dfoUv4_SVrKcHkGXevie3n3o3xTitGVWrnpfrsWW0xxnhsVLCK4B=
+HlDhHEdsnJhSwsT4AjdN9RlgMwGIElkLEevkIkrQUBnrgeOuxzSGparNnNCG9_bFb8P81YwOE82=
+__6jI4yJ2oXpbU8u5VdwepnuA9OzX8Bejvu_VWe7clBj8h1cE9nsMWPe7Oe5vI6Gya03sIMG_X1=
+7G_wYr2kqtKKMKpVOzS077mdaVaeNWEyY7JGvUMISk7BBJn6FK2GLVl16ISYSJlvjd-dCHAvk67=
+LMUK1-Ea15BW_7oGs2niHn4BzLu1ew" target=3D"_blank" style=3D"outline:none" ta=
+bindex=3D"-1"> <img class=3D"center  autowidth  fullwidth" align=3D"center"=
+ border=3D"0" src=3D"https://d15k2d11r6t6rl.cloudfront.net/public/users/Int=
+egrators/5eb55a21-9496-46ce-8161-f092fc9def23/portsmouthabbey/9_3.png" alt=
+=3D"Image" title=3D"Image" style=3D"text-decoration: none; -ms-interpolatio=
+n-mode: bicubic; height: auto; border: none; width: 100%; max-width: 300px;=
+ display: block;" width=3D"300"></a>             <!--[if mso]></td></tr></t=
+able><![endif]-->            </div>            <!--[if (!mso)&(!IE)]><!--> =
+          </div>           <!--<![endif]-->          </div>         </div> =
+        <!--[if (mso)|(IE)]></td></tr></table><![endif]-->         <!--[if =
+(mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->        </div> =
+      </div>      </div>      <div style=3D"background-color:transparent;">=
+       <div class=3D"block-grid " style=3D"Margin: 0 auto; min-width: 320px=
+; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word; word-=
+break: break-word; background-color: #0C2137;">        <div style=3D"border=
+-collapse: collapse;display: table;width: 100%;background-color:#0C2137;"> =
+        <!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" style=3D"background-color:transparent;"><tr><td ali=
+gn=3D"center"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=
+=3D"width:600px"><tr class=3D"layout-full-width" style=3D"background-color:=
+#0C2137"><![endif]-->         <!--[if (mso)|(IE)]><td align=3D"center" widt=
+h=3D"600" style=3D"background-color:#0C2137;width:600px; border-top: 0px so=
+lid transparent; border-left: 0px solid transparent; border-bottom: 0px sol=
+id transparent; border-right: 0px solid transparent;" valign=3D"top"><table=
+ width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0"><tr><td st=
+yle=3D"padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bott=
+om:5px;"><![endif]-->         <div class=3D"col num12" style=3D"min-width: =
+320px; max-width: 600px; display: table-cell; vertical-align: top; width: 6=
+00px;">          <div style=3D"width:100% !important;">           <!--[if (=
+!mso)&(!IE)]><!-->           <div style=3D"border-top:0px solid transparent=
+; border-left:0px solid transparent; border-bottom:0px solid transparent; b=
+order-right:0px solid transparent; padding-top:5px; padding-bottom:5px; pad=
+ding-right: 0px; padding-left: 0px;">            <!--<![endif]-->          =
+  <table class=3D"social_icons" cellpadding=3D"0" cellspacing=3D"0" width=
+=3D"100%" role=3D"presentation" style=3D"table-layout: fixed; vertical-alig=
+n: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt=
+; mso-table-rspace: 0pt;" valign=3D"top">             <tbody>              =
+<tr style=3D"vertical-align: top;" valign=3D"top">               <td style=
+=3D"word-break: break-word; vertical-align: top; padding-top: 10px; padding=
+-right: 10px; padding-bottom: 10px; padding-left: 10px;" valign=3D"top">   =
+             <table class=3D"social_table" align=3D"center" cellpadding=3D"=
+0" cellspacing=3D"0" role=3D"presentation" style=3D"table-layout: fixed; ve=
+rtical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-=
+tspace: 0; mso-table-rspace: 0; mso-table-bspace: 0; mso-table-lspace: 0;" =
+valign=3D"top">                 <tbody>                  <tr style=3D"verti=
+cal-align: top; display: inline-block; text-align: center;" align=3D"center=
+" valign=3D"top">                   <td style=3D"word-break: break-word; ve=
+rtical-align: top; padding-bottom: 5px; padding-right: 3px; padding-left: 3=
+px;" valign=3D"top"><a href=3D"http://email.portsmouthabbey.myenotice.com/c=
+/eJxdUMmOhCAU_Bo8Evbl4MH13Ml8wAQBW9PadJSO8e8HnM4cJiF5VTxSVJUrmaZMFnNJEEGIUo=
+w1xQhBDHXd15gq3FQa6aqhgKFX2OK-hneczDD4E66nf4Y4Ww9tWIupHNiguVIGjVZ5ZIlz6ZmTy=
+nJjlDCiWMopxhegFSB9OsdxwP-aYbunjR2_L-nxTGSZn48xbIfZHLTjCmi_mnm5v5-AthgQkScl=
+Qib4zldCoIz9LyY0Yef3mGj-fQeEZwM8W-CXiTy70Vg_hPC4SMpzLW9_7qrs7stOISwfvYc_kyR=
+DNdFMK1nXfaWZYpy3TGJOFO86jZFkUiitqW4ToqRBkgvWyI61Pa-0rIqt3G2IMRVx-GWBa-r5nv=
+NdnX76nV2ZA_4Ax0uAoA" target=3D"_blank"><img width=3D"32" height=3D"32" src=
+=3D"https://d2fi4ri5dhpqd1.cloudfront.net/public/resources/social-networks-=
+icon-sets/circle-color/facebook.png" alt=3D"Facebook" title=3D"Facebook" st=
+yle=3D"text-decoration: none; -ms-interpolation-mode: bicubic; height: auto=
+; border: none; display: block;"></a></td>                   <td style=3D"w=
+ord-break: break-word; vertical-align: top; padding-bottom: 5px; padding-ri=
+ght: 3px; padding-left: 3px;" valign=3D"top"><a href=3D"http://email.portsm=
+outhabbey.myenotice.com/c/eJxdUEmOhDAMfA0coyTOeuDAlm-M0hBoNCwtSA_i9-MwfRopc=
+sq2XHZVXwgLQudTwSmnFIAxC4xSwoitXMXAsLq01JY1ZIK-tj0ey_aOT_94hIssV1i3OHWBdNuS=
+PwtpqRLB9GoQVlOQglGvg1fgjRD-IfO5eMb4yqDMuMN3nif5z7ntI3a64eumHi5M5mn9Hrb99Ht=
+PumHJwC1-msf3mkHDMq7SD1xphO9UUoomHP4wB8R9OCKm93Yu036ZLsAwrUf04-6XlLWo467et-=
+z-J6zHZ_o7XEhgnC1b0ZiylLXQruLQNI3DHRSNMtLplhmZmhR42ULd1A1oXnNTSYy8yvfi6LYYU=
+fYZ5pks6OqY1NwOftyc-iLJ-QW1J3lh" target=3D"_blank"><img width=3D"32" height=
+=3D"32" src=3D"https://d2fi4ri5dhpqd1.cloudfront.net/public/resources/socia=
+l-networks-icon-sets/circle-color/instagram.png" alt=3D"Instagram" title=3D=
+"Instagram" style=3D"text-decoration: none; -ms-interpolation-mode: bicubic=
+; height: auto; border: none; display: block;"></a></td>                   =
+<td style=3D"word-break: break-word; vertical-align: top; padding-bottom: 5=
+px; padding-right: 3px; padding-left: 3px;" valign=3D"top"><a href=3D"http:=
+//email.portsmouthabbey.myenotice.com/c/eJxdkMmOhCAQhp9Gj6SgWA8exOU1Ji7YbUa=
+lo_QY337A6dMkBL4qUsv_jwU3yFU-FwwYACKlBikAocTY1lLUtCoNmLLCjMPL7-FY_Ts8u753F1=
+kvt_kwD44Mfs2fxURxlKMYHSbSnXK875hm4HpQ2nX5UjxDeGVYZqyN5zxP8r-n3x_xZ5i-7tbTF=
+YNl3r4nv5_dPpJhWjNs125eHu8tw5pmTKYXmVQR3yklJSR2f8ww8uiOEMN7OhNpvkgbxCuccwhu=
+T9xEFXfu3mTvftx2fGq_3RXLK12itGANl7TWIJtW15Jrq5Sqm7KhDDhvGAgh0dTSiqbSDbXG1qJ=
+CqaDK9-IYfAhR9OmWhazR00fScvv38XIeiyTmF_c3eYw" target=3D"_blank"><img width=
+=3D"32" height=3D"32" src=3D"https://d2fi4ri5dhpqd1.cloudfront.net/public/r=
+esources/social-networks-icon-sets/circle-color/twitter.png" alt=3D"Twitter=
+" title=3D"Twitter" style=3D"text-decoration: none; -ms-interpolation-mode:=
+ bicubic; height: auto; border: none; display: block;"></a></td>           =
+        <td style=3D"word-break: break-word; vertical-align: top; padding-b=
+ottom: 5px; padding-right: 3px; padding-left: 3px;" valign=3D"top"><a href=
+=3D"http://email.portsmouthabbey.myenotice.com/c/eJxdkE2OhCAQhU-jSwIUfy5cKM=
+p6bjBRwG7T2nRsjPH2A05nFpOQ1FdUUvXeczWrgMlyrimmGAMQUgHBGBFUtaYloIhuKlw1GgqGX=
+2GL7zXs8T6Moz_RevpniLP1yIa1vNcTtePg1eA4n5RV3hLnBzxaKZwErly51PcYXwU0BTXpHceB=
+_u8M2y1N7PR9rZ7O1Czz8zGF7Rg2h-y0FmDWYV5u-7OAjhRU5ApUyIR7_hICZ_a_TCGx8--Y2us=
+65fk-zwr4pSHX_kwS9tFfnNxcs68_bU3W9tnzSASdlqIySgtpGtWJzuiea9xTw3uioKONaKnoeY=
+8VCMUaCURqzgSTSgrWMtGWW_22IcYUwOGXBa0p31v2dWX5yXV2dTb2A9tcfig" target=3D"_b=
+lank"><img width=3D"32" height=3D"32" src=3D"https://d2fi4ri5dhpqd1.cloudfr=
+ont.net/public/resources/social-networks-icon-sets/circle-color/youtube.png=
+" alt=3D"YouTube" title=3D"YouTube" style=3D"text-decoration: none; -ms-int=
+erpolation-mode: bicubic; height: auto; border: none; display: block;"></a>=
+</td>                  </tr>                 </tbody>                </tabl=
+e>               </td>              </tr>             </tbody>            <=
+/table>            <!--[if (!mso)&(!IE)]><!-->           </div>           <=
+!--<![endif]-->          </div>         </div>         <!--[if (mso)|(IE)]>=
+</td></tr></table><![endif]-->         <!--[if (mso)|(IE)]></td></tr></tabl=
+e></td></tr></table><![endif]-->        </div>       </div>      </div>    =
+  <div style=3D"background-color:transparent;">       <div class=3D"block-g=
+rid " style=3D"Margin: 0 auto; min-width: 320px; max-width: 600px; overflow=
+-wrap: break-word; word-wrap: break-word; word-break: break-word; backgroun=
+d-color: #0C2137;">        <div style=3D"border-collapse: collapse;display:=
+ table;width: 100%;background-color:#0C2137;">         <!--[if (mso)|(IE)]>=
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"background-color:transparent;"><tr><td align=3D"center"><table cellpad=
+ding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"width:600px"><tr class=
+=3D"layout-full-width" style=3D"background-color:#0C2137"><![endif]-->     =
+    <!--[if (mso)|(IE)]><td align=3D"center" width=3D"600" style=3D"backgro=
+und-color:#0C2137;width:600px; border-top: 0px solid transparent; border-le=
+ft: 0px solid transparent; border-bottom: 0px solid transparent; border-rig=
+ht: 0px solid transparent;" valign=3D"top"><table width=3D"100%" cellpaddin=
+g=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-right: 20px=
+; padding-left: 20px; padding-top:0px; padding-bottom:20px;"><![endif]-->  =
+       <div class=3D"col num12" style=3D"min-width: 320px; max-width: 600px=
+; display: table-cell; vertical-align: top; width: 600px;">          <div s=
+tyle=3D"width:100% !important;">           <!--[if (!mso)&(!IE)]><!-->     =
+      <div style=3D"border-top:0px solid transparent; border-left:0px solid=
+ transparent; border-bottom:0px solid transparent; border-right:0px solid t=
+ransparent; padding-top:0px; padding-bottom:20px; padding-right: 20px; padd=
+ing-left: 20px;">            <!--<![endif]-->            <!--[if mso]><tabl=
+e width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0"><tr><td s=
+tyle=3D"padding-right: 0px; padding-left: 0px; padding-top: 0px; padding-bo=
+ttom: 0px; font-family: Arial, sans-serif"><![endif]-->            <div sty=
+le=3D"color:#fafafa;font-family:'Helvetica Neue', Helvetica, Arial, sans-se=
+rif;line-height:1.2;padding-top:0px;padding-right:0px;padding-bottom:0px;pa=
+dding-left:0px;">             <div style=3D"font-size: 12px; line-height: 1=
+=2E2; font-family: 'Helvetica Neue', Hel=
+vetica, Arial, sans-serif; color: #fa=
+fafa; mso-line-height-alt: 14px;">              <div style=3D"font-size: 12=
+px; line-height: 1.2; mso-line-height-alt: 14px;">               <p style=
+=3D"font-size: 12px; line-height: 1.2; text-align: center; mso-line-height-=
+alt: 14px; margin: 0;"><span style=3D"color: #999999; font-size: 12px;"><st=
+rong><span style=3D"font-size: 12px;">PORTSMOUTH ABBEY SCHOOL</span></stron=
+g></span></p>               <p style=3D"font-size: 12px; line-height: 1.2; =
+text-align: center; mso-line-height-alt: 14px; margin: 0;">285 Cory's Lane,=
+ Portsmouth, Rhode Island 02871</p>               <p style=3D"font-size: 12=
+px; line-height: 1.2; text-align: center; mso-line-height-alt: 14px; margin=
+: 0;">&nbsp;</p>               <p style=3D"font-size: 12px; line-height: 1.=
+2; text-align: center; mso-line-height-alt: 14px; margin: 0;"><a href=3D"ht=
+tp://email.portsmouthabbey.myenotice.com/c/eJxdj0GOwyAMRU9DlsjGBIYFi7SjXKMK=
+hDRIoVQJUZTbD23VzUhePMvS-_6jlYakbqIVIACIEA0hAEduLv0F6QevnQHTXYlJeOa1bCnvZR6=
+cCydPZ3jkEn3gPqdmtoPUahDBOGy10K2WkzZemxbC6BElNYudS3ky6pjo6xzHwf8783qvFz_d3u=
+rprMv-2Ha3-TW6GjQlRv0nNY6MfkkozYTaK6JS8OLwYUHNajefS6khR1gWnmqHexri8v43fC325=
+fgDLNRR3g" target=3D"_blank" rel=3D"noopener" style=3D"color: #DCDCDC;">Uns=
+ubscribe</a></p>              </div>             </div>            </div>  =
+          <!--[if mso]></td></tr></table><![endif]-->            <!--[if (!=
+mso)&(!IE)]><!-->           </div>           <!--<![endif]-->          </di=
+v>         </div>         <!--[if (mso)|(IE)]></td></tr></table><![endif]--=
+>         <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]=
+-->        </div>       </div>      </div>      <!--[if (mso)|(IE)]></td></=
+tr></table><![endif]-->     </td>    </tr>   </tbody>  </table>  <!--[if (I=
+E)]></div><![endif]--> <img width=3D"1px" height=3D"1px" alt=3D"" src=3D"ht=
+tp://email.portsmouthabbey.myenotice.com/o/eJwtzEsOwiAQANDTyJLMMCjMgkXbxHvw=
+qyUp0rQY09trjAd4LznNpI0oToECIEJkQgCJksf7iGRxGhh4mOiiYWt7P2p79cWHkE9Zz_xsvcQ=
+sY6ticWgArQ_ok-XEs-YrW6uS1x442jmJ3R2x9S639s7rKuv3fFRf1p__XyU5UjfzAS1JLqo"><=
+/body>  </html>
